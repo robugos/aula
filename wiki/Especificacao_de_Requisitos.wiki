@@ -1,0 +1,26 @@
+= Requisitos =
+
+Requisitos são definidos como funções ou capacidades que devem estar de acordo com o sistema. Nessa fase deveremos elucidar os requisitos do sistema, definindo de uma forma breve as funcionalidades e aplicações que o sistema pode oferecer, principalmente para os usuários finais, que são os professores, monitores e alunos. Estes serão acessados através de níveis diferenciados, desde consultas rápidas até a inserção de informação ao sistema.
+
+== Requisitos Funcionais ==
+Os requisitos funcionais expressam o comportamento de um software. As informações de entrada, o processamento e a saída emitida por uma funcionalidade são informações necessárias para especificar o requisito do referido grupo.
+
+  *RF001: Guia rápido da UFRPE com os locais mais importantes;
+  *RF002: Busca realizada através de filtros que centralizam as informações referentes a aulas, locais e horários;
+  *RF003: Perfil de aulas, locais, professores e monitores;
+  *RF004: Horário de aulas já confirmadas;
+  *RF005: FAQ (perguntas frequentes);
+  *RF006: Informações referentes a salas, laboratórios e auditórios (quantidade total, funcionais e disponíveis);
+  *RF007: O aluno terá acesso às funções básicas, que são: procurar por salas, laboratórios e auditórios;
+  *RF008: Monitores terão acesso às funções intermediárias, que são: todas as funções básicas + reserva de sala;
+  *RF009: Professores terão acesso às funções avançadas, que são:  funções intermediárias  + reserva de laboratórios  auditórios + gerenciamento de monitores;
+  *RF010: Administradores terão acesso total a todas as funções e dados + gerenciamento de sala + gerenciamento de professores e disciplinas;
+  *RF011: Os filtros serão distribuídos nas seguintes categorias: curso, período, disciplina, turno, local, horário;
+
+== Requisistos Não-funcionais ==
+Os requisitos não funcionais mapeiam os aspectos qualitativos de um software .
+  *RNF001: Servidor local disponibilizado pela universidade. De preferência servidor Apache, banco de dados MySQL em um ambiente Linux;
+  *RNF002: Dados de entrada e saída armazenados em banco de dados;
+  *RNF003: Interface limpa, fácil e bastante intuitiva, além de prática;
+  *RNF004: Comunicação realizada através de terminal ligado à intranet da universidade;
+  *RNF005: Confirmação de disponibilidade através do balcão de informação do prédio;
