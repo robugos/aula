@@ -1,0 +1,3 @@
+= O que é o pyGeah? =
+
+Consiste em um sistema voltado ao gerenciamento acadêmico, visando automatizar o controle de horários, aulas e as salas disponíveis para professores e monitores através de terminais integrados à intranet, fazendo desnecessária a conexão com a internet. Estes terminais estarão localizados nos prédios da universidade (inicialmente apenas no CEGOE) e informando, principalmente aos alunos, eventuais mudanças de horários e reservas de salas, laboratórios e auditórios.
