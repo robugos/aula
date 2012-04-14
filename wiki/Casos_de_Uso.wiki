@@ -1,0 +1,24 @@
+= Especificação de Casos de Uso =
+
+Um caso de uso representa uma parte discreta da interação entre um usuário (humano ou máquina) e o sistema. Cada caso de uso tem uma descrição a qual descreve sua funcionalidade.
+
+---------------------------
+
+==UC0001 - Filtro ID==
+
+|| *Objetivo* || Identificar o tipo de usuário que irá acessar o sistema. ||
+|| *Descrição* || Disponibiliza 3 (três) opções: Aluno, Professor e Administrador. ||
+|| *Ator* || Usuário ||
+|| *Prioridade* || Alta. ||
+|| *Pré-condição* || O sistema estar ligado. ||
+|| *Pós-condições* || O tipo de usuário é selecionado. ||
+
+==Cenários principais de sucesso== 
+
+|| *Usuário* ||
+|| 1 - O filtro desejado é selecionado corretamente pelo usuário;||
+
+|| *Fluxos alternativos* ||
+||1. Filtro ID não selecionado e a busca não pode ser iniciada.||
+
+---------------------------
