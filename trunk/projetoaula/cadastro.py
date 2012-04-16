@@ -5,4 +5,7 @@ class cadastro:
         self.departamento = departamento
 #---------------------------------------------------------Gustavo Pereira
 
-print 'testando'
+print 'teste'
+print "Teste Gustavo"
+
+#Sera que vai funcionar
