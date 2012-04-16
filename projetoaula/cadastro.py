@@ -8,7 +8,7 @@ class cadastro:
 print 'teste'
 print "Teste Gustavo"
 print "teste robson"
-
+print "teste feijão"
 #Sera que vai funcionar
 
 #Agora t‡ tudo funfando certinho.
