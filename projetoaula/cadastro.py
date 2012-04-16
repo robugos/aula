@@ -4,3 +4,5 @@ class cadastro:
         self.nome = nome
         self.departamento = departamento
 #---------------------------------------------------------Gustavo Pereira
+
+print 'teste'
