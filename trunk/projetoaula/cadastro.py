@@ -16,7 +16,7 @@ class cadastro:
         SQL.close()
         print "\nDados Atualizados no Banco de dados"
         
-#===============================GRAVAR SQL==============================
+#===============================GRAVAR NO SQL==============================
 print "Entre com os dados do professor."
 nome=raw_input("Nome: ")
 departamento=raw_input("Departamento: ")
