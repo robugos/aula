@@ -11,14 +11,14 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 || *Objetivo* || Cadastrar os professores. ||
 || *Descrição* || O administrador registra, edita e exclui informação de um professor. ||
 || *Ator* || Administrador e Professor ||
-|| *Prioridade* || Alta. ||
-|| *Pré-condição* || O sistema estar ligado. ||
+|| *Prioridade* || Média. ||
+|| *Pré-condição* || O usuário ter logado como Administrador. ||
 || *Pós-condições* || O professor é cadastrado. ||
 
 ==Cenários principais de sucesso== 
 
 || *Usuário* ||
-|| 1 - Ao registrar, o Administrador informa ao sistema as informações necessárias sobre o professor, como: Nome, RG, CPF, Endereço, Data de Nascimento, Disciplinas que Leciona. O sistema gera um número de registro e armazena as informações do professor;||
+|| 1 - Ao registrar, o Administrador informa ao sistema as informações necessárias sobre o professor, como: Nome, CPF, Disciplinas que Leciona e Departamento. O sistema gera um número de registro e armazena as informações do professor;||
 || 2 - Ao editar, o Administrador acessa as informações já cadastradas do professor, e faz as alterações necessárias, ao final, o programa re-armazena as informações do professor; ||
 || 3 - Ao excluir, o Administrador informa o número de registro relacionado a um professor que deseja excluir, e o sistema exclui todas as informações relacionadas ao número de registro;||
 || *Fluxos alternativos* ||
