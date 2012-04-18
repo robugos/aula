@@ -53,11 +53,11 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 ==Cenários principais de sucesso== 
 
 || *Usuário* ||
-|| 1 - Existir locais livres para determinadas aulas; 
-   2 - Existir horários livres para determinadas aulas.||
+|| 1 - Existir locais livres para determinadas aulas;|| 
+|| 2 - Existir horários livres para determinadas aulas.||
 
 || *Fluxos alternativos* ||
-||1. Se a sala cadastrada estiver ocupada, tentar selecionar uma sala desocupada;
-  2. Se o horário para a sala estiver ocupado, tentar outro horário ou outra sala desocupada.||
+|| 1. Se a sala cadastrada estiver ocupada, tentar selecionar uma sala desocupada;||
+|| 2. Se o horário para a sala estiver ocupado, tentar outro horário ou outra sala desocupada.||
 
 ---------------------------
