@@ -23,4 +23,22 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 || *Fluxos alternativos* ||
 ||1. Filtro ID não selecionado e a busca não pode ser iniciada.||
 
+
+==UC0002 - Cadastro==
+
+|| *Objetivo* || Consiste em cadastrar aulas,locais e horários. ||
+|| *Descrição* ||  ||
+|| *Ator* || Professor ||
+|| *Prioridade* || Alta. ||
+|| *Pré-condição* || O professor deverá acessar o sistema informando login e senha. ||
+|| *Pós-condições* || O cadastro é realizado. ||
+
+==Cenários principais de sucesso== 
+
+|| *Usuário* ||
+|| 1 - Aulas, locais e horários são cadastrados corretamente pelo professor;||
+
+|| *Fluxos alternativos* ||
+||1. Salas e horários já ocupados.||
+
 ---------------------------
