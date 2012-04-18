@@ -22,9 +22,7 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 || 2 - Ao editar, o Administrador acessa as informações já cadastradas do professor, e faz as alterações necessárias, ao final, o programa re-armazena as informações do professor; ||
 || 3 - Ao excluir, o Administrador informa o número de registro relacionado a um professor que deseja excluir, e o sistema exclui todas as informações relacionadas ao número de registro;||
 || *Fluxos alternativos* ||
-|| 1.1 Se o CPF  for digitado de forma incorreta, o sistema deve informar uma mensagem de erro. O CPF deve ser digitado... .||
-|| 1.2 Se a Data de Nascimento for digitada de forma errada, o sistema deve informar uma mensagem de erro. A data deve ser informada no modelo dd/mm/aa.||
-|| 1.3 Se o CEP for informado de forma incorreta, o sistema deve informar uma mensagem de erro. O CEP deve ser informado no formato...||
+|| 1.1 Se o CPF  for digitado de forma incorreta, o sistema deve informar uma mensagem de erro. O CPF deve ser digitado contendo 11 números, sem . (ponto) ou - (traço).||
 || 2.1 Se ao tentar consultar as informações de um determinado professor que não possui cadastro, o programa informa uma mensagem de erro "Cadastro não encontrado." ||
 || 3.1 Se ao tentar excluir as informações de um professor informado num número de registro incorreto, o programa retorna uma mensagem de erro "Registro não encontrado."||
 
@@ -32,7 +30,7 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 --------------------------------
 
 
-==UC0002 - Filtro ID==
+==UC0002 - Filtro Identificação==
 
 || *Objetivo* || Identificar o tipo de usuário que irá acessar o sistema. ||
 || *Descrição* || Disponibiliza 3 (três) opções: Aluno, Professor e Administrador. ||
@@ -57,18 +55,18 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 
 || *Objetivo* || Cadastrar todas as aulas, salas e horários do prédio. ||
 || *Descrição* || . ||
-|| *Ator* || Administrador e Professor ||
-|| *Prioridade* || Alta. ||
-|| *Pré-condição* || O tipo de usuário "Professor" é selecionado e ter acesso ao sistema. ||
-|| *Pós-condições* || Todas as aulas, salas e horários do prédio são cadastrados. ||
+|| *Ator* || Administrador ||
+|| *Prioridade* || Média. ||
+|| *Pré-condição* || O tipo de usuário "Administrador" é selecionado e ter acesso ao sistema. ||
+|| *Pós-condições* || Todas as aulas, salas e horários do prédio poderão ser cadastrados. ||
 
 ==Cenários principais de sucesso== 
 
 || *Usuário* ||
-|| 1 - ||
+|| 1 - O prédio é cadastrado com sucesso. ||
 
 || *Fluxos alternativos* ||
-|| 1. ||
+|| 1.1 - Cadastro  ||
 
 
 --------------------------
