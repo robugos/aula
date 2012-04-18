@@ -33,4 +33,4 @@ while disciplina!='':
         print "\nProfessor cadastrado com sucesso"
 professor.gravar()
 #=======================================================Gustavo Pereira
-print ''
+print 'teste'
