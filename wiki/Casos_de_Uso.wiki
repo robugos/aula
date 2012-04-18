@@ -27,7 +27,7 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 ==UC0002 - Cadastro==
 
 || *Objetivo* || Consiste em cadastrar aulas,locais e horários. ||
-|| *Descrição* ||  ||
+|| *Descrição* || Poderá efetuar o cadastramento , edição e exclusão de informações como aulas, locais e horários.  ||
 || *Ator* || Professor ||
 || *Prioridade* || Alta. ||
 || *Pré-condição* || O professor deverá acessar o sistema informando login e senha. ||
@@ -36,7 +36,7 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 ==Cenários principais de sucesso== 
 
 || *Usuário* ||
-|| 1 - Aulas, locais e horários são cadastrados corretamente pelo professor;||
+|| 1 - Existir locais e horários livres para determinadas aulas, ou seja, cadastro efetuado com sucesso pelo professor;||
 
 || *Fluxos alternativos* ||
 ||1. Salas e horários já ocupados.||
