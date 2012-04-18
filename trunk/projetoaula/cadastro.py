@@ -20,7 +20,7 @@ class cadastro:
 print "Entre com os dados do professor."
 nome=raw_input("Nome: ")
 departamento=raw_input("Departamento: ")
-cpf=raw_input("CPF: ")
+cpf=raw_input("CPF (somente numeros): ")
 professor=cadastro(nome,departamento,cpf)
 
 print "Entre com as disciplinas ministradas e para finalizar PRESS ENTER"
