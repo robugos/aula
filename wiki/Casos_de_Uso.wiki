@@ -24,7 +24,7 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 ||1. Filtro ID não selecionado e a busca não pode ser iniciada.||
 
 
-==UC0002 - Filtro ID==
+==UC0002 - Cadastro do Prédio==
 
 || *Objetivo* || Cadastrar todas as aulas, salas e horários do prédio. ||
 || *Descrição* || . ||
@@ -36,10 +36,10 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 ==Cenários principais de sucesso== 
 
 || *Usuário* ||
-|| 1 - ;||
+|| 1 - ||
 
 || *Fluxos alternativos* ||
-||1. .||
+|| 1. ||
 
 ==UC0003 - Gerenciamento de Cadastro==
 
