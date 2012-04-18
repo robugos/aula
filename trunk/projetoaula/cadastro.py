@@ -26,7 +26,7 @@ professor=cadastro(nome,departamento,cpf)
 print "Entre com as disciplinas ministradas e para finalizar PRESS ENTER"
 disciplina=None
 while disciplina!='':
-    disciplina = raw_input("Disciplinas ministradas:")
+    disciplina = raw_input("Disciplinas ministradas pelo professor:")
     if disciplina!='':
         professor.cadastrar_disciplinas(disciplina)
     else:
