@@ -54,7 +54,7 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 ==UC0003 - Cadastro do Prédio==
 
 || *Objetivo* || Cadastrar todas as aulas, salas e horários do prédio. ||
-|| *Descrição* || . ||
+|| *Descrição* || O prédio é responsável pelo armazenamento de salas, laboratórios e auditórios, logo, é preciso a especificação dos mesmos referentes ao prédio. ||
 || *Ator* || Administrador ||
 || *Prioridade* || Média. ||
 || *Pré-condição* || O tipo de usuário "Administrador" é selecionado e ter acesso ao sistema. ||
@@ -66,7 +66,7 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 || 1 - O prédio é cadastrado com sucesso. ||
 
 || *Fluxos alternativos* ||
-|| 1.1 - Cadastro  ||
+|| 1.1 - Cadastro já existente. ||
 
 
 --------------------------
