@@ -20,7 +20,17 @@ class cadastro:
 print "Entre com os dados do professor."
 nome=raw_input("Nome: ")
 departamento=raw_input("Departamento: ")
-cpf=raw_input("CPF (somente numeros): ")
+num=['0','1','2','3','4','5','6','7','8','9']
+teste=False
+while teste==False or len(cpf)!=11:
+    cpf=raw_input("CPF (somente numeros): ")
+    for i in cpf:
+        if i in num:
+            teste=True
+        else:
+            teste=False
+            print "CPF digitado incorretamente!"
+    
 professor=cadastro(nome,departamento,cpf)
 
 print "Entre com as disciplinas ministradas e para finalizar PRESS ENTER"
