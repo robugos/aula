@@ -5,7 +5,7 @@ class cadastro:
         self.dados.append(nome+"\n")
         self.dados.append(departamento+"\n")
         self.dados.append(cpf+"\n")
-        #Teste conflito
+        
     def cadastrar_disciplinas(self,disciplina):
         self.dados.append(disciplina+" ")
 
