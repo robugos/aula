@@ -5,7 +5,7 @@ class cadastro:
         self.dados.append(nome+"\n")
         self.dados.append(departamento+"\n")
         self.dados.append(cpf+"\n")
-        
+        #Teste conflito
     def cadastrar_disciplinas(self,disciplina):
         self.dados.append(disciplina+" ")
 
@@ -17,7 +17,7 @@ class cadastro:
         print "\nDados Atualizados no Banco de dados"
         
 #===============================GRAVAR SQL==============================
-print "Professor, entre com seus dados.."
+print "Entre com os dados do professor."
 nome=raw_input("Nome: ")
 departamento=raw_input("Departamento: ")
 cpf=raw_input("CPF: ")
