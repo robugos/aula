@@ -24,21 +24,40 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 ||1. Filtro ID não selecionado e a busca não pode ser iniciada.||
 
 
-==UC0002 - Cadastro==
+==UC0002 - Filtro ID==
 
-|| *Objetivo* || Consiste em cadastrar aulas,locais e horários. ||
-|| *Descrição* || Poderá efetuar o cadastramento , edição e exclusão de informações como aulas, locais e horários.  ||
+|| *Objetivo* || Cadastrar todas as aulas, salas e horários do prédio. ||
+|| *Descrição* || . ||
 || *Ator* || Professor ||
 || *Prioridade* || Alta. ||
-|| *Pré-condição* || O professor deverá acessar o sistema informando login e senha. ||
-|| *Pós-condições* || O cadastro é realizado. ||
+|| *Pré-condição* || O tipo de usuário "Professor" é selecionado e ter acesso ao sistema. ||
+|| *Pós-condições* || Todas as aulas, salas e horários do prédio são cadastrados. ||
 
 ==Cenários principais de sucesso== 
 
 || *Usuário* ||
-|| 1 - Existir locais e horários livres para determinadas aulas, ou seja, cadastro efetuado com sucesso pelo professor;||
+|| 1 - ;||
 
 || *Fluxos alternativos* ||
-||1. Salas e horários já ocupados.||
+||1. .||
+
+==UC0003 - Gerenciamento de Cadastro==
+
+|| *Objetivo* || Consiste em gerenciar o cadastro de aulas, locais e horários. ||
+|| *Descrição* || Poderá selecionar , editar e excluir informações como aulas, locais e horários.  ||
+|| *Ator* || Professor ||
+|| *Prioridade* || Alta. ||
+|| *Pré-condição* || Todas os horários, aulas e salas já estão cadastradas. ||
+|| *Pós-condições* || A seleção é realizada. ||
+
+==Cenários principais de sucesso== 
+
+|| *Usuário* ||
+|| 1 - Existir locais livres para determinadas aulas; 
+   2 - Existir horários livres para determinadas aulas.||
+
+|| *Fluxos alternativos* ||
+||1. Se a sala cadastrada estiver ocupada, tentar selecionar uma sala desocupada;
+  2. Se o horário para a sala estiver ocupado, tentar outro horário ou outra sala desocupada.||
 
 ---------------------------
