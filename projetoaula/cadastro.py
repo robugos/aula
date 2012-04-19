@@ -34,11 +34,11 @@ def verificar(cpf):
             except:
                 print "CPF digitado incorretamente!"
                 cpf=raw_input("CPF (somente números): ")
-                verificar(cpf)
+                continue
         else:
             print "CPF digitado incorretamente!"
             cpf=raw_input("CPF (somente números): ")
-            verificar(cpf)
+            continue
                 
 verificar(cpf)
 #===========Thiago, Robson e Rafaella========================#
