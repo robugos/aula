@@ -1,11 +1,14 @@
 # -*- coding: cp1252 -*-
 #=======================================================Gustavo Pereira
+
+from VerificarCPF import Verificar
+
 class cadastro:
-    def __init__(self, nome, departamento,cpf):
+    def __init__(self, nome, departamento,CPF):
         self.dados=[]
         self.dados.append(nome+"\n")
         self.dados.append(departamento+"\n")
-        self.dados.append(cpf+"\n")
+        self.dados.append(CPF+"\n")
         
     def cadastrar_disciplinas(self,disciplina):
         self.dados.append(disciplina+" ")
@@ -21,31 +24,12 @@ class cadastro:
 print "Entre com os dados do professor."
 nome=raw_input("Nome: ")
 departamento=raw_input("Departamento: ")
-cpf=raw_input("CPF (somente números): ")
-ver=False
-#===========Thiago, Robson e Rafaella========================#
-def verificar(cpf):
-    while ver == False:
-        if len(cpf)==11:
-            try:
-                for i in cpf:
-                    i=int(i)
-                break
-            except:
-                print "CPF digitado incorretamente!"
-                cpf=raw_input("CPF (somente números): ")
-                continue
-        else:
-            print "CPF digitado incorretamente!"
-            cpf=raw_input("CPF (somente números): ")
-            continue
-                
-verificar(cpf)
-#===========Thiago, Robson e Rafaella========================#
+CPF=raw_input("CPF: ")
+Test = Verificar(CPF)
             
-professor=cadastro(nome,departamento,cpf)
+professor=cadastro(nome,departamento,Test.userCPF)
 
-print "Entre com as disciplinas ministradas e para finalizar PRESS ENTER"
+print "\nEntre com as disciplinas ministradas e para finalizar PRESS ENTER\n"
 disciplina=None
 while disciplina!='':
     disciplina = raw_input("Disciplinas ministradas pelo professor:")
