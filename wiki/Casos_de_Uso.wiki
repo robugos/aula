@@ -67,8 +67,7 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 || 1 - O filtro desejado é selecionado corretamente pelo usuário; Se for selecionado a opção "Administrador" ou "Professor", o sistema pedirá login e senha.||
 
 || *Fluxos alternativos* ||
-||1. Filtro ID não selecionado e a busca não pode ser iniciada.
- Se o login ou a senha para usuário "Administrador" ou "Professor" for digitado incorretamente, o sistema retorna uma mensagem "Login e senha Inválidos!", então o processo é reinicializado.||
+||1. Filtro ID não selecionado e a busca não pode ser iniciada. Se o login ou a senha para usuário "Administrador" ou "Professor" for digitado incorretamente, o sistema retorna uma mensagem "Login e senha Inválidos!", então o processo é reinicializado.||
 
 
 ----------------------------
