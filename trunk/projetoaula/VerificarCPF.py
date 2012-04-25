@@ -3,7 +3,6 @@ class Verificar():
     def __init__(self,CPF):
         self.userCPF = CPF
         self.check=0
-        one=1
         while self.check == 0:
             if len(self.userCPF)==11:
                 try:
