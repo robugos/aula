@@ -6,7 +6,29 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 
 ---------------------------
 
-==UC0001 - Cadastro de professores==
+
+==UC0001 - Cadastro de Disciplina==
+
+|| *Objetivo* || Cadastrar todas as disciplinas da Universidade. ||
+|| *Descrição* || Cadastrar todas as disciplinas da Universidade, afim de evitar que uma disciplina possua dois ou mais nomes correspondentes a ela. ||
+|| *Ator* || Administrador ||
+|| *Prioridade* || Média. ||
+|| *Pré-condição* || O tipo de usuário "Administrador" é selecionado para ter acesso ao sistema. ||
+|| *Pós-condições* || Todas as disciplinas poderão ser cadastradas. ||
+
+==Cenários principais de sucesso== 
+
+|| *Usuário* ||
+|| 1 - As disciplinas são cadastradas com sucesso, possuindo apenas um nome correspondente a cada uma delas. O administrador deve estar atento, evitando que uma mesma disciplina seja cadastrada mais de uma vez. ||
+
+|| *Fluxos alternativos* ||
+|| 1.1 - Ao tentar cadastro de disciplina já existente, retorna uma mensagem "Disciplina já possui cadastro". ||
+
+
+--------------------------
+
+
+==UC0002 - Cadastro de professores==
 
 || *Objetivo* || Cadastrar os professores. ||
 || *Descrição* || O administrador registra, edita e exclui informação de um professor. ||
@@ -18,7 +40,7 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 ==Cenários principais de sucesso== 
 
 || *Usuário* ||
-|| 1 - Ao registrar, o Administrador informa ao sistema as informações necessárias sobre o professor, como: Nome, CPF, Disciplinas que Leciona e Departamento. O sistema gera um número de registro e armazena as informações do professor;||
+|| 1 - Ao registrar, o Administrador informa ao sistema as informações necessárias sobre o professor, como: Nome, CPF, Disciplinas que Leciona , Disciplinas que está apto a lecionar e Departamento. O sistema gera um número de registro e armazena as informações do professor;||
 || 2 - Ao editar, o Administrador acessa as informações já cadastradas do professor, e faz as alterações necessárias, ao final, o programa re-armazena as informações do professor; ||
 || 3 - Ao excluir, o Administrador informa o número de registro relacionado a um professor que deseja excluir, e o sistema exclui todas as informações relacionadas ao número de registro;||
 || *Fluxos alternativos* ||
@@ -30,7 +52,7 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 --------------------------------
 
 
-==UC0002 - Filtro Identificação==
+==UC0003 - Filtro Identificação==
 
 || *Objetivo* || Identificar o tipo de usuário que irá acessar o sistema. ||
 || *Descrição* || Disponibiliza 3 (três) opções: Aluno, Professor e Administrador. ||
@@ -42,16 +64,17 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 ==Cenários principais de sucesso== 
 
 || *Usuário* ||
-|| 1 - O filtro desejado é selecionado corretamente pelo usuário;||
+|| 1 - O filtro desejado é selecionado corretamente pelo usuário; Se for selecionado a opção "Administrador" ou "Professor", o sistema pedirá login e senha.||
 
 || *Fluxos alternativos* ||
-||1. Filtro ID não selecionado e a busca não pode ser iniciada.||
+||1. Filtro ID não selecionado e a busca não pode ser iniciada.
+ Se o login ou a senha para usuário "Administrador" ou "Professor" for digitado incorretamente, o sistema retorna uma mensagem "Login e senha Inválidos!", então o processo é reinicializado.||
 
 
 ----------------------------
 
 
-==UC0003 - Cadastro do Prédio==
+==UC0004 - Cadastro do Prédio==
 
 || *Objetivo* || Cadastrar todas as aulas, salas e horários do prédio. ||
 || *Descrição* || O prédio é responsável pelo armazenamento de salas, laboratórios e auditórios, logo, é preciso a especificação dos mesmos referentes ao prédio. ||
@@ -72,7 +95,7 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 --------------------------
 
 
-==UC0004 - Gerenciamento de Cadastro==
+==UC0005 - Gerenciamento de Cadastro==
 
 || *Objetivo* || Consiste em gerenciar o cadastro de aulas, locais e horários. ||
 || *Descrição* || Poderá selecionar , editar e excluir informações como aulas, locais e horários.  ||
