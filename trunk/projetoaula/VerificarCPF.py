@@ -1,7 +1,4 @@
 # -*- coding: cp1252 -*-
-
-#===========Thiago, Robson, Rafaella, Mario e Gustavo===========#
-
 class Verificar():
     def __init__(self,CPF):
         self.userCPF = CPF
@@ -25,13 +22,7 @@ class Verificar():
                 Test = Verificar(self.userCPF)
 
             self.check+=1
-        
-        else: 
-            print "CPF Válido" #ERRO printando recursivamente
 
-
-
-
-CPF = raw_input("Digite o CPF\n")
-Test = Verificar(CPF)
-#===========Thiago, Robson, Rafaella, Mario e Gustavo===========#
+#------------TESTE
+#CPF = raw_input("Digite o CPF\n")
+#Test = Verificar(CPF)
