@@ -114,4 +114,24 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 || 2. Se o horário para a sala estiver ocupado, tentar outro horário ou outra sala desocupada.||
 
 
+==UC0006 - Gerenciamento de Departamento==
+
+|| *Objetivo* || Cadastrar os departamentos existentes na universidade. ||
+|| *Descrição* || O administrador registra, edita e exclui informações (id do dep, nome do dep, coordenador(es) e, posteriormente, os cursos) ||
+|| *Ator* || Administrador. ||
+|| *Prioridade* || Média. ||
+|| *Pré-condição* || O usuário estar logado como administrador. ||
+|| *Pós-condições* || Os departamentos são cadastrados e já podem vincular-se aos cursos. ||
+
+==Cenários principais de sucesso==
+
+|| *Usuário* ||
+|| 1 - Ao regisrar, o Administrador informa ao sistema as informações necessárias sobre o departamento, como: Nome, Coordenador(es). O ID do departamento é gerado automaticamente após o envio. ||
+|| 2 - Ao editar, o administrador acessa as informações já cadastradas do departamento e faz as alterações necessárias, ao final, o programa rearmazena os dados. ||
+|| 3 - Ao excluir, o administrador informa o ID do departamento que deseja excluir, e o sistema exclui todas as informações relacionadas ao departamento. ||
+|| *Fluxos alternativos* ||
+|| 1.1 Tentativa de registro de departamento e ele já existir. O existente não é sobrescrito. O sistema retorna uma mensagem de erro "Departamento já existente!" ||
+|| 2.1 Se ao tentar consultar as informações de um determinado departamento que não possui cadastro, o programa informa uma mensagem de erro "Cadastro não encontrado." ||
+|| 3.1 Se ao tentar excluir as informações de um departamento informado num número de registro incorreto, o programa retorna uma mensagem de erro "Registro não encontrado." ||
+
 ---------------------------
