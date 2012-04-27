@@ -113,6 +113,7 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 || 1. Se a sala cadastrada estiver ocupada, tentar selecionar uma sala desocupada;||
 || 2. Se o horário para a sala estiver ocupado, tentar outro horário ou outra sala desocupada.||
 
+--------------------------
 
 ==UC0006 - Gerenciamento de Departamento==
 
