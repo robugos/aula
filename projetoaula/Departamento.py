@@ -12,13 +12,15 @@ class departamento():
     def set_Coordenador(self,coord):
         self.dp_COORDENADOR = coord
 
-    def Send_to_DB(self):
+    def Commit(self):
         #Digitar aqui as informações para enviar tudo pro banco de dados...
         #Colocar todos os selfs. 
+        print self.dp_NOME
+        print self.dp_COORDENADOR
 
     
 DP = departamento()
 DP.set_Nome(raw_input("Nome do departamento: "))
 DP.set_Coordenador(raw_input("Nome do Coordenador: "))
 
-DP.Send_to_DB()
+DP.Commit()
