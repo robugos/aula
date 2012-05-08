@@ -1,11 +1,13 @@
 import MySQLdb
 
+from acesso_db import Servidor
+
 class Servidor():
     def __init__ (self):
-        self.user = "yoshi"
-        self.password = "mario1234"
-        self.host = "7.16.20.75"
-        self.banco = "AULADB"
+        self.user = ""
+        self.password = ""
+        self.host = ""
+        self.banco = ""
 
     def set_host(self,localhost):
         self.host = localhost
@@ -18,8 +20,13 @@ class Servidor():
         
     def set_banco(self,nomedb):
         self.banco = nomedb
-        
+
+#------------------DEFAULT        
 Serve = Servidor()
+Serve.set_host("7.0.6.8")
+Serve.set_user("yoshi")
+Serve.set_password("mario1234")
+Serve.set_banco(raw_input("AULADB")
 
 #Serve.set_host(raw_input("Host: "))
 #Serve.set_user(raw_input("Usuario: "))
