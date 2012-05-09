@@ -1,5 +1,4 @@
 # -*- coding: cp1252 -*-
-
 from acesso_db import Servidor
 DATA = Servidor()
 import MySQLdb
@@ -19,14 +18,18 @@ class departamento():
     
     def set_Codigo(self,codigo):
         self.dp_CODIGO = codigo
+    
+    def BUTTONCOMMIT(self):
+        cursor=db.cursor()
+        sql="insert into DEPARTAMENTOS values( '%s','%s','%s' ) " %(DP.dp_CODIGO,DP.dp_NOME,DP.dp_COORDENADOR)
+        cursor.execute(sql)
 
 print "----------------Cadastro de Departamento----------------"
 DP = departamento()
 DP.set_Nome(raw_input("Nome do departamento: "))
 DP.set_Coordenador(raw_input("Nome do Coordenador: "))
-DP.set_Codigo(raw_input("Codigo: "))
+DP.set_Codigo(raw_input("Código: "))
+DP.BUTTONCOMMIT()
 print "------------------------ADDED---------------------------"
 
-cursor=db.cursor()
-sql="insert into DEPARTAMENTOS values( '%s','%s','%s' ) " %(DP.dp_CODIGO,DP.dp_NOME,DP.dp_COORDENADOR)
-cursor.execute(sql)
+
