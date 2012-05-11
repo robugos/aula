@@ -1,6 +1,7 @@
 # -*- coding: cp1252 -*-
-class Verificar():
-    def __init__(self,CPF):
+class Validacao():
+    
+    def CPF(self,CPF):
         self.userCPF = CPF
         self.check=0
         while self.check == 0:
@@ -14,11 +15,13 @@ class Verificar():
                 except:
                     print "CPF ERROR: (somente números)"
                     self.userCPF = raw_input("CPF: ")
-                    Test = Verificar(self.userCPF)
+                    Test = Validacao()
+                    Test.CPF(self.userCPF)
             else:
                 print "CPF ERROR: (somente 11 números)"
                 self.userCPF = raw_input("CPF: ")
-                Test = Verificar(self.userCPF)
+                Test = Validacao()
+                Test.CPF(self.userCPF)
 
             self.check+=1
 

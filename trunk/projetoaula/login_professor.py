@@ -1,6 +1,6 @@
 # -*- coding: cp1252 -*-
 #----------------------------------GustavoPereira
-from VerificarCPF import Verificar
+from Validacao import Validacao
 
 class Login_professor():
     def __init__(self):
@@ -19,11 +19,13 @@ class Login_professor():
 #-------------TESTES----------------------
 print "          << LOGIN >>"
 CPF=raw_input("CPF: ")
-Test = Verificar(CPF)
-password = raw_input("Senha: ")
-            
 Login = Login_professor()
+Test = Validacao()
+
+Test.CPF(CPF)
 Login.prof_CPF(Test.userCPF)
+
+password = raw_input("Senha: ")
 Login.userSenha(password)
 
 Login.imprimir_dados()
