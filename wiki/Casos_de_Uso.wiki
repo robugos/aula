@@ -82,20 +82,21 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 ==Cenários principais de sucesso== 
 
 || *Usuário* ||
-|| 1 - Ao registrar, o Administrador informa ao sistema as informações necessárias sobre o professor, como: Nome, CPF, Senha, Disciplinas que Leciona , Disciplinas que está apto a lecionar e Departamento. O sistema gera um número de registro e armazena as informações do professor;||
+|| 1 - Ao registrar, o Administrador informa ao sistema as informações necessárias sobre o professor, como: Nome, CPF, Senha, Id das disciplinas que leciona, Id das disciplinas que está apto a lecionar e Id do departamento;||
 || 2 - Ao editar, o Administrador acessa as informações já cadastradas do professor, e faz as alterações necessárias, ao final, o programa re-armazena as informações do professor; ||
 || 3 - Ao excluir, o Administrador informa o número de registro relacionado a um professor que deseja excluir, e o sistema exclui todas as informações relacionadas ao número de registro;||
 
 || *Fluxos alternativos* ||
-|| 1.1 Se o CPF  for digitado de forma incorreta, o sistema deve informar uma mensagem de erro "CPF Inválido". O CPF deve ser digitado contendo 11 números, sem . (ponto) ou - (traço).||
+|| 1.1 Se o CPF  for digitado de forma incorreta, o sistema deve informar uma mensagem de erro "CPF Inválido". O CPF deve ser digitado contendo 11 caracteres (somente números)
+1.2 Todos os campos devem estar completos. ||
 || 2.1 Se ao tentar consultar as informações de um determinado professor que não possui cadastro, o programa informa uma mensagem de erro "Cadastro não encontrado." ||
-|| 3.1 Se ao tentar excluir as informações de um professor informado num número de registro incorreto, o programa retorna uma mensagem de erro "Registro não encontrado."||
+|| 3.1 Se ao tentar excluir as informações de um professor informando um número de CPF incorreto, o programa retorna uma mensagem de erro "Professor não encontrado."||
 
 
 --------------------------------
 
 
-==UC0003 - Filtro Identificação==
+==UC0005 - Filtro Identificação==
 
 || *Objetivo* || Identificar o tipo de usuário que irá acessar o sistema. ||
 || *Descrição* || Disponibiliza 3 (três) opções: Aluno, Professor e Administrador. ||
