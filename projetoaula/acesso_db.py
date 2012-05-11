@@ -5,6 +5,7 @@ class Servidor():
         self.host = "aula.serveftp.com"
         self.database = "AULADB"
 
+print "OK"
 
 #    def set_host(self,localhost):
 #        self.host = localhost
