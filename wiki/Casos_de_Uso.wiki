@@ -29,7 +29,7 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 
 ---------------------------
 
-==UC0002 - Cadastro de Cursos==
+==UC0002 - Gerenciamento de Cursos==
 
 || *Objetivo* || Cadastrar todas os cursos da Universidade. ||
 || *Descrição* || Cadastrar todas os cursos da Universidade, afim de evitar que um curso possua dois ou mais nomes correspondentes a ele. ||
@@ -49,7 +49,7 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 
 --------------------------
 
-==UC0001 - Cadastro de Disciplina==
+==UC0003 - Gerenciamento de Disciplina==
 
 || *Objetivo* || Cadastrar todas as disciplinas da Universidade. ||
 || *Descrição* || Cadastrar todas as disciplinas da Universidade, afim de evitar que uma disciplina possua dois ou mais nomes correspondentes a ela. ||
@@ -64,13 +64,13 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 || 1 - As disciplinas são cadastradas com sucesso, possuindo apenas um nome correspondente a cada uma delas. O administrador deve estar atento, evitando que uma mesma disciplina seja cadastrada mais de uma vez. ||
 
 || *Fluxos alternativos* ||
-|| 1.1 - Ao tentar cadastro de disciplina já existente, retorna uma mensagem "Disciplina já possui cadastro". ||
+|| 1.1 - Ao tentar cadastro de disciplina já existente, retorna uma mensagem "Disciplina já cadastrada". ||
 
 
 --------------------------
 
 
-==UC0002 - Cadastro de professores==
+==UC0004 - Gerenciamento de professores==
 
 || *Objetivo* || Cadastrar os professores. ||
 || *Descrição* || O administrador registra, edita e exclui informação de um professor. ||
@@ -82,7 +82,7 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 ==Cenários principais de sucesso== 
 
 || *Usuário* ||
-|| 1 - Ao registrar, o Administrador informa ao sistema as informações necessárias sobre o professor, como: Nome, CPF, Disciplinas que Leciona , Disciplinas que está apto a lecionar e Departamento. O sistema gera um número de registro e armazena as informações do professor;||
+|| 1 - Ao registrar, o Administrador informa ao sistema as informações necessárias sobre o professor, como: Nome, CPF, Senha, Disciplinas que Leciona , Disciplinas que está apto a lecionar e Departamento. O sistema gera um número de registro e armazena as informações do professor;||
 || 2 - Ao editar, o Administrador acessa as informações já cadastradas do professor, e faz as alterações necessárias, ao final, o programa re-armazena as informações do professor; ||
 || 3 - Ao excluir, o Administrador informa o número de registro relacionado a um professor que deseja excluir, e o sistema exclui todas as informações relacionadas ao número de registro;||
 
