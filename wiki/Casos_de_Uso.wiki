@@ -1,4 +1,4 @@
-||<a href="http://code.google.com/p/aula/">Home</a>||<a href="http://code.google.com/p/aula/wiki/Equipe_do_Sistema">Equipe</a> ||<a href="http://code.google.com/p/aula/wiki/Descricao_do_Sistema">Descrição do Sistema</a>||<a href="http://code.google.com/p/aula/wiki/Especificacao_de_Requisitos">Requisitos</a>|| *Casos de Uso*||<a href="http://code.google.com/p/aula/wiki/Diagrama_UC">Diagrama Caso de Uso</a>||<a href="http://code.google.com/p/aula/wiki/Database">Database</a>||  
+=||<a href="http://code.google.com/p/aula/">Home</a>||<a href="http://code.google.com/p/aula/wiki/Equipe_do_Sistema">Equipe</a> ||<a href="http://code.google.com/p/aula/wiki/Descricao_do_Sistema">Descrição do Sistema</a>||<a href="http://code.google.com/p/aula/wiki/Especificacao_de_Requisitos">Requisitos</a>|| *Casos de Uso*||<a href="http://code.google.com/p/aula/wiki/Diagrama_UC">Diagrama Caso de Uso</a>||<a href="http://code.google.com/p/aula/wiki/Database">Database</a>||  
 
 = Especificação de Casos de Uso =
 
@@ -6,6 +6,48 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 
 ---------------------------
 
+==UC0001 - Gerenciamento de Departamento==
+
+|| *Objetivo* || Cadastrar os departamentos existentes na universidade. ||
+|| *Descrição* || O administrador registra, edita e exclui informações (id do dep, nome do dep, coordenador(es)) ||
+|| *Ator* || Administrador. ||
+|| *Prioridade* || Média. ||
+|| *Pré-condição* || O usuário estar logado como administrador. ||
+|| *Pós-condições* || Os departamentos são cadastrados e já podem vincular-se aos cursos. ||
+
+==Cenários principais de sucesso==
+
+|| *Usuário* ||
+|| 1 - Ao regisrar, o Administrador informa ao sistema as informações necessárias sobre o departamento, como: Nome, Coordenador(es) e o ID do departamento. ||
+|| 2 - Ao editar, o administrador acessa as informações já cadastradas do departamento e faz as alterações necessárias, ao final, o programa rearmazena os dados. ||
+|| 3 - Ao excluir, o administrador informa o ID do departamento que deseja excluir, e o sistema exclui todas as informações relacionadas ao departamento. ||
+
+|| *Fluxos alternativos* ||
+|| 1.1 Tentativa de registro de departamento e ele já existir. O existente não é sobrescrito. O sistema retorna uma mensagem de erro "Departamento já existente!" ||
+|| 2.1 Se ao tentar consultar as informações de um determinado departamento que não possui cadastro, o programa informa uma mensagem de erro "Cadastro não encontrado." ||
+|| 3.1 Se ao tentar excluir as informações de um departamento informado num número de registro incorreto, o programa retorna uma mensagem de erro "Registro não encontrado." ||
+
+---------------------------
+
+==UC0002 - Cadastro de Cursos==
+
+|| *Objetivo* || Cadastrar todas os cursos da Universidade. ||
+|| *Descrição* || Cadastrar todas os cursos da Universidade, afim de evitar que um curso possua dois ou mais nomes correspondentes a ele. ||
+|| *Ator* || Administrador ||
+|| *Prioridade* || Média. ||
+|| *Pré-condição* || O tipo de usuário "Administrador" é selecionado para ter acesso ao sistema. ||
+|| *Pós-condições* || Todos os cursos poderão ser cadastrados. ||
+
+==Cenários principais de sucesso== 
+
+|| *Usuário* ||
+|| 1 - Os cursos são cadastrados com sucesso, possuindo apenas um nome correspondente a cada um deles e a Foreign Key da id do departamento deve estar relacionada. O administrador deve estar atento, evitando que um mesmo curso seja cadastrado mais de uma vez. ||
+
+|| *Fluxos alternativos* ||
+|| 1.1 - Ao tentar cadastro de curso já existente, retorna uma mensagem "Curso já cadastrado". ||
+
+
+--------------------------
 
 ==UC0001 - Cadastro de Disciplina==
 
@@ -43,6 +85,7 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 || 1 - Ao registrar, o Administrador informa ao sistema as informações necessárias sobre o professor, como: Nome, CPF, Disciplinas que Leciona , Disciplinas que está apto a lecionar e Departamento. O sistema gera um número de registro e armazena as informações do professor;||
 || 2 - Ao editar, o Administrador acessa as informações já cadastradas do professor, e faz as alterações necessárias, ao final, o programa re-armazena as informações do professor; ||
 || 3 - Ao excluir, o Administrador informa o número de registro relacionado a um professor que deseja excluir, e o sistema exclui todas as informações relacionadas ao número de registro;||
+
 || *Fluxos alternativos* ||
 || 1.1 Se o CPF  for digitado de forma incorreta, o sistema deve informar uma mensagem de erro "CPF Inválido". O CPF deve ser digitado contendo 11 números, sem . (ponto) ou - (traço).||
 || 2.1 Se ao tentar consultar as informações de um determinado professor que não possui cadastro, o programa informa uma mensagem de erro "Cadastro não encontrado." ||
@@ -114,25 +157,3 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 || 2. Se o horário para a sala estiver ocupado, tentar outro horário ou outra sala desocupada.||
 
 --------------------------
-
-==UC0006 - Gerenciamento de Departamento==
-
-|| *Objetivo* || Cadastrar os departamentos existentes na universidade. ||
-|| *Descrição* || O administrador registra, edita e exclui informações (id do dep, nome do dep, coordenador(es) e, posteriormente, os cursos) ||
-|| *Ator* || Administrador. ||
-|| *Prioridade* || Média. ||
-|| *Pré-condição* || O usuário estar logado como administrador. ||
-|| *Pós-condições* || Os departamentos são cadastrados e já podem vincular-se aos cursos. ||
-
-==Cenários principais de sucesso==
-
-|| *Usuário* ||
-|| 1 - Ao regisrar, o Administrador informa ao sistema as informações necessárias sobre o departamento, como: Nome, Coordenador(es). O ID do departamento é gerado automaticamente após o envio. ||
-|| 2 - Ao editar, o administrador acessa as informações já cadastradas do departamento e faz as alterações necessárias, ao final, o programa rearmazena os dados. ||
-|| 3 - Ao excluir, o administrador informa o ID do departamento que deseja excluir, e o sistema exclui todas as informações relacionadas ao departamento. ||
-|| *Fluxos alternativos* ||
-|| 1.1 Tentativa de registro de departamento e ele já existir. O existente não é sobrescrito. O sistema retorna uma mensagem de erro "Departamento já existente!" ||
-|| 2.1 Se ao tentar consultar as informações de um determinado departamento que não possui cadastro, o programa informa uma mensagem de erro "Cadastro não encontrado." ||
-|| 3.1 Se ao tentar excluir as informações de um departamento informado num número de registro incorreto, o programa retorna uma mensagem de erro "Registro não encontrado." ||
-
----------------------------
