@@ -12,8 +12,9 @@ Os requisitos funcionais expressam o comportamento de um software. As informaç�
   *RF003: Informações referentes a salas, laboratórios e auditórios (quantidade total, funcionais e disponíveis);
   *RF004: O aluno terá acesso às funções básicas, que são: procurar por salas, laboratórios e auditórios;
   *RF005: Professores terão acesso às funções avançadas, que são:  funções básicas  + reserva de salas, laboratórios e auditórios;
-  *RF006: Administradores terão acesso total a todas as funções e dados + gerenciamento de locais + gerenciamento de professores e disciplinas;
+  *RF006: Administradores terão acesso total a todas as funções e dados + gerenciamento de locais + gerenciamento de professores, disciplinas, departamentos e locais;
   *RF007: Os filtros serão distribuídos nas seguintes categorias: curso, disciplina, local e horário;
+
 
 == Requisistos Não-funcionais ==
 Os requisitos não funcionais mapeiam os aspectos qualitativos de um software .
