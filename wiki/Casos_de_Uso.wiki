@@ -112,7 +112,6 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 || *Fluxos alternativos* ||
 || 1.1 - Erro de "Prédio já cadastrado. ||
 
-
 --------------------------
 
 
@@ -143,7 +142,7 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 || *Descrição* || Poderá selecionar , editar e excluir informações como aulas, locais e horários.  ||
 || *Ator* || Administrador e Professor ||
 || *Prioridade* || Alta. ||
-|| *Pré-condição* || Todas os horários, aulas e salas já estão cadastradas. 
+|| *Pré-condição* || Todas os horários, aulas e salas já estão cadastradas. || 
 || *Pós-condições* || A seleção é realizada. ||
 
 ==Cenários principais de sucesso== 
