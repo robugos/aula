@@ -24,4 +24,4 @@ class Validacao():
 #CPF = raw_input("CPF\n")
 #Test = Validacao()
 #CPF = Test.CPF_Check(CPF)
-#print CPF
+#print CPF, type(CPF)
