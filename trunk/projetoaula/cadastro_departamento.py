@@ -7,7 +7,6 @@ import MySQLdb
 db = MySQLdb.connect(DATA.host,DATA.user,DATA.password,DATA.database)
 #===============================================================================
 
-
 class departamento():
     def __init__(self):
         self.dp_NOME = ""
