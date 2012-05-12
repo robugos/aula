@@ -1,6 +1,13 @@
 # -*- coding: cp1252 -*-
-#----------------------------------GustavoPereira
+#===============================================================================
+from acesso_db import Servidor
+DATA = Servidor()
+#===============================================================================
+import MySQLdb
+db = MySQLdb.connect(DATA.host,DATA.user,DATA.password,DATA.database)
+#===============================================================================
 from Validacao import Validacao
+#===============================================================================
 
 class Login_professor():
     def __init__(self):
@@ -16,18 +23,17 @@ class Login_professor():
     def imprimir_dados(self):
         print self.password, self.profCPF
         
-#-------------TESTES----------------------
-print "          << LOGIN >>"
-CPF=raw_input("CPF: ")
-Login = Login_professor()
-Test = Validacao()
+#=======================================TESTES==================================
 
-Test.CPF(CPF)
-Login.prof_CPF(Test.userCPF)
+print "          << LOGIN >>"
+CPF = raw_input("CPF: ")
+Test = Validacao()
+CPF = Test.CPF_Check(CPF)
+
+Login = Login_professor()
+Login.prof_CPF(CPF)
 
 password = raw_input("Senha: ")
 Login.userSenha(password)
 
 Login.imprimir_dados()
-        
-#----------------------------------GustavoPereira
