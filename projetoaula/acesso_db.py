@@ -23,4 +23,3 @@ class Servidor():
 #Serve.set_password(raw_input("Senha: "))
 #Serve.set_banco(raw_input("Nome Banco: "))
 
-

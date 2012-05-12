@@ -1,8 +1,12 @@
 # -*- coding: cp1252 -*-
+#===============================================================================
 from acesso_db import Servidor
 DATA = Servidor()
+#===============================================================================
 import MySQLdb
 db = MySQLdb.connect(DATA.host,DATA.user,DATA.password,DATA.database)
+#===============================================================================
+
 
 class departamento():
     def __init__(self):

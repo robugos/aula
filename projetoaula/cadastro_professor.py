@@ -1,7 +1,13 @@
 # -*- coding: cp1252 -*-
-#=======================================================Gustavo Pereira
-
-from VerificarCPF import Verificar
+#===============================================================================
+from acesso_db import Servidor
+DATA = Servidor()
+#===============================================================================
+import MySQLdb
+db = MySQLdb.connect(DATA.host,DATA.user,DATA.password,DATA.database)
+#===============================================================================
+from Validacao import Validacao
+#===============================================================================
 
 class cadastro:
     def __init__(self, nome, departamento,CPF):
@@ -21,15 +27,18 @@ class cadastro:
         print "\nDados Atualizados no Banco de dados"
         
 #===============================GRAVAR NO SQL==============================
-print "Entre com os dados do professor."
+print "          <<Cadastro Professor>>"
+
 nome=raw_input("Nome: ")
 departamento=raw_input("Departamento: ")
-CPF=raw_input("CPF: ")
-Test = Verificar(CPF)
-            
-professor=cadastro(nome,departamento,Test.userCPF)
 
-print "\nEntre com as disciplinas ministradas e para finalizar PRESS ENTER\n"
+CPF = raw_input("CPF: ")
+Test = Validacao()
+CPF = Test.CPF_Check(CPF)
+            
+professor = cadastro(nome,departamento,CPF)
+
+print "\n<<  Entre com as disciplinas ministradas e para finalizar PRESS ENTER  >>\n"
 disciplina=None
 while disciplina!='':
     disciplina = raw_input("Disciplinas ministradas pelo professor:")
@@ -38,4 +47,3 @@ while disciplina!='':
     else:
         print "\nProfessor cadastrado com sucesso"
 professor.gravar()
-#=======================================================Gustavo Pereira
