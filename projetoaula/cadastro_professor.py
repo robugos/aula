@@ -11,39 +11,41 @@ from Validacao import Validacao
 
 class cadastro:
     def __init__(self, nome, departamento,CPF):
-        self.dados=[]
-        self.dados.append(nome+"\n")
-        self.dados.append(departamento+"\n")
-        self.dados.append(CPF+"\n")
+        self.disciplinas=[]
+        self.nome = nome
+        self.departamento = departamento
+        self.CPF = CPF
         
-    def cadastrar_disciplinas(self,disciplina):
-        self.dados.append(disciplina+" ")
+    def cadastrar_disciplinas(self,disciplinas): 
+        self.disciplinas.append(disciplinas)
 
-    def gravar(self):
-        SQL=open("Dados_Professores.txt","a")
-        SQL.writelines(self.dados)
-        SQL.write("\n\n")
-        SQL.close()
-        print "\nDados Atualizados no Banco de dados"
+    def BUTTONCOMMIT(self):
+        cursor=db.cursor()
+        sql="insert into PROFESSOR values( '%s','%s','%s' ) " %(professor.CPF,professor.nome,professor.departamento)
+        cursor.execute(sql)
         
-#===============================GRAVAR NO SQL==============================
-print "          <<Cadastro Professor>>"
-
+#===================================INTERAÇÃO===================================
+print "            Cadastro Professor"
 nome=raw_input("Nome: ")
 departamento=raw_input("Departamento: ")
 
+#=====================================CPF=======================================
 CPF = raw_input("CPF: ")
 Test = Validacao()
 CPF = Test.CPF_Check(CPF)
-            
+#===============================================================================
+
 professor = cadastro(nome,departamento,CPF)
 
-print "\n<<  Entre com as disciplinas ministradas e para finalizar PRESS ENTER  >>\n"
-disciplina=None
-while disciplina!='':
-    disciplina = raw_input("Disciplinas ministradas pelo professor:")
-    if disciplina!='':
-        professor.cadastrar_disciplinas(disciplina)
+#===============================================================================
+print "\nDisciplinas ministradas e para finalizar PRESS ENTER >>\n"
+disciplinas=None
+while disciplinas!='':
+    disciplinas = raw_input("Disciplinas ministradas pelo professor:")
+    if disciplinas!='':
+        professor.cadastrar_disciplinas(disciplinas)
     else:
         print "\nProfessor cadastrado com sucesso"
-professor.gravar()
+#===============================================================================
+professor.BUTTONCOMMIT()
+#===============================================================================

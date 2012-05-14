@@ -20,8 +20,7 @@ class Validacao():
             
         return cpf
 
-#------------TESTE
-#CPF = raw_input("CPF\n")
-#Test = Validacao()
-#CPF = Test.CPF_Check(CPF)
-#print CPF, type(CPF)
+
+#    def SENHA_Check(self,password):
+        
+#    def USER_Check(self,Username):

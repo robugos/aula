@@ -27,6 +27,7 @@ class departamento():
         sql="insert into DEPARTAMENTOS values( '%s','%s','%s' ) " %(DP.dp_CODIGO,DP.dp_NOME,DP.dp_COORDENADOR)
         cursor.execute(sql)
 
+#===============================================================================
 print "----------------Cadastro de Departamento----------------"
 DP = departamento()
 DP.set_Nome(raw_input("Nome do departamento: "))
@@ -34,5 +35,5 @@ DP.set_Coordenador(raw_input("Nome do Coordenador: "))
 DP.set_Codigo(raw_input("Código: "))
 DP.BUTTONCOMMIT()
 print "------------------------ADDED---------------------------"
-
+#===============================================================================
 
