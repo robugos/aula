@@ -2,17 +2,17 @@
 
 = Equipe =
 
-Gustavo Magalhães Pereira
+<b>Gustavo Magalhães Pereira</b> (Programação e Banco de Dados)
 
-Mario Fernandes de Oliveira Filho
+<b>Mario Fernandes de Oliveira Filho</b> (Programação e Banco de Dados)
 
-Rafaella Leandra Souza do Nascimento
+<b>Rafaella Leandra Souza do Nascimento</b> (Documentação e Design)
 
-Robson Ugo Ferreira Souza Filho
+<b>Robson Ugo Ferreira Souza Filho</b> (Design e Documentação)
 
-Thiago de Souza Felix
+<b>Thiago de Souza Felix</b> (Programação e Design)
 
-Wendislau Victor Santos da Silva
+<b>Wendislau Victor Santos da Silva</b> (Banco de Dados e Documentação)
 
 =Professor= 
 Wylliams Barbosa
