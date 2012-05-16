@@ -14,7 +14,7 @@
 
 <b>Wendislau Victor Santos da Silva</b> (Banco de Dados e Documentação)
 
-(As funções dos membros da equipe estão ordenadas por prioridade)
+(as funções dos membros estão ordenadas por prioridade)
 
 =Professor= 
 <b>Wylliams Barbosa</b> (Scrum Master)
