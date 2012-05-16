@@ -4,7 +4,7 @@
 
 <b>Gustavo Magalhães Pereira</b> (Programação e Banco de Dados)
 
-<b>Mario Fernandes de Oliveira Filho</b> (Programação e Banco de Dados)
+<b>Mario Fernandes de Oliveira Filho</b> (Banco de Dados e Programação)
 
 <b>Rafaella Leandra Souza do Nascimento</b> (Documentação e Design)
 
