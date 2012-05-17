@@ -3,7 +3,7 @@ class Servidor():
         self.user="yoshi"
         self.password = "mario1234"
         self.host = "aula.myftp.org"
-        self.database = "AULADB"
+        self.database = "auladb"
 
 
 #    def set_host(self,localhost):
