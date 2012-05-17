@@ -5,35 +5,25 @@ DATA = Servidor()
 #===============================================================================
 import MySQLdb
 db = MySQLdb.connect(DATA.host,DATA.user,DATA.password,DATA.database)
+cursor = db.cursor()
 #===============================================================================
 
-class departamento():
-    def __init__(self):
-        self.dp_NOME = ""
-        self.dp_COORDENADOR = ""
-        self.dp_CODIGO = ""
-        
-    def set_Nome(self,nome):
-        self.dp_NOME = nome
-
-    def set_Coordenador(self,coord):
-        self.dp_COORDENADOR = coord
-    
-    def set_Codigo(self,codigo):
-        self.dp_CODIGO = codigo
-    
-    def BUTTONCOMMIT(self):
-        cursor=db.cursor()
-        sql="insert into DEPARTAMENTOS values( '%s','%s','%s' ) " %(DP.dp_CODIGO,DP.dp_NOME,DP.dp_COORDENADOR)
+def cadastroDepartamento(cursor, id_departamento, nome, coordenador):
+    sql = "insert into departamentos values('%s','%s','%s')" %(id_departamento, nome, coordenador)
+    try:
         cursor.execute(sql)
+        db.commit()
+    except:
+        print "ERRO"
+        db.rollback()
+    db.close()
 
-#===============================================================================
-print "----------------Cadastro de Departamento----------------"
-DP = departamento()
-DP.set_Nome(raw_input("Nome do departamento: "))
-DP.set_Coordenador(raw_input("Nome do Coordenador: "))
-DP.set_Codigo(raw_input("Código: "))
-DP.BUTTONCOMMIT()
-print "------------------------ADDED---------------------------"
-#===============================================================================
-
+print "------ CADASTRO DE DEPARTAMENTO ------"
+saida = None
+while exit <> "s":
+    id_departamento = raw_input('Digite o id do departamento:')
+    nome = raw_input("Digite o nome do departamento:")
+    coordenador = raw_input("Digite o nome do coordenador:")
+    cadastroDepartamento( cursor, id_departamento, nome, coordenador)
+    saida = raw_input('Digite s para sair ou enter pra continuar')
+print "------ FINISH ------"
