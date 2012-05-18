@@ -13,6 +13,7 @@ def cadastrarCurso(cursor, id_curso, nome_curso, departamento_curso):
     try:
         cursor.execute(sql)
         db.commit()
+        print "Curso cadastrado com sucesso."
     except:
         print "Erro no cadastro. Por favor verifique se os campos foram inseridos corretamente."
         db.rollback()
