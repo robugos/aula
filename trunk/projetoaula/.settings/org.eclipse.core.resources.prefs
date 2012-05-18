@@ -3,5 +3,5 @@ encoding//DEPARTAMENTO/cadastro_departamento.py=cp1252
 encoding//DEPARTAMENTO/edicao_departamento.py=cp1252
 encoding//DEPARTAMENTO/exclusao_departamento.py=cp1252
 encoding//PROFESSOR/cadastro_professor.py=cp1252
-encoding//VALIDACAO/Validacao.py=cp1252
-encoding//VALIDACAO/login.py=cp1252
+encoding/Validacao.py=cp1252
+encoding/login.py=cp1252

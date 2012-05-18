@@ -20,6 +20,14 @@ def cadastrarProfessor(cursor, id_professor, nome_professor, disciplinas, depart
         print "Erro no cadastro. Por favor verifique se os campos foram inseridos corretamente."
         db.rollback()
         
+        
+def cadastrarUsuario(cursor, usuario_CPF):
+    classe = 0 #Classe 0 para professores
+    senha = "UFRPE1234" 
+    sql = "insert into usuarios values('%s','%s','%s')"%(usuario_CPF, senha, classe)
+    cursor.execute(sql)
+    db.commit()
+
 #===============================================================================
         
 print "------ CADASTRO DE PROFESSORES ------"
@@ -30,6 +38,8 @@ while saida <> "s":
     nome_professor = raw_input("Digite o nome do professor: ")
     departamento_professor = raw_input("Digite o departamento do professor: ")
     cadastrarProfessor(cursor, id_professor, nome_professor, "", departamento_professor)
+    cadastrarUsuario(cursor,id_professor) #Add um novo usuário no DB
     saida = raw_input('Digite s para sair ou enter pra continuar: ')
-print "------ FINISH ------"
+    
+print "------ CADASTRO EFETUADO COM SUCESSO ------"
 db.close()
