@@ -12,7 +12,7 @@
 
 <b>Thiago de Souza Felix</b> (Programação e Design)
 
-<b>Wendislau Victor Santos da Silva</b> (Documentação e Banco de Dados)
+<b>Wendislau Victor Santos da Silva</b> (Banco de Dados e Documentação)
 
 
 =Professor= 
