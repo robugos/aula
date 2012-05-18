@@ -37,6 +37,8 @@ def editarCoordenador(cursor, coordenador, id_dep):
     except:
         print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
         db.rollback()
+        
+#===============================================================================
 
 print "------ EDIÇÃO DE DEPARTAMENTO ------"
 saida = None

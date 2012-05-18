@@ -18,6 +18,8 @@ def excluirDepartamento(cursor, deletado):
     except:
         print "Erro na exclusão, há professores ou cursos atrelados ao departamento."
         db.rollback()
+        
+#===============================================================================
 
 print "------ EXCLUSÃO DE DEPARTAMENTO ------"
 saida = None
