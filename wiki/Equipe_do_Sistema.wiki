@@ -4,7 +4,7 @@
 
 <b>Gustavo Magalhães Pereira</b> (Programação e Banco de Dados)
 
-<b>Mario Fernandes de Oliveira Filho</b> (Banco de Dados e Programação)
+<b>Mario Fernandes de Oliveira Filho</b> (Programação e Banco de Dados)
 
 <b>Rafaella Leandra Souza do Nascimento</b> (Documentação e Design)
 
@@ -12,9 +12,8 @@
 
 <b>Thiago de Souza Felix</b> (Programação e Design)
 
-<b>Wendislau Victor Santos da Silva</b> (Banco de Dados e Documentação)
+<b>Wendislau Victor Santos da Silva</b> (Documentação e Banco de Dados)
 
-(as funções dos membros estão ordenadas por prioridade)
 
 =Professor= 
 <b>Wylliams Barbosa</b> (Scrum Master)
