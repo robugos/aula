@@ -16,6 +16,8 @@ def cadastroDepartamento(cursor, id_departamento, nome, coordenador):
     except:
         print "Erro no cadastro. Por favor verifique se os campos foram inseridos corretamente."
         db.rollback()
+        
+#===============================================================================
 
 print "------ CADASTRO DE DEPARTAMENTO ------"
 saida = None
