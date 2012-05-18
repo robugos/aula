@@ -14,16 +14,16 @@ def cadastroDepartamento(cursor, id_departamento, nome, coordenador):
         cursor.execute(sql)
         db.commit()
     except:
-        print "ERRO"
+        print "Erro no cadastro. Por favor verifique se os campos foram inseridos corretamente."
         db.rollback()
-    db.close()
 
 print "------ CADASTRO DE DEPARTAMENTO ------"
 saida = None
-while exit <> "s":
-    id_departamento = raw_input('Digite o id do departamento:')
-    nome = raw_input("Digite o nome do departamento:")
-    coordenador = raw_input("Digite o nome do coordenador:")
-    cadastroDepartamento( cursor, id_departamento, nome, coordenador)
-    saida = raw_input('Digite s para sair ou enter pra continuar')
+while saida <> "s":
+    id_departamento = raw_input('Digite o id do departamento: ')
+    nome = raw_input("Digite o nome do departamento: ")
+    coordenador = raw_input("Digite o nome do coordenador: ")
+    cadastroDepartamento(cursor, id_departamento, nome, coordenador)
+    saida = raw_input('Digite s para sair ou enter pra continuar: ')
 print "------ FINISH ------"
+db.close()
