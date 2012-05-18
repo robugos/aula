@@ -1,7 +1,7 @@
 eclipse.preferences.version=1
-encoding//departamento/cadastro_departamento.py=cp1252
-encoding//departamento/edicao_departamento.py=cp1252
-encoding//departamento/exclusao_departamento.py=cp1252
 encoding/Validacao.py=cp1252
+encoding/cadastro_departamento.py=cp1252
 encoding/cadastro_professor.py=cp1252
+encoding/edicao_departamento.py=cp1252
+encoding/exclusao_departamento.py=cp1252
 encoding/login_professor.py=cp1252
