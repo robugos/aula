@@ -20,7 +20,3 @@ class Validacao():
             
         return cpf
 
-
-#    def SENHA_Check(self,password):
-        
-#    def USER_Check(self,Username):
