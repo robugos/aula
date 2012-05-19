@@ -13,6 +13,7 @@ def cadastroDepartamento(cursor, id_departamento, nome, coordenador):
     try:
         cursor.execute(sql)
         db.commit()
+        print "Departamento cadastrado com sucesso."
     except:
         print "Erro no cadastro. Por favor verifique se os campos foram inseridos corretamente."
         db.rollback()
