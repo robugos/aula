@@ -7,6 +7,8 @@ import MySQLdb
 db = MySQLdb.connect(DATA.host,DATA.user,DATA.password,DATA.database)
 cursor = db.cursor()
 #===============================================================================
+from Validacao import Validacao
+#===============================================================================
 
 def editarCPF(cursor, id_novo, id_CPF):
     sql = "update usuarios set usuario_cpf='%s' where usuario_CPF='%s'" %(id_novo, id_CPF)
@@ -42,6 +44,7 @@ def editarClasse(cursor, classe, id_CPF):
 
 print "------ EDIÇÃO DE USUARIO ------"
 saida = None
+teste = Validacao()
 while saida <> "s":
     id_CPF = raw_input('Digite o CPF do usuario que deseja editar: ')
     verificar_user = "select usuario_cpf from usuarios where usuario_cpf='%s'" %(id_CPF)
@@ -59,7 +62,7 @@ while saida <> "s":
                 id_novo = raw_input("Digite o novo CPF do usuario: ")
                 editarCPF(cursor, id_novo, id_CPF)
             if opcao == 2:
-                senha = raw_input("Digite a nova senha do usuario: ")
+                senha = teste.SENHA_Check(raw_input("Digite a nova senha do usuario: "))
                 editarSenha(cursor, senha, id_CPF)
             if opcao == 3:
                 classe = input("Digite o valor da nova classe (0 ou 1): ")

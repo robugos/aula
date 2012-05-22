@@ -20,3 +20,19 @@ class Validacao():
             
         return cpf
 
+    def SENHA_Check(self, senha):
+        self.numeros = "0123456789"
+        self.alfabeto = "ABCDEFGHIJKLMNOPQRSTUVXZ"
+        self.senha = senha
+        resultteste = True
+        c = 0 #Contador
+        while resultteste == True and c < len(self.senha):
+            if (self.senha[c] in self.numeros or self.senha[c].upper() in self.alfabeto) and len(self.senha) <= 16:
+                c+=1
+            else:
+                print "Senha fora do padrão"
+                teste = Validacao()
+                self.senha = teste.SENHA_Check(raw_input("Digite uma nova senha: "))
+                
+        return self.senha
+    
