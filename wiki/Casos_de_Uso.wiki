@@ -160,11 +160,11 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 
 ==UC0008 - Busca==
 
-|| *Objetivo* || Possibilitar ao usuário informações acerca de aulas, horários, cursos, disciplinas, professores, locais e prédios. ||
-|| *Descrição* || O usuário - que pode ser aluno, professor ou administrador - fará a busca da(s) aula(s) que deseja saber, informando ao sistema valores como a Disciplina, Curso, Professor, Local. ||
+|| *Objetivo* || Possibilitar ao usuário informações acerca de aulas, horários, cursos, disciplinas, professores, locais departamentos e prédios. ||
+|| *Descrição* || O usuário - que pode ser aluno, professor ou administrador - fará a busca da(s) aula(s) que deseja saber, informando ao sistema valores como por exemplo, a Disciplina, Curso, Professor, Local. ||
 || *Ator* || Administrador, Professor e  Aluno ||
 || *Prioridade* || Alta. ||
-|| *Pré-condição* || O sistema estar em pleno funcionamento e existirem aulas, horários, cursos, disciplinas, professores, locais e prédios cadastrados. || 
+|| *Pré-condição* || O sistema estar em pleno funcionamento e existirem aulas, horários, cursos, disciplinas, professores, locais, departamentos e prédios cadastrados. || 
 || *Pós-condições* ||Após a busca é impresso na tela informação desejada. ||
 
 ==Cenários principais de sucesso== 
