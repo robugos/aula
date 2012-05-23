@@ -164,7 +164,7 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 || *Descrição* || O usuário - que pode ser aluno, professor ou administrador - fará a busca da(s) aula(s) que deseja saber, informando ao sistema valores como a Disciplina, Curso, Professor, Local. ||
 || *Ator* || Administrador, Professor e  Aluno ||
 || *Prioridade* || Alta. ||
-|| *Pré-condição* || O sistema estar em pleno funcionamento e existirem aulas, horários, cursos, disciplinas, professores, locais e prédios. || 
+|| *Pré-condição* || O sistema estar em pleno funcionamento e existirem aulas, horários, cursos, disciplinas, professores, locais e prédios cadastrados. || 
 || *Pós-condições* ||O usuário é informado sobre a aula em determinado local(sala,auditório). ||
 
 ==Cenários principais de sucesso== 
