@@ -112,31 +112,10 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 || *Fluxos alternativos* ||
 || 1.1 - Erro de "Prédio já cadastrado. ||
 
+
 --------------------------
 
-
-==UC0006 - Filtro Identificação==
-
-|| *Objetivo* || Identificar o tipo de usuário que irá acessar o sistema. ||
-|| *Descrição* || Disponibiliza 2 (duas) opções: Professor e Administrador. ||
-|| *Ator* || Usuário ||
-|| *Prioridade* || Alta. ||
-|| *Pré-condição* || O sistema estar ligado. ||
-|| *Pós-condições* || O tipo de usuário é selecionado. ||
-
-==Cenários principais de sucesso== 
-
-|| *Usuário* ||
-|| 1 - O filtro desejado é selecionado corretamente pelo usuário; O sistema pedirá login e senha e de acordo com o nível do usuário, exibirá a página de professor ou administrador.||
-
-|| *Fluxos alternativos* ||
-||1. Se o login ou a senha para usuário "Administrador" ou "Professor" for digitado incorretamente, o sistema retorna uma mensagem "Login e senha Inválidos!", então o processo é reinicializado.||
-
-
-----------------------------
-
-
-==UC0007 - Gerenciamento de Aulas==
+==UC0006 - Gerenciamento de Aulas==
 
 || *Objetivo* || Consiste em gerenciar o cadastro de aulas, locais e horários. ||
 || *Descrição* || Poderá selecionar , editar e excluir informações como aulas, locais e horários.  ||
@@ -158,7 +137,7 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 ----------------------------
 
 
-==UC0008 - Busca==
+==UC0007 - Busca==
 
 || *Objetivo* || Possibilitar ao usuário informações acerca de aulas, horários, cursos, disciplinas, professores, locais departamentos e prédios. ||
 || *Descrição* || O usuário - que pode ser aluno, professor ou administrador - fará a busca da(s) aula(s) que deseja saber, informando ao sistema valores como por exemplo, a Disciplina, Curso, Professor, Local. ||
