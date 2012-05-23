@@ -40,7 +40,7 @@ def editarCurso(cursor, curso, id_disciplina):
         
 #===============================================================================
 
-print "------ EDIÇÃO DE CURSO ------"
+print "------ EDIÇÃO DE DISCIPLINAS ------"
 saida = None
 while saida <> "s":
     id_disciplina = raw_input('Digite o id da disciplina que deseja editar: ')
