@@ -155,8 +155,29 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 || 1. Se a sala cadastrada estiver ocupada, retorna um erro ("Sala já ocupada") para o usuário tentar selecionar uma sala desocupada;||
 || 2. Se o horário para a sala estiver ocupado, retorna um erro ("horário já ocupado") para o usuário tentar outro horário ou outra sala desocupada.||
 
+----------------------------
 
-----------
+
+==UC0008 - Busca==
+
+|| *Objetivo* || Consiste em . ||
+|| *Descrição* || O aluno fará a busca da(s) aula(s) que deseja saber, informando ao sistema valores como a Disciplina, Curso, Professor, Local.  ||
+|| *Ator* || Administrador e Aluno ||
+|| *Prioridade* || Alta. ||
+|| *Pré-condição* ||  || 
+|| *Pós-condições* ||O aluno é informado sobre a aula em determinado local(sala,auditório). ||
+
+==Cenários principais de sucesso== 
+
+|| *Usuário* ||
+|| 1 - || 
+
+
+|| *Fluxos alternativos* ||
+|| 1. ||
+
+
+-----------------------
 
 
  
