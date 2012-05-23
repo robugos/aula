@@ -170,11 +170,11 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 ==Cenários principais de sucesso== 
 
 || *Usuário* ||
-|| 1 - || 
+|| 1 - O usuário fará sua busca pela seleção na seguinte ordem: disciplinas, cursos, professores, departamentos, locais, horário de início e horário de término. Após a  seleção o usuário clicará no botão "buscar" e o sistema se encarregará da busca, e enfim imprimirá a informação desejada na tela. || 
 
 
 || *Fluxos alternativos* ||
-|| 1. ||
+|| 1. Campo selecionado não cadastrado: O sistema retorna a seguinte mensagem "Dado do campo ainda não cadastrado!" ||
 
 
 -----------------------
