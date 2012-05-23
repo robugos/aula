@@ -3,7 +3,7 @@
 == Diagrama de Casos de Uso ==
 O diagrama, por meio de uma linguagem simples, demonstrar o comportamento externo do sistema, procurando apresentar o sistema através de uma perspectiva do usuário, demonstrando as funções e serviços oferecidos e quais usuários poderão utilizar cada serviço.
 
-http://img809.imageshack.us/img809/8990/diagramadecasosdeusoaul.png
+http://img825.imageshack.us/img825/8990/diagramadecasosdeusoaul.png
 
 *Gerenciar:* criar, editar ou excluir.
 
