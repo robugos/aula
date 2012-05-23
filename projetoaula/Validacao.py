@@ -22,7 +22,7 @@ class Validacao():
 
     def SENHA_Check(self, senha):
         self.numeros = "0123456789"
-        self.alfabeto = "ABCDEFGHIJKLMNOPQRSTUVXZ"
+        self.alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         self.senha = senha
         resultteste = True
         c = 0 #Contador
