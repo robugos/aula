@@ -7,8 +7,6 @@ import MySQLdb
 db = MySQLdb.connect(DATA.host,DATA.user,DATA.password,DATA.database)
 cursor = db.cursor()
 #===============================================================================
-from Validacao import Validacao
-#===============================================================================
 
 class Login_professor():
     def __init__(self):
@@ -18,13 +16,13 @@ class Login_professor():
     def prof_CPF(self,CPF):
         self.profCPF = CPF
         
-    def userSenha(self, password): #Precisa fazer o check com o Banco de dados, ainda
+    def userSenha(self, password):
         self.password = password
         
     def acessar_paginas(self):
         print self.password, self.profCPF
         
-#=======================================TESTES==================================
+#===============================================================================
 
 print "          << LOGIN >>"
 
