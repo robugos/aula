@@ -14,7 +14,7 @@ from Validacao import Validacao
 def cadastrarReserva(cursor, predio_reserva, local_reserva, data, disciplina_reserva, professor_reserva, hora1, hora2):
     for horario in range (hora1,hora2,1):
         hora = str(horario)
-        id_reserva = data+"_"+hora+"_"+predio_reserva+"_"+local_reserva
+        id_reserva = hora+"_"+data+"_"+predio_reserva+"_"+local_reserva
         sql = "insert into reservas values('%s','%s','%s', '%s', '%s', '%s', '%d')"%(id_reserva, predio_reserva, local_reserva, data, disciplina_reserva, professor_reserva, horario)
         try:
             cursor.execute(sql)
