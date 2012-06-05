@@ -25,7 +25,7 @@ def editarSenha(cursor, senha, id_CPF):
     try:
         cursor.execute(sql)
         db.commit()
-        print "Senha editado com sucesso."
+        print "Senha editada com sucesso."
     except:
         print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
         db.rollback()
@@ -35,7 +35,7 @@ def editarClasse(cursor, classe, id_CPF):
     try:
         cursor.execute(sql)
         db.commit()
-        print "Classe editado com sucesso."
+        print "Classe editada com sucesso."
     except:
         print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
         db.rollback()
