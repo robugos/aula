@@ -1,6 +1,4 @@
 eclipse.preferences.version=1
-encoding//view/main_aula.py=cp1252
-encoding//view/main_login.py=cp1252
 encoding/Validacao.py=cp1252
 encoding/cadastro_curso.py=cp1252
 encoding/cadastro_departamento.py=cp1252
@@ -16,3 +14,4 @@ encoding/exclusao_locais.py=cp1252
 encoding/exclusao_professor.py=cp1252
 encoding/exclusao_reserva.py=cp1252
 encoding/login.py=cp1252
+encoding/main_aula.py=cp1252
