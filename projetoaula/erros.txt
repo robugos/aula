@@ -1,6 +1,6 @@
 ERRO
 000 -
-001 -
+001 - "Opção inválida. Tente novamente" - Menu Professor
 002 -
 003 -
 004-
