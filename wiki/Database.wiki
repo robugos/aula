@@ -2,4 +2,4 @@
 = Banco de Dados =
 
 diagrama abaixo será mudado após feedback do professor. 
-https://www.dropbox.com/s/mihxnw10m8k8vxj/diagramaDB.png
+https://lh4.googleusercontent.com/AD07lOAepKsUtWmTokweWj7djYr5P7_0rUaaRSkKZY2aFbd-FbpmSPNaXmXI5sTC0kKo8KTV0xg
