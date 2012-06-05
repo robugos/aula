@@ -19,8 +19,9 @@ def cadastrarReserva(cursor, predio_reserva, local_reserva, data, disciplina_res
         try:
             cursor.execute(sql)
             db.commit()
+            print "Cadastro efetuado com sucesso as %s horas" %(hora)
         except:
-            print "Erro no reserva."
+            print "[ERRO 002] Reserva já existente para %s horas." %(hora)
             db.rollback()
 
 def print_predios():
