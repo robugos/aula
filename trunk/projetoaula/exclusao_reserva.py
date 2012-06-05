@@ -13,7 +13,7 @@ def excluirReserva(cursor, deletado):
     try:
         cursor.execute(sql)
         db.commit()
-        print "Reserva excluido com sucesso."
+        print "Reserva excluida com sucesso."
     except:
         print "Erro na exclusão, não existe reserva nesse horário."
         db.rollback()

@@ -9,14 +9,15 @@ from exclusao_reserva import *
 from cadastro_reserva import *
 from edicao_usuario import *
 from Validacao import Validacao
+import getpass
 
 
 inicio=0
 while inicio == 0:
-    os.system("cls")
     print "\n                         AULA.\n"
     choice=input("[1] Pesquisa  [2] Login  [3] Sair\nDigite: ")
     if choice > 3 or choice <1:
+        os.system("cls")
         print "[ERRO 000] Opção inválida. Tente novamente\n"
     else:
 #=========================================================
@@ -43,7 +44,7 @@ while inicio == 0:
                     Login.prof_CPF(cpf)
                     acesso = False
                     while acesso == False:
-                        senha = raw_input("Digite a senha: ")
+                        senha = getpass.getpass(prompt="Digite sua senha: ")
                         verificar_senha = "select usuario_cpf='%s' from usuarios where senha='%s'" %(cpf,senha)
                         executar = cursor.execute(verificar_senha)
                         if executar < 1:
@@ -95,7 +96,7 @@ while inicio == 0:
                                             local_reserva = raw_input("\n\nDigite o ID do local da reserva: ")
                                             os.system("cls")
                                             
-                                            data = raw_input("Digite a data da reserva (0000-00-00) ")
+                                            data = raw_input("Digite a data da reserva ano-mes-dia (0000-00-00) ")
                                             os.system("cls")
                                             
                                             professor_reserva = cpf
@@ -155,8 +156,8 @@ while inicio == 0:
                                         print "\n                  ALTERAR SENHA.\n"
                                         
                                         teste = Validacao()
-                                        senha1 = teste.SENHA_Check(raw_input("Digite a nova senha do usuario: "))
-                                        senha2 = teste.SENHA_Check(raw_input("Confirme a nova senha do usuario: "))
+                                        senha1 = teste.SENHA_Check(getpass.getpass(prompt="Digite a nova senha do usuario: "))
+                                        senha2 = teste.SENHA_Check(getpass.getpass(prompt="Confirme a nova senha do usuario: "))
                                         if senha1 == senha2:
                                             editarSenha(cursor, senha1, cpf)
                                         else:

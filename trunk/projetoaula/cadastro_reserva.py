@@ -1,6 +1,7 @@
 # -*- coding: cp1252 -*-
 #===============================================================================
 from acesso_db import Servidor
+from exclusao_reserva import *
 DATA = Servidor()
 #===============================================================================
 import MySQLdb
@@ -12,6 +13,7 @@ from Validacao import Validacao
 
 
 def cadastrarReserva(cursor, predio_reserva, local_reserva, data, disciplina_reserva, professor_reserva, hora1, hora2):
+    count_erro = 0
     for horario in range (hora1,hora2,1):
         hora = str(horario)
         id_reserva = hora+"_"+data+"_"+predio_reserva+"_"+local_reserva
@@ -21,9 +23,33 @@ def cadastrarReserva(cursor, predio_reserva, local_reserva, data, disciplina_res
             db.commit()
             print "Cadastro efetuado com sucesso as %s horas" %(hora)
         except:
+            count_erro += 1
             print "[ERRO 002] Reserva já existente para %s horas." %(hora)
             db.rollback()
-
+    while count_erro <> 0:
+        pre_reserva = raw_input("Deseja confirmar as reservas realizadas? S/N")
+        pre_reserva = pre_reserva.upper()
+        if pre_reserva == "S":
+            count_erro = 0
+        elif pre_reserva == "N":
+            count_erro = 0
+            for horario in range (hora1,hora2,1):
+                horadel = str(horario)
+                id_reserva = horadel+"_"+data+"_"+predio_reserva+"_"+local_reserva
+            
+                verificar_reserva = "select id_reserva from reservas where id_reserva='%s'" %(id_reserva)
+                existe = cursor.execute(verificar_reserva)
+            
+                if existe < 1:
+                    continue
+                else:
+                    excluirReserva(cursor, id_reserva)
+        else:
+            print "[ERRO 004] Opcao invalida"
+            
+            
+            
+            
 def print_predios():
     cursor.execute("select * from predios")
     lista_predios_ID=[]

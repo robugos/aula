@@ -2,7 +2,7 @@ class Servidor():
     def __init__(self):
         self.user="yoshi"
         self.password = "mario1234"
-        self.host = "192.168.25.2"
+        self.host = "aula.myftp.org"
         self.database = "auladb"
 
 #
