@@ -1,12 +1,14 @@
 # -*- coding: cp1252 -*-
+# -*- coding: utf-8 -*-
 #inicio do programa
 
 
 import os
 from login import *
 from exclusao_reserva import *
-
-
+from cadastro_reserva import *
+from edicao_usuario import *
+from Validacao import Validacao
 
 
 inicio=0
@@ -20,7 +22,7 @@ while inicio == 0:
 #=========================================================
         if choice == 1:
             os.system("cls")
-            print "=====================PESQUISA======================"
+            print "\n                     PESQUISA.\n"
 
 #=========================================================
 #INICIO DO LOGIN--------->>>>>> main_PROF and main_ADM
@@ -58,10 +60,8 @@ while inicio == 0:
                             os.system("cls")
                             print "Bem vindo, ADMINISTRADOR"
     
-                            #MAIN_ADM
-                            
-                            
-                            
+                            #MAIN_ADM                                                            FAZER AMANHA
+                            print "\n                     PAINEL DO ADMINISTRADOR.\n"
                             
                             #MAIN_ADM
 
@@ -72,6 +72,7 @@ while inicio == 0:
                             #MAIN_PROF
                             inicio_prof=0
                             while inicio_prof == 0:
+                                print "\n                     PAINEL DO PROFESSOR.\n"
                                 choice=input("Digite:\n1 - Fazer Reserva\n2 - Deletar Reserva\n3 - Alterar senha\n4 - Sair\n->")
                                 if choice > 4 or choice <1:
                                     print "[ERRO 001] Opção inválida. Tente novamente\n"
@@ -82,8 +83,6 @@ while inicio == 0:
                                         os.system("cls")
                                         print "\n                   FAZER RESERVA.\n"
                                         
-                                        from cadastro_reserva import *
-                                     
                                         saida = None
                                         while saida <> "s":
                                             Test = Validacao()
@@ -110,8 +109,8 @@ while inicio == 0:
                                             hora1 = input("Inicio: ")
                                             hora2 = input("Fim: ")
                                             cadastrarReserva(cursor, predio_reserva, local_reserva, data, disciplina_reserva, professor_reserva, hora1, hora2)
-                                            os.system("cls")
-                                            print "CADASTRO EFETUADO COM SUCESSO"
+                
+                        
                                             saida = raw_input('Digite s para sair ou ENTER pra continuar: ')
                                             os.system("cls")
                                         db.close()
@@ -120,7 +119,7 @@ while inicio == 0:
                             
                                     if choice == 2:
                                         os.system("cls")
-                                        print "=================DELETAR RESERVA==================="
+                                        print "\n               DELETAR RESERVA.\n"
                                         
                                         
                                         #Printar somente as reservas do professor com detalhamento...
@@ -153,15 +152,23 @@ while inicio == 0:
                             
                                     if choice == 3:
                                         os.system("cls")
-                                        print "====================ALTERAR SENHA=================="
-                            
+                                        print "\n                  ALTERAR SENHA.\n"
+                                        
+                                        teste = Validacao()
+                                        senha1 = teste.SENHA_Check(raw_input("Digite a nova senha do usuario: "))
+                                        senha2 = teste.SENHA_Check(raw_input("Confirme a nova senha do usuario: "))
+                                        if senha1 == senha2:
+                                            editarSenha(cursor, senha1, cpf)
+                                        else:
+                                            print "[ERRO 003] Senhas diferentes"
+                                        
                             
                             #=========================================================
                             
                                     if choice == 4:
                                         os.system("cls")
                                         inicio_prof = 1
-                                        print "=====================LOG OFF======================="
+                                        print "\n                      LOG OFF.\n"
                                         
                                 os.system("cls")
 
@@ -174,7 +181,7 @@ while inicio == 0:
         if choice == 3:
             os.system("cls")
             inicio = 1
-            print "=================PROGRAMA FINALIZADO==============="
+            print "\n             PROGRAMA FINALIZADO.\n"
 
 #=========================================================
             
