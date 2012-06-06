@@ -1,16 +1,101 @@
 # -*- coding: cp1252 -*-
 # -*- coding: utf-8 -*-
-#inicio do programa
-
+#===============================================================================
+from acesso_db import Servidor
+DATA = Servidor()
+#===============================================================================
+import MySQLdb
+db = MySQLdb.connect(DATA.host,DATA.user,DATA.password,DATA.database)
+cursor = db.cursor()
+#===============================================================================
+from Validacao import Validacao
+#===============================================================================
 
 import os
-from login import *
-from exclusao_reserva import *
-from cadastro_reserva import *
-from edicao_usuario import *
-from Validacao import Validacao
 import getpass
+from login import *
+from edicao_usuario import *
 
+
+#FUNCAO PRINT NA TELA
+
+def print_reservas_prof(cpf_prof): 
+    cursor.execute("select * from reservas where professor_reserva='%s'" %(cpf_prof))
+    global lista_reserva_ID
+    lista_reserva_ID =[]
+    lista_predioID = []
+    lista_localID = []
+    lista_data = []
+    lista_disciplinaID = []
+    lista_hora = []
+    
+    for row in cursor.fetchall(): #pega ID
+        lista_reserva_ID.append(row[0])
+        lista_predioID.append(row[1])
+        lista_localID.append(row[2])
+        lista_data.append(row[3])
+        lista_disciplinaID.append(row[4])
+        lista_hora.append(row[6])
+        
+    
+    lista_predioNOME = []
+    lista_localNOME = []
+    lista_disciplinaNOME = []
+    lista_cursoNOME = []
+
+    for j in range (len(lista_predioID)): #pega nome do predio
+        cursor.execute("select * from predios where id_predio='%s'" %(lista_predioID[j]))
+        
+        for row in cursor.fetchall():
+            lista_predioNOME.append(row[1])
+            
+            
+    for j in range (len(lista_localID)): #pega nome do local
+        cursor.execute("select * from locais where id_local='%s'" %(lista_localID[j]))
+        
+        for row in cursor.fetchall():
+            lista_localNOME.append(row[1])
+            
+    for j in range (len(lista_disciplinaID)): #pega nome da disciplina
+        cursor.execute("select * from disciplinas where id_disciplina='%s'" %(lista_disciplinaID[j]))
+        
+        for row in cursor.fetchall():
+            lista_disciplinaNOME.append(row[1])
+            lista_cursoNOME.append(row[2])
+
+    print "                      RESERVAS.\n"
+    print "item   ano-mes-dia    hora     predio local    Disciplina\n"  
+    for i in range (len(lista_reserva_ID)):
+        print "[%.2d]   %s  as  %.2d h    %s  %s    %s - %s  " %(i+1,lista_data[i],lista_hora[i],lista_predioNOME[i],lista_localNOME[i],lista_disciplinaNOME[i],lista_cursoNOME[i])
+    
+    danone = input("\nDigite o item a ser excluido: ")
+    return lista_reserva_ID[danone-1]
+
+def print_predios():
+    cursor.execute("select * from predios")
+    lista_predios_ID=[]
+    lista_predios_Nome=[]
+    for row in cursor.fetchall():
+        lista_predios_ID.append(row[0])
+        lista_predios_Nome.append(row[1])
+    print "  ID      NOME"
+    for i in range (len(lista_predios_ID)):
+        print "["+lista_predios_ID[i]+"] - "+lista_predios_Nome[i]
+        
+def print_local(predio_reserva):
+    cursor.execute("select * from locais where predio_local='%s'" %(predio_reserva))
+    lista_locais_ID=[]
+    lista_locais_Nome=[]
+    lista_locais_Tipo=[]
+    for row in cursor.fetchall():
+        lista_locais_ID.append(row[0])
+        lista_locais_Nome.append(row[1])
+        lista_locais_Tipo.append(row[2])
+    print " ID     NOME     TIPO"
+    for i in range (len(lista_locais_ID)):
+        print "["+lista_locais_ID[i]+"] - "+lista_locais_Nome[i]+" - "+lista_locais_Tipo[i]
+
+#FUNCAO PRINT NA TELA
 
 inicio=0
 while inicio == 0:
@@ -109,46 +194,140 @@ while inicio == 0:
                                             print "Digite a hora da reserva (funcionamento das 7 as 22 horas)\n"
                                             hora1 = input("Inicio: ")
                                             hora2 = input("Fim: ")
-                                            cadastrarReserva(cursor, predio_reserva, local_reserva, data, disciplina_reserva, professor_reserva, hora1, hora2)
-                
-                        
-                                            saida = raw_input('Digite s para sair ou ENTER pra continuar: ')
+                                            
+                                            #Fazer verificacao de horario negativo ou fora do funcionamento
+                                            
+                                            count_erros = 0
+                                            nova_reserva = 0
+                                            
+                                            for horario in range (hora1,hora2,1):
+                                                hora = str(horario)
+                                                id_reserva = hora+"_"+data+"_"+predio_reserva+"_"+local_reserva
+                                                
+                                                verificar_reserva = "select id_reserva from reservas where id_reserva='%s'" %(id_reserva)
+                                                existe = cursor.execute(verificar_reserva)
+                                                if existe < 1:
+                                                    print "[LIVRE]      %s horas" %(hora)
+                                                    continue
+                                                else:
+                                                    print "[RESERVADO]  %s horas"%(hora)
+                                                    count_erros = count_erros + 1
+                                                    
+                                            while count_erros != 0:
+                                                Resposta = input("\n1 - Continuar\n2 - Alterar reserva\n3 - Sair\n->")
+                                                os.system("cls")
+                                                if Resposta == 1:
+                                                    count_erros = 0
+                                                elif Resposta == 2:
+                                                    nova_reserva = 1
+                                                    count_erros = 0
+                                                elif Resposta == 3:
+                                                    nova_reserva = 3
+                                                    count_erros = 0
+                                                    saida = "s"
+                                                else:
+                                                    print "[ERRO 004] Opcao invalida"
+                                            else:
+                                                #cadastrarReserva(cursor, predio_reserva, local_reserva, data, disciplina_reserva, professor_reserva, hora1, hora2)
+                                                if nova_reserva == 1:
+                                                    continue
+                                                elif nova_reserva == 0:
+                                                    #cadastrarReserva
+                                                    for horario in range (hora1,hora2,1):
+                                                        hora = str(horario)
+                                                        id_reserva = hora+"_"+data+"_"+predio_reserva+"_"+local_reserva
+                                                        sql = "insert into reservas values('%s','%s','%s', '%s', '%s', '%s', '%d')"%(id_reserva, predio_reserva, local_reserva, data, disciplina_reserva, professor_reserva, horario)
+                                                        try:
+                                                            cursor.execute(sql)
+                                                            db.commit()
+                                                            print "Cadastro efetuado com sucesso as %s horas" %(hora)
+                                                        except:
+                                                            print "[ERRO 002] Reserva já existente para %s horas." %(hora)
+                                                            db.rollback()
+                                                    #cadastrarReserva
+                                                else:
+                                                    saida="s"
+                                            saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                            saida = saida.lower()
                                             os.system("cls")
-                                        db.close()
+                                        
                                         
                             #=========================================================
                             
                                     if choice == 2:
                                         os.system("cls")
                                         print "\n               DELETAR RESERVA.\n"
-                                        
-                                        
-                                        #Printar somente as reservas do professor com detalhamento...
                                         saida = None
-                                        while saida <> "s": 
-                                            data = raw_input("Digite a data da reserva (0000-00-00) ")
-                                            predio_reserva = raw_input("Digite o prédio da reserva ")
-                                            local_reserva = raw_input("Digite o local da reserva: ")
-                                            hora1 = input("Digite horário de inicio: ")
-                                            hora2 = input("Digite horário de fim: ")
+                                        while saida <> "s":              
+                                            cursor.execute("select * from reservas where professor_reserva='%s'" %(cpf))
+                                            lista_reserva_ID =[]
+                                            lista_predioID = []
+                                            lista_localID = []
+                                            lista_data = []
+                                            lista_disciplinaID = []
+                                            lista_hora = []
                                             
-                                            for horario in range (hora1,hora2,1):
-                                                hora = str(horario)
-                                                id_reserva = hora+"_"+data+"_"+predio_reserva+"_"+local_reserva
+                                            for row in cursor.fetchall(): #pega ID
+                                                lista_reserva_ID.append(row[0])
+                                                lista_predioID.append(row[1])
+                                                lista_localID.append(row[2])
+                                                lista_data.append(row[3])
+                                                lista_disciplinaID.append(row[4])
+                                                lista_hora.append(row[6])
+                                                
                                             
-                                                verificar_reserva = "select id_reserva from reservas where id_reserva='%s'" %(id_reserva)
-                                                existe = cursor.execute(verificar_reserva)
-                                            
-                                                if existe < 1:
-                                                    print "Reserva não existente no horário das %s horas" %(hora)
-                                                    continue
-                                                else:
-                                                    excluirReserva(cursor, id_reserva)
-                                            saida = raw_input('Digite s para sair ou enter para continuar excluindo: ')
+                                            lista_predioNOME = []
+                                            lista_localNOME = []
+                                            lista_disciplinaNOME = []
+                                            lista_cursoNOME = []
+                                        
+                                            for j in range (len(lista_predioID)): #pega nome do predio
+                                                cursor.execute("select * from predios where id_predio='%s'" %(lista_predioID[j]))
+                                                
+                                                for row in cursor.fetchall():
+                                                    lista_predioNOME.append(row[1])
                                                     
-                                        print "------ FINISH ------"
-                                        db.close()
-                            
+                                                    
+                                            for j in range (len(lista_localID)): #pega nome do local
+                                                cursor.execute("select * from locais where id_local='%s'" %(lista_localID[j]))
+                                                
+                                                for row in cursor.fetchall():
+                                                    lista_localNOME.append(row[1])
+                                                    
+                                            for j in range (len(lista_disciplinaID)): #pega nome da disciplina
+                                                cursor.execute("select * from disciplinas where id_disciplina='%s'" %(lista_disciplinaID[j]))
+                                                
+                                                for row in cursor.fetchall():
+                                                    lista_disciplinaNOME.append(row[1])
+                                                    lista_cursoNOME.append(row[2])
+                                        
+                                            print "                      RESERVAS.\n"
+                                            print "item   ano-mes-dia    hora     predio local    Disciplina\n"  
+                                            for i in range (len(lista_reserva_ID)):
+                                                print "[%.2d]   %s  as  %.2d h    %s  %s    %s - %s  " %(i+1,lista_data[i],lista_hora[i],lista_predioNOME[i],lista_localNOME[i],lista_disciplinaNOME[i],lista_cursoNOME[i])
+                                            
+                                            danosse = input("\nDigite o item a ser excluido ou 0 para sair: ")
+                                            
+                                            if danosse == 0:
+                                                saida = "s"
+                                            else:
+                                                del_reserva = lista_reserva_ID[danosse-1]
+                                                sql = "delete from reservas where id_reserva='%s'" %(del_reserva)
+                                                try:
+                                                    cursor.execute(sql)
+                                                    db.commit()
+                                                    print "Reserva excluida com sucesso."
+                                                except:
+                                                    print "Erro na exclusão, não existe reserva nesse horário."
+                                                    db.rollback()
+                                                                                                
+                                            saida = raw_input('\nDigite s para sair ou ENTER para continuar excluindo: ')
+                                            saida = saida.lower()
+                                            os.system("cls")
+                                                
+                                        print "    FINISH"
+                                        
+                                
                             #=========================================================
                             
                                     if choice == 3:
@@ -183,6 +362,7 @@ while inicio == 0:
             os.system("cls")
             inicio = 1
             print "\n             PROGRAMA FINALIZADO.\n"
+            db.close()
 
 #=========================================================
             
