@@ -158,8 +158,8 @@ while inicio == 0:
                             for row in cursor.fetchall():
                                 nome_usuario = row[1]
                             print "Bem vindo, Professor %s" %(nome_usuario)
-                            
-                            #MAIN_PROF
+                            #erro nessa linha, mas ta tudo ok. 
+                            #MAIN_PROF..
                             inicio_prof=0
                             while inicio_prof == 0:
                                 print "\n                     PAINEL DO PROFESSOR.\n"
