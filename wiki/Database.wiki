@@ -2,4 +2,4 @@
 = Banco de Dados =
 
 
-http://imageshack.us/photo/my-images/163/diagramadb.png/
+http://img163.imageshack.us/img163/7971/diagramadb.png
