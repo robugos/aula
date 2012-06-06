@@ -153,7 +153,11 @@ while inicio == 0:
 
                         else:
                             os.system("cls")
-                            print "Bem vindo, PROFESSOR"
+                            cursor.execute("select * from professores where id_professor='%s'" %(cpf))
+                            nome_usuario = ""
+                            for row in cursor.fetchall():
+                                nome_usuario = row[1]
+                            print "Bem vindo, Professor %s" %(nome_usuario)
                             
                             #MAIN_PROF
                             inicio_prof=0
