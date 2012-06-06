@@ -131,8 +131,8 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 || 2 - Existir horários livres para determinadas aulas.||
 
 || *Fluxos alternativos* ||
-|| 1. Se a sala cadastrada estiver ocupada, retorna um erro ("Sala já ocupada") para o usuário tentar selecionar uma sala desocupada;||
-|| 2. Se o horário para a sala estiver ocupado, retorna um erro ("horário já ocupado") para o usuário tentar outro horário ou outra sala desocupada.||
+|| 1. Se a sala cadastrada estiver ocupada, retorna a mensagem "Sala já ocupada." para o usuário tentar selecionar uma sala desocupada;||
+|| 2. Se o horário para a sala estiver ocupado, retorna a mensagem "Horário já ocupado." para o usuário tentar outro horário ou outra sala desocupada.||
 
 ----------------------------
 
@@ -149,7 +149,7 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 ==Cenários principais de sucesso== 
 
 || *Usuário* ||
-|| 1 - O usuário fará sua busca pela seleção na seguinte ordem: disciplinas, cursos, professores, departamentos, locais, horário de início e horário de término. Após a  seleção o usuário clicará no botão "buscar" e o sistema se encarregará da busca, e enfim imprimirá a informação desejada na tela. || 
+|| 1 - O usuário fará sua busca pela seleção na seguinte ordem: disciplinas, cursos, professores, departamentos, locais, horário de início e horário de término. Após a  seleção o usuário clicará no botão "Buscar" e o sistema se encarregará da busca, e enfim imprimirá a informação desejada na tela. || 
 
 
 || *Fluxos alternativos* ||
