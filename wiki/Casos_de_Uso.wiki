@@ -9,7 +9,7 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 ==UC0001 - Gerenciamento de Departamento==
 
 || *Objetivo* || Cadastrar os departamentos existentes na universidade. ||
-|| *Descrição* || O administrador registra, edita e exclui informações (id do dep, nome do dep, coordenador(es)) ||
+|| *Descrição* || O administrador registra, edita e exclui informações (id do dep, nome do dep, coordenador(es) ||
 || *Ator* || Administrador. ||
 || *Prioridade* || Média. ||
 || *Pré-condição* || O usuário estar logado como administrador. ||
