@@ -10,9 +10,9 @@
 
 <b>Robson Ugo Ferreira Souza Filho</b> (Design e Documentação)
 
-<b>Thiago de Souza Felix</b> (Design e Testes)
+<b>Thiago de Souza Felix</b> (Design e Documentação)
 
-<b>Wendislau Victor Santos da Silva</b> (Documentação e Testes)
+<b>Wendislau Victor Santos da Silva</b> (Documentação e Banco de Dados)
 
 
 =Professor= 
