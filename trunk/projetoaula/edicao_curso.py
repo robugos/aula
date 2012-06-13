@@ -40,35 +40,4 @@ def editarDepartamento(cursor, departamento, id_curso):
         
 #===============================================================================
 
-print "------ EDIÇÃO DE CURSO ------"
-saida = None
-while saida <> "s":
-    id_curso = raw_input('Digite o id do curso que deseja editar: ')
-    verificar_curso = "select id_curso from cursos where id_curso='%s'" %(id_curso)
-    existe = cursor.execute(verificar_curso)
-    if existe < 1:
-        print "ID não existente."
-        continue
-    else:
-        opcao = input("Digite 1 (editar id), 2 (editar nome) ou 3 (editar departamento): ")
-        if opcao > 3 or opcao < 1:
-            print "Opção incorreta."
-            continue
-        else:
-            if opcao == 1:
-                id_novo = raw_input("Digite o novo ID do curso: ")
-                editarID(cursor, id_novo, id_curso)
-            if opcao == 2:
-                nome = raw_input("Digite o novo nome do curso: ")
-                editarNome(cursor, nome, id_curso)
-            if opcao == 3:
-                departamento = raw_input("Digite o id do novo departamento: ")
-                verificar_dep = "select id_departamento from departamentos where id_departamento='%s'" %(departamento)
-                existe = cursor.execute(verificar_dep)
-                if existe < 1:
-                    print "Departamento não existente."
-                else:
-                    editarDepartamento(cursor, departamento, id_curso)
-            saida = raw_input('Digite s para sair ou enter pra continuar: ')
-print "------ FINISH ------"
-db.close()
+
