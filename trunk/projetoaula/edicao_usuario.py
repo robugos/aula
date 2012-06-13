@@ -43,31 +43,3 @@ def editarClasse(cursor, classe, id_CPF):
         
 #===============================================================================
 
-#print "------ EDIÇÃO DE USUARIO ------"
-#saida = None
-#teste = Validacao()
-#while saida <> "s":
-#    id_CPF = raw_input('Digite o CPF do usuario que deseja editar: ')
-#    verificar_user = "select usuario_cpf from usuarios where usuario_cpf='%s'" %(id_CPF)
-#    existe = cursor.execute(verificar_user)
-#    if existe < 1:
-#        print "Usuario não existente."
-#        continue
-#    else:
-#        opcao = input("Digite 1 (editar CPF), 2 (editar senha) ou 3 (editar classe): ")
-#        if opcao > 3 or opcao < 1:
-#            print "Opção incorreta."
-#            continue
-#        else:
-#            if opcao == 1:
-#                id_novo = raw_input("Digite o novo CPF do usuario: ")
-#                editarCPF(cursor, id_novo, id_CPF)
-#            if opcao == 2:
-#                senha = teste.SENHA_Check(raw_input("Digite a nova senha do usuario: "))
-#                editarSenha(cursor, senha, id_CPF)
-#            if opcao == 3:
-#                classe = input("Digite o valor da nova classe (0 ou 1): ")
-#                editarClasse(cursor, classe, id_CPF)
-#            saida = raw_input('Digite s para sair ou enter pra continuar: ')
-#print "------ FINISH ------"
-#db.close()

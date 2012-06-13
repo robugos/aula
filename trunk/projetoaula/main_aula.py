@@ -113,6 +113,18 @@ def print_departamentos():                                             #Novo pri
     for i in range (len(lista_departamentos_ID)):
         print "["+lista_departamentos_ID[i]+"] - "+lista_departamentos_Nome[i]
         
+        
+def print_professores():                                                    #Novo print 13/06
+    cursor.execute("select * from professores")
+    lista_professores_ID=[]
+    lista_professores_Nome=[]
+    for row in cursor.fetchall():
+        lista_professores_ID.append(row[0])
+        lista_professores_Nome.append(row[1])
+    print "    CPF          NOME"
+    for i in range (len(lista_professores_ID)):
+        print "["+lista_professores_ID[i]+"] - "+lista_professores_Nome[i]
+        
 def print_local(predio_reserva):
     cursor.execute("select * from locais where predio_local='%s'" %(predio_reserva))
     lista_locais_ID=[]
@@ -194,7 +206,7 @@ while inicio == 0:
                                         print "\n                   GERENCIAR PREDIOS.\n"
                                         
                                         choice2=input("Digite:\n1 - Adicionar\n2 - Editar\n3 - Excluir\n4 - Sair\n->")
-                                        if choice2 > 4 or choice <1:
+                                        if choice2 > 4 or choice2 <1:
                                             print "[ERRO 001] Opção inválida. Tente novamente\n"
                                         else:
                                             saida = None
@@ -305,7 +317,7 @@ while inicio == 0:
                                         print "\n                   GERENCIAR DEPARTAMENTOS.\n"
                                         
                                         choice3=input("Digite:\n1 - Adicionar\n2 - Editar\n3 - Excluir\n4 - Sair\n->")
-                                        if choice3 > 4 or choice <1:
+                                        if choice3 > 4 or choice3 <1:
                                             print "[ERRO 001] Opção inválida. Tente novamente\n"
                                         else:
                                             saida = None
@@ -426,7 +438,7 @@ while inicio == 0:
                                         print "\n                   GERENCIAR CURSOS.\n"
                                         
                                         choice4=input("Digite:\n1 - Adicionar\n2 - Editar\n3 - Excluir\n4 - Sair\n->")
-                                        if choice4 > 4 or choice <1:
+                                        if choice4 > 4 or choice4 <1:
                                             print "[ERRO 001] Opção inválida. Tente novamente\n"
                                         else:
                                             saida = None
@@ -566,7 +578,7 @@ while inicio == 0:
                                         print "\n                   GERENCIAR DISCIPLINAS.\n"
                                         
                                         choice5=input("Digite:\n1 - Adicionar\n2 - Editar\n3 - Excluir\n4 - Sair\n->")
-                                        if choice5 > 4 or choice <1:
+                                        if choice5 > 4 or choice5 <1:
                                             print "[ERRO 001] Opção inválida. Tente novamente\n"
                                         else:
                                             saida = None
@@ -709,32 +721,221 @@ while inicio == 0:
                                         os.system("cls")
                                         print "\n                   GERENCIAR PROFESSORES.\n"
                                         
-                                        choice6=input("Digite:\n1 - Adicionar\n2 - Editar\n3 - Excluir\n4 - Sair\n->")
-                                        if choice6 > 4 or choice <1:
+                                        choice6=input("Digite:\n1 - Adicionar\n2 - Editar\n3 - Excluir\n4 - Disciplinas\n5 - Sair\n->")
+                                        if choice6 > 5 or choice6 <1:
                                             print "[ERRO 001] Opção inválida. Tente novamente\n"
                                         else:
                                             saida = None
                                             while saida <> "s":
-
 #ESSE E DIFICIL VOU DEIXAR PRA DEPOIS
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#ESSE E DIFICIL VOU DEIXAR PRA DEPOIS
+#FAZENDO AGORA BY GUSTAVO
+#________________________________________________________________________________________________________________________
 
-                                                saida = raw_input('\nDigite s para sair ou ENTER para continuar excluindo: ')
-                                                saida = saida.lower()
-                                                os.system("cls")
-                                        
+                                                if choice6 == 1:
+                                                    os.system("cls")
+                                                    print "\n                   ADICIONAR PROFESSOR.\n"
+                                                    
+                                                    Test = Validacao()
+                                                    id_professor = Test.CPF_Check(raw_input("Digite o CPF do professor: "))
+                                                    nome_professor = raw_input("Digite o nome do professor: ")
+                                                    os.system("cls")
+                                                    print_departamentos()    
+                                                    departamento_professor = raw_input("\nDigite o departamento do professor: ")
+                                                    os.system("cls")
+                                                    
+                                                    #Cadastra o prof
+                                                    #CAMPO EM BRANCO QUE PRECISA SER TIRADO DISCIPLINAS
+                                                    sql = "insert into professores values('%s','%s','%s', '%s')"%(id_professor, nome_professor, "", departamento_professor)
+                                                    try:
+                                                        cursor.execute(sql)
+                                                        db.commit()
+                                                    except:
+                                                        print "Erro no cadastro. Por favor verifique se os campos foram inseridos corretamente."
+                                                        db.rollback()
+                                                        
+                                                    #Cadastra o usuario
+                                                    
+                                                    classe = 0 #Classe 0 para professores
+                                                    senha = "UFRPE1234" #DEFAULT 
+                                                    sql = "insert into usuarios values('%s','%s','%s')"%(id_professor, senha, classe)
+                                                    cursor.execute(sql)
+                                                    db.commit()
+                                                       
+                                                    saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                    saida = saida.lower()
+                                                    os.system("cls")                                                
+#________________________________________________________________________________________________________________________
+
+                                                if choice6 == 2:
+                                                    os.system("cls")
+                                                    print "\n                   EDITAR PROFESSOR.\n"
+                                                    teste = Validacao()
+                                                    print_professores()
+                                            
+                                                    id_CPF = raw_input('\nDigite o CPF do usuario que deseja editar: ')
+                                                    os.system("cls")
+                                                    verificar_user = "select usuario_cpf from usuarios where usuario_cpf='%s'" %(id_CPF)
+                                                    existe = cursor.execute(verificar_user)
+                                                    if existe < 1:
+                                                        print "Usuario não existente."
+                                                        continue
+                                                    else:
+                                                        opcao = input("EDITAR:\n 1 (CPF)   2 (NOME)   3 (SENHA)   4 (CLASSE)\n->")
+                                                        if opcao > 4 or opcao < 1:
+                                                            print "Opção incorreta."
+                                                            continue
+                                                        else:
+                                                            if opcao == 1:
+                                                                print "\nOpcao valida apenas para professores sem reservas e disciplinas.\n"
+                                                                id_novo = teste.CPF_Check(raw_input("Digite o novo CPF do usuario: "))
+                                                                sql = "update usuarios set usuario_cpf='%s' where usuario_CPF='%s'" %(id_novo, id_CPF)
+                                                                try:
+                                                                    cursor.execute(sql)
+                                                                    db.commit()
+                                                                    print "CPF editado com sucesso."
+                                                                except:
+                                                                    print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
+                                                                    db.rollback()
+                                                                #muda ID do USUARIO do PROFESSOR
+                                                                sql = "update professores set id_professor='%s' where id_professor='%s'" %(id_novo, id_CPF)
+                                                                try:
+                                                                    cursor.execute(sql)
+                                                                    db.commit()
+                                                                    print "CPF editado com sucesso."
+                                                                except:
+                                                                    print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
+                                                                    db.rollback()
+                                                                    
+                                                                saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                                saida = saida.lower()
+                                                                os.system("cls")
+
+
+                                                            if opcao == 2:
+                                                                novo_nome = raw_input("\nDigite o nome do professor: ")
+                                                                sql = "update professores set nome_professor='%s' where id_professor='%s'" %(novo_nome, id_CPF)
+                                                                try:
+                                                                    cursor.execute(sql)
+                                                                    db.commit()
+                                                                    print "Nome editado com sucesso."
+                                                                except:
+                                                                    print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
+                                                                    db.rollback()
+                                                                    
+                                                                saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                                saida = saida.lower()
+                                                                os.system("cls")
+
+                                                            if opcao == 3:
+                                                                os.system("cls")
+                                                                teste = Validacao()
+                                                                senha1 = teste.SENHA_Check(getpass.getpass(prompt="Digite a nova senha do usuario: "))
+                                                                senha2 = teste.SENHA_Check(getpass.getpass(prompt="CONFIRME: "))
+                                                                if senha1 == senha2:
+                                                                    sql = "update usuarios set senha='%s' where usuario_cpf='%s'" %(senha1, id_CPF)
+                                                                    try:
+                                                                        cursor.execute(sql)
+                                                                        db.commit()
+                                                                        print "Senha editada com sucesso."
+                                                                    except:
+                                                                        print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
+                                                                        db.rollback()
+                                                                else:
+                                                                    errorrrr = raw_input ("\n[ERRO 003] Senhas diferentes. Press ENTER ")
+                                                                    
+                                                                saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                                saida = saida.lower()
+                                                                os.system("cls") 
+
+                                                            if opcao == 4:  
+                                                                os.system("cls")
+                                                                print_professores()
+                                                                id_CPF = raw_input('\nDigite o CPF do usuario que deseja editar: ')
+                                                                os.system("cls")
+                                                                verificar_user = "select usuario_cpf from usuarios where usuario_cpf='%s'" %(id_CPF)
+                                                                existe = cursor.execute(verificar_user)
+                                                                if existe < 1:
+                                                                    erororor=raw_input("Usuario não existente. PRESS ENTER")
+                                                                    continue
+                                                                else:
+                                                                    classe = input("Digite o valor da nova classe (0 ou 1): ")
+
+                                                                    if classe == 1 or classe == 0:
+                                                                        sql = "update usuarios set classe='%d' where usuario_cpf='%s'" %(classe, id_CPF)
+                                                                        try:
+                                                                            cursor.execute(sql)
+                                                                            db.commit()
+                                                                            print "Classe editada com sucesso."
+                                                                        except:
+                                                                            print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
+                                                                            db.rollback()
+                                                                    else: 
+                                                                        erorororororo = raw_input("\nClasse invalida. PRESS ENTER ")                               
+                                                                saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                                saida = saida.lower()
+                                                                os.system("cls")
+#________________________________________________________________________________________________________________________
+
+                                                if choice6 == 3:
+                                                    os.system("cls")
+                                                    print "\n                   EXCLUIR PROFESSOR.\n"
+                                
+                                                    print "\nOpcao valida apenas para professores sem reservas e disciplinas.\n"
+
+                                                    print_professores()
+                                                    id_CPF = raw_input('\nDigite o CPF do professor que deseja excluir: ')
+                                                    os.system("cls")                                                
+                                                    
+                                                    verificar_user = "select usuario_cpf from usuarios where usuario_cpf='%s'" %(id_CPF)
+                                                    existe = cursor.execute(verificar_user)
+                                                    if existe < 1:
+                                                        print "Professor/Usuário não existente."
+                                                        continue
+                                                    else:
+                                                        
+                                                        sql = "delete from usuarios where usuario_cpf='%s'" %(id_CPF)
+                                                        try:
+                                                            cursor.execute(sql)
+                                                            db.commit()
+                                                            print "Usuário excluido com sucesso."
+                                                        except:
+                                                            print "Erro na exclusão."
+                                                            db.rollback()
+        
+                                                        sql = "delete from professores where id_professor='%s'" %(id_CPF)
+                                                        try:
+                                                            cursor.execute(sql)
+                                                            db.commit()
+                                                            print "Professor excluido com sucesso."
+                                                        except:
+                                                            print "Erro na exclusão, há um usuário atrelado ao professor."
+                                                            db.rollback()
+                                          
+                                                    saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                    saida = saida.lower()
+                                                    os.system("cls")
+#________________________________________________________________________________________________________________________
+
+
+                                                if choice6 == 4:
+                                                    os.system("cls")
+                                                    print "\n             GERENCIAR DISCIPLINAS DO PROFESSOR.\n"
+                                                    
+                                                                                                            
+                                                    saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                    saida = saida.lower()
+                                                    os.system("cls")
+#________________________________________________________________________________________________________________________
+
+                                                if choice6 == 5:
+                                                    os.system("cls")
+                                                    print "\n                   EXIT.\n"
+                                                    saida = "s"
+                                                os.system("cls")  
+
+#________________________________________________________________________________________________________________________
+
+                               
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
                              
                                     if choice == 6:
@@ -775,8 +976,6 @@ while inicio == 0:
                                         
                                         saida = None
                                         while saida <> "s":
-                                            Test = Validacao()
-                                            
                                             print_predios()
                                             predio_reserva = raw_input("\n\nDigite o ID do prédio da reserva ")
                                             os.system("cls")
@@ -792,6 +991,7 @@ while inicio == 0:
                                             
 #############################################print_disciplinas(professor_reserva)
                                             #Fazer disciplinas apenas do professor
+                                            
                                             disciplina_reserva = raw_input("\n\nDigite o ID da disciplina da reserva: ")
                                 
                                             os.system("cls")
@@ -925,6 +1125,7 @@ while inicio == 0:
                                                 
                                         print "    FINISH"
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
+#ERRO DA SENHA CORRIGIDO!
                                     if choice == 3:
                                         os.system("cls")
                                         print "\n                  ALTERAR SENHA.\n"
@@ -932,9 +1133,17 @@ while inicio == 0:
                                         senha1 = teste.SENHA_Check(getpass.getpass(prompt="Digite a nova senha do usuario: "))
                                         senha2 = teste.SENHA_Check(getpass.getpass(prompt="Confirme a nova senha do usuario: "))
                                         if senha1 == senha2:
-                                            editarSenha(cursor, senha1, cpf)
+                                            
+                                            sql = "update usuarios set senha='%s' where usuario_cpf='%s'" %(senha1, cpf)
+                                            try:
+                                                cursor.execute(sql)
+                                                db.commit()
+                                                Okayyy = raw_input("\nSenha editada com sucesso. PRESS ENTER ")
+                                            except:
+                                                print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
+                                                db.rollback()
                                         else:
-                                            print "[ERRO 003] Senhas diferentes"                            
+                                            errorrrr = raw_input ("\n[ERRO 003] Senhas diferentes. Press ENTER ")                        
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
                             
                                     if choice == 4:
@@ -951,4 +1160,3 @@ while inicio == 0:
             print "\n             PROGRAMA FINALIZADO.\n"
             db.close()
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
-  

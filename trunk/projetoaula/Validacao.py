@@ -1,4 +1,6 @@
 # -*- coding: cp1252 -*-
+import getpass
+
 class Validacao():
 
     def CPF_Check(self,cpf):
@@ -32,7 +34,7 @@ class Validacao():
             else:
                 print "Senha fora do padrão"
                 teste = Validacao()
-                self.senha = teste.SENHA_Check(raw_input("Digite uma nova senha: "))
+                self.senha = teste.SENHA_Check(getpass.getpass(prompt="Digite uma nova senha: "))
                 
         return self.senha
     
