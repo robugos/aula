@@ -30,20 +30,3 @@ def excluirUsuario(cursor, deletado):
         db.rollback()
         
 #===============================================================================
-
-print "------ EXCLUSÃO DE PROFESSOR/USUÁRIO ------"
-saida = None
-while saida <> "s":
-    deletado = raw_input('Digite o id(CPF) do usuário que deseja excluir: ')
-    verificar_user = "select usuario_cpf from usuarios where usuario_cpf='%s'" %(deletado)
-    existe = cursor.execute(verificar_user)
-    if existe < 1:
-        print "Professor/Usuário não existente."
-        continue
-    else:
-        excluirUsuario(cursor, deletado)
-        excluirProfessor(cursor, deletado)
-        saida = raw_input('Digite s para sair ou enter para continuar excluindo: ')
-  
-print "------ FINISH ------"
-db.close()

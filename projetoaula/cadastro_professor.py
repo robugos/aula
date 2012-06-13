@@ -30,16 +30,3 @@ def cadastrarUsuario(cursor, usuario_CPF):
 
 #===============================================================================
         
-print "------ CADASTRO DE PROFESSORES ------"
-saida = None
-while saida <> "s":
-    Test = Validacao()
-    id_professor = Test.CPF_Check(raw_input("Digite o CPF do professor: "))
-    nome_professor = raw_input("Digite o nome do professor: ")
-    departamento_professor = raw_input("Digite o departamento do professor: ")
-    cadastrarProfessor(cursor, id_professor, nome_professor, "", departamento_professor)
-    cadastrarUsuario(cursor,id_professor) #Add um novo usuário no DB
-    saida = raw_input('Digite s para sair ou enter pra continuar: ')
-    
-print "------ CADASTRO EFETUADO COM SUCESSO ------"
-db.close()
