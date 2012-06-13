@@ -30,27 +30,3 @@ def editarNome(cursor, nome_predio, id_predio):
              
 #===============================================================================
 
-print "------ EDIÇÃO DE PREDIO ------"
-saida = None
-while saida <> "s":
-    id_predio = raw_input('Digite o id do predio que deseja editar: ')
-    verificar_predio = "select id_predio from predios where id_predio='%s'" %(id_predio)
-    existe = cursor.execute(verificar_predio)
-    if existe < 1:
-        print "ID não existente."
-        continue
-    else:
-        opcao = input("Digite 1 para editar o id, ou 2 para editar o nome: ")
-        if opcao > 2 or opcao < 1:
-            print "Opção incorreta."
-            continue
-        else:
-            if opcao == 1:
-                id_novo = raw_input("Digite o novo ID do predio: ")
-                editarID(cursor, id_novo, id_predio)
-            if opcao == 2:
-                nome_predio = raw_input("Digite o novo nome do predio: ")
-                editarNome(cursor, nome_predio, id_predio)
-            saida = raw_input('Digite s para sair ou enter pra continuar: ')
-print "------ FINISH ------"
-db.close()

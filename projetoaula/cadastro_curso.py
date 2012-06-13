@@ -20,20 +20,3 @@ def cadastrarCurso(cursor, id_curso, nome_curso, departamento_curso):
         
 #===============================================================================
         
-print "------ CADASTRO DE CURSOS ------"
-saida = None
-while saida <> "s":
-    id_curso = raw_input("Digite o ID do curso: ")
-    verificar_curso = "select id_curso from cursos where id_curso='%s'" %(id_curso)
-    existe = cursor.execute(verificar_curso)
-    if existe > 0:
-        print "Curso já existe."
-        continue
-    else:
-        nome_curso = raw_input("Digite o nome do curso: ")
-        departamento_curso = raw_input("Digite o departamento do curso: ")
-        cadastrarCurso(cursor, id_curso, nome_curso, departamento_curso)
-        saida = raw_input('Digite s para sair ou enter pra continuar: ')
-    
-print "------ CADASTRO EFETUADO COM SUCESSO ------"
-db.close()

@@ -4,3 +4,4 @@ ERRO
 002 - "Reserva já existente para %s horas." - Cadastro de Reserva
 003 - "Senhas diferentes" - Alterar senha do professor
 004 - "Opcao invalida" - Cadastro de Reserva
+005 - "ID não existente" - Editar predio

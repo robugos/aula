@@ -8,7 +8,9 @@ db = MySQLdb.connect(DATA.host,DATA.user,DATA.password,DATA.database)
 cursor = db.cursor()
 #===============================================================================
 
-def cadastroPredio(cursor, id_predio, nome_predio):
+def cadastroPredio(cursor):
+    id_predio = raw_input('Digite o ID do predio: ')
+    nome_predio = raw_input("Digite o nome do predio: ")
     sql = "insert into predios values('%s','%s')" %(id_predio, nome_predio)
     try:
         cursor.execute(sql)
@@ -19,13 +21,3 @@ def cadastroPredio(cursor, id_predio, nome_predio):
         db.rollback()
         
 #===============================================================================
-
-print "------ CADASTRO DE PREDIO ------"
-saida = None
-while saida <> "s":
-    id_predio = raw_input('Digite o id do predio: ')
-    nome_predio = raw_input("Digite o nome do predio: ")
-    cadastroPredio(cursor, id_predio, nome_predio)
-    saida = raw_input('Digite s para sair ou enter pra continuar: ')
-print "------ FINISH ------"
-db.close()

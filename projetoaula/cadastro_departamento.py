@@ -19,14 +19,3 @@ def cadastroDepartamento(cursor, id_departamento, nome, coordenador):
         db.rollback()
         
 #===============================================================================
-
-print "------ CADASTRO DE DEPARTAMENTO ------"
-saida = None
-while saida <> "s":
-    id_departamento = raw_input('Digite o id do departamento: ')
-    nome = raw_input("Digite o nome do departamento: ")
-    coordenador = raw_input("Digite o nome do coordenador: ")
-    cadastroDepartamento(cursor, id_departamento, nome, coordenador)
-    saida = raw_input('Digite s para sair ou enter pra continuar: ')
-print "------ FINISH ------"
-db.close()

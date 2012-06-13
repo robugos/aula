@@ -20,18 +20,3 @@ def excluirDepartamento(cursor, deletado):
         db.rollback()
         
 #===============================================================================
-
-print "------ EXCLUSÃO DE DEPARTAMENTO ------"
-saida = None
-while saida <> "s":
-    deletado = raw_input('Digite o id do departamento que deseja excluir: ')
-    verificar_dep = "select id_departamento from departamentos where id_departamento='%s'" %(deletado)
-    existe = cursor.execute(verificar_dep)
-    if existe < 1:
-        print "Departamento não existente."
-        continue
-    else:
-        excluirDepartamento(cursor, deletado)
-        saida = raw_input('Digite s para sair ou enter para continuar excluindo: ')
-print "------ FINISH ------"
-db.close()
