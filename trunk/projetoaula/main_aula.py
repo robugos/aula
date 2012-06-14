@@ -184,7 +184,7 @@ while inicio == 0:
     choice=input("[1] Pesquisa  [2] Login  [3] Sair\nDigite: ")
     if choice > 3 or choice <1:
         os.system("cls")
-        print "[ERRO 000] Opção inválida. Tente novamente\n"
+        print "[ERRO 000] Opcao invalida. Tente novamente\n"
     else:
 #____________________________________________________________________SEARCH
         if choice == 1:
@@ -210,7 +210,7 @@ while inicio == 0:
                 verificar_CPF = "select usuario_cpf from usuarios where usuario_cpf='%s'" %(cpf)
                 existe = cursor.execute(verificar_CPF)
                 if existe < 1:
-                    print "Usuario não existente."
+                    print "Usuario nao existente."
                     continue
                 else:
                     Login.prof_CPF(cpf)
@@ -242,7 +242,7 @@ while inicio == 0:
                                 choice=input("Gerenciar:\n1 - Predios\n2 - Departamentos\n3 - Cursos\n4 - Disciplinas\n5 - Professores\n6 - Sair\n->")
                                
                                 if choice > 6 or choice <1:
-                                    print "[ERRO 001] Opção inválida. Tente novamente\n"
+                                    print "[ERRO 001] Opcao invalida. Tente novamente\n"
                                 else:
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
                                     if choice == 1:
@@ -251,7 +251,7 @@ while inicio == 0:
                                         
                                         choice2=input("Digite:\n1 - Adicionar\n2 - Editar\n3 - Excluir\n4 - Sair\n->")
                                         if choice2 > 4 or choice2 <1:
-                                            print "[ERRO 001] Opção inválida. Tente novamente\n"
+                                            print "[ERRO 001] Opcao invalida. Tente novamente\n"
                                         else:
                                             saida = None
                                             while saida <> "s":
@@ -291,12 +291,12 @@ while inicio == 0:
                                                         verificar_predio = "select id_predio from predios where id_predio='%s'" %(id_predio)
                                                         existe = cursor.execute(verificar_predio)
                                                         if existe < 1:
-                                                            print "[ERRO 005] ID não existente."
+                                                            print "[ERRO 005] ID nao existente."
                                                             continue
                                                         else:
                                                             opcao = input("\nDigite: [1] Editar o ID    [2] Editar o nome\n->")
                                                             if opcao > 2 or opcao < 1:
-                                                                print "[ERRO 004] Opção incorreta."
+                                                                print "[ERRO 004] Opcao incorreta."
                                                                 continue
                                                             else:
                                                                 if opcao == 1:
@@ -308,7 +308,7 @@ while inicio == 0:
                                                                         db.commit()
                                                                         print "ID do predio editado com sucesso."
                                                                     except:
-                                                                        print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
+                                                                        print "Erro na edicao. Por favor verifique se os campos foram inseridos corretamente."
                                                                         db.rollback()
             
                                                                 if opcao == 2:
@@ -320,7 +320,7 @@ while inicio == 0:
                                                                         db.commit()
                                                                         print "Nome do predio editado com sucesso."
                                                                     except:
-                                                                        print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
+                                                                        print "Erro na edicao. Por favor verifique se os campos foram inseridos corretamente."
                                                                         db.rollback()
                                         
                                                         saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
@@ -341,7 +341,7 @@ while inicio == 0:
                                                         verificar_predio = "select id_predio from predios where id_predio='%s'" %(deletado)
                                                         existe = cursor.execute(verificar_predio)
                                                         if existe < 1:
-                                                            print "Predio não existente."
+                                                            print "Predio nao existente."
                                                         else:                                            
                                                             sql = "delete from predios where id_predio='%s'" %(deletado)
                                                             try:
@@ -349,7 +349,7 @@ while inicio == 0:
                                                                 db.commit()
                                                                 print "Predio excluido com sucesso."
                                                             except:
-                                                                print "Erro na exclusão."
+                                                                print "Erro na exclusao."
                                                                 db.rollback()
                                                             
                                                         saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
@@ -372,7 +372,7 @@ while inicio == 0:
                                         
                                         choice3=input("Digite:\n1 - Adicionar\n2 - Editar\n3 - Excluir\n4 - Sair\n->")
                                         if choice3 > 4 or choice3 <1:
-                                            print "[ERRO 001] Opção inválida. Tente novamente\n"
+                                            print "[ERRO 001] Opcao invalida. Tente novamente\n"
                                         else:
                                             saida = None
                                             while saida <> "s":
@@ -417,11 +417,11 @@ while inicio == 0:
                                                         verificar_dep = "select id_departamento from departamentos where id_departamento='%s'" %(id_dep)
                                                         existe = cursor.execute(verificar_dep)
                                                         if existe < 1:
-                                                            print "[ERRO 005] ID não existente."
+                                                            print "[ERRO 005] ID nao existente."
                                                         else:
                                                             opcao = input("Digite:\n1 (editar id)     2 (editar nome)     3 (editar coordenador)\n-> ")
                                                             if opcao > 3 or opcao < 1:
-                                                                print "[ERRO 004] Opção incorreta."
+                                                                print "[ERRO 004] Opcao incorreta."
                                                             else:
                                                                 if opcao == 1:
                                                                     id_novo = raw_input("Digite o novo ID do departamento: ")
@@ -431,7 +431,7 @@ while inicio == 0:
                                                                         db.commit()
                                                                         print "ID editado com sucesso."
                                                                     except:
-                                                                        print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
+                                                                        print "Erro na edicao. Por favor verifique se os campos foram inseridos corretamente."
                                                                         db.rollback()
                                                                     
                                                                 if opcao == 2:
@@ -442,7 +442,7 @@ while inicio == 0:
                                                                         db.commit()
                                                                         print "Nome editado com sucesso."
                                                                     except:
-                                                                        print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
+                                                                        print "Erro na edicao. Por favor verifique se os campos foram inseridos corretamente."
                                                                         db.rollback()
                                                                     
                                                                 if opcao == 3:
@@ -453,7 +453,7 @@ while inicio == 0:
                                                                         db.commit()
                                                                         print "Coordenador editado com sucesso."
                                                                     except:
-                                                                        print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
+                                                                        print "Erro na edicao. Por favor verifique se os campos foram inseridos corretamente."
                                                                         db.rollback()
     
                                                         saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
@@ -473,7 +473,7 @@ while inicio == 0:
                                                         verificar_dep = "select id_departamento from departamentos where id_departamento='%s'" %(deletado)
                                                         existe = cursor.execute(verificar_dep)
                                                         if existe < 1:
-                                                            print "Departamento não existente."
+                                                            print "Departamento nao existente."
                                                         else:
                                                             sql = "delete from departamentos where id_departamento='%s'" %(deletado)
                                                             try:
@@ -481,7 +481,7 @@ while inicio == 0:
                                                                 db.commit()
                                                                 print "Departamento excluido com sucesso."
                                                             except:
-                                                                print "Erro na exclusão, há professores ou cursos atrelados ao departamento."
+                                                                print "Erro na exclusao, ha professores ou cursos atrelados ao departamento."
                                                                 db.rollback()
                                                             
                                                         saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
@@ -503,7 +503,7 @@ while inicio == 0:
                                         
                                         choice4=input("Digite:\n1 - Adicionar\n2 - Editar\n3 - Excluir\n4 - Sair\n->")
                                         if choice4 > 4 or choice4 <1:
-                                            print "[ERRO 001] Opção inválida. Tente novamente\n"
+                                            print "[ERRO 001] Opcao invalida. Tente novamente\n"
                                         else:
                                             saida = None
                                             while saida <> "s":
@@ -520,7 +520,7 @@ while inicio == 0:
                                                         verificar_curso = "select id_curso from cursos where id_curso='%s'" %(id_curso)
                                                         existe = cursor.execute(verificar_curso)
                                                         if existe > 0:
-                                                            print "Curso já existe."
+                                                            print "Curso ja existe."
                                                             continue
                                                         else:
                                                             nome_curso = raw_input("Digite o nome do curso: ")
@@ -555,12 +555,12 @@ while inicio == 0:
                                                         verificar_curso = "select id_curso from cursos where id_curso='%s'" %(id_curso)
                                                         existe = cursor.execute(verificar_curso)
                                                         if existe < 1:
-                                                            print "ID não existente."
+                                                            print "ID nao existente."
                                                         else:
                                                             os.system("cls")
                                                             opcao = input("\nEDITAR:\n1 (ID)     2 (NOME)     3 (DEPARTAMENTO)\n-> ")
                                                             if opcao > 3 or opcao < 1:
-                                                                print "Opção incorreta."
+                                                                print "Opcao incorreta."
                                                             else:
                                                                 if opcao == 1:
                                                                     id_novo = raw_input("\nDigite o novo ID do curso: ")
@@ -571,7 +571,7 @@ while inicio == 0:
                                                                         db.commit()
                                                                         print "ID editado com sucesso."
                                                                     except:
-                                                                        print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente ou existe disciplinas e aulas relacionadas com esse curso."
+                                                                        print "Erro na edicao. Por favor verifique se os campos foram inseridos corretamente ou existe disciplinas e aulas relacionadas com esse curso."
                                                                         db.rollback()
                                                                     
                                                                 if opcao == 2:
@@ -583,7 +583,7 @@ while inicio == 0:
                                                                         db.commit()
                                                                         print "Nome do curso editado com sucesso."
                                                                     except:
-                                                                        print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
+                                                                        print "Erro na edicao. Por favor verifique se os campos foram inseridos corretamente."
                                                                         db.rollback()
                                                                     
                                                                 if opcao == 3:
@@ -594,7 +594,7 @@ while inicio == 0:
                                                                     verificar_dep = "select id_departamento from departamentos where id_departamento='%s'" %(departamento)
                                                                     existe = cursor.execute(verificar_dep)
                                                                     if existe < 1:
-                                                                        print "Departamento não existente."
+                                                                        print "Departamento nao existente."
                                                                     else:
                                                                         sql = "update cursos set departamento_curso='%s' where id_curso='%s'" %(departamento, id_curso)
                                                                         try:
@@ -602,7 +602,7 @@ while inicio == 0:
                                                                             db.commit()
                                                                             print "Departamento do curso editado com sucesso."
                                                                         except:
-                                                                            print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
+                                                                            print "Erro na edicao. Por favor verifique se os campos foram inseridos corretamente."
                                                                             db.rollback()
     
                                                         saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
@@ -623,7 +623,7 @@ while inicio == 0:
                                                         verificar_curso = "select id_curso from cursos where id_curso='%s'" %(deletado)
                                                         existe = cursor.execute(verificar_curso)
                                                         if existe < 1:
-                                                            print "Curso não existente." #Mudar esse erro e definir um padrao TESTERS
+                                                            print "Curso nao existente." #Mudar esse erro e definir um padrao TESTERS
                                                             continue
                                                         else:
                                                             sql = "delete from cursos where id_curso='%s'" %(deletado)
@@ -632,7 +632,7 @@ while inicio == 0:
                                                                 db.commit()
                                                                 print "Curso excluido com sucesso."
                                                             except:
-                                                                print "Erro na exclusão. Verifique se existe disciplinas e aulas relacionadas com esse curso"
+                                                                print "Erro na exclusao. Verifique se existe disciplinas e aulas relacionadas com esse curso"
                                                                 db.rollback()
     
                                                         saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
@@ -654,7 +654,7 @@ while inicio == 0:
                                         
                                         choice5=input("Digite:\n1 - Adicionar\n2 - Editar\n3 - Excluir\n4 - Sair\n->")
                                         if choice5 > 4 or choice5 <1:
-                                            print "[ERRO 001] Opção inválida. Tente novamente\n"
+                                            print "[ERRO 001] Opcao invalida. Tente novamente\n"
                                         else:
                                             saida = None
                                             while saida <> "s":
@@ -671,7 +671,7 @@ while inicio == 0:
                                                         verificar_dis = "select id_disciplina from disciplinas where id_disciplina='%s'" %(id_disciplina)
                                                         existe = cursor.execute(verificar_dis)
                                                         if existe > 0:
-                                                            print "Disciplina já existente."
+                                                            print "Disciplina ja existente."
                                                             continue
                                                         else:
                                                             nome_disciplina = raw_input("Digite o nome da disciplina: ")
@@ -710,12 +710,12 @@ while inicio == 0:
                                                         verificar_dis = "select id_disciplina from disciplinas where id_disciplina='%s'" %(id_disciplina)
                                                         existe = cursor.execute(verificar_dis)
                                                         if existe < 1:
-                                                            print "ID não existente."
+                                                            print "ID nao existente."
                                                             continue
                                                         else:
                                                             opcao = input("Digite:\n 1 (ID), 2 (NOME) ou 3 (CURSO): ")
                                                             if opcao > 3 or opcao < 1:
-                                                                print "Opção incorreta."
+                                                                print "Opcao incorreta."
                                                                 continue
                                                             else:
                                                                 if opcao == 1:
@@ -727,7 +727,7 @@ while inicio == 0:
                                                                         db.commit()
                                                                         print "ID editado com sucesso."
                                                                     except:
-                                                                        print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
+                                                                        print "Erro na edicao. Por favor verifique se os campos foram inseridos corretamente."
                                                                         db.rollback()
       
                                                                 if opcao == 2:
@@ -738,7 +738,7 @@ while inicio == 0:
                                                                         db.commit()
                                                                         print "Nome da disciplina editado com sucesso."
                                                                     except:
-                                                                        print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
+                                                                        print "Erro na edicao. Por favor verifique se os campos foram inseridos corretamente."
                                                                         db.rollback()
                                                                     
                                                                 if opcao == 3:
@@ -749,7 +749,7 @@ while inicio == 0:
                                                                     verificar_curso = "select id_curso from cursos where id_curso='%s'" %(curso)
                                                                     existe = cursor.execute(verificar_curso)
                                                                     if existe < 1:
-                                                                        print "Curso não existente."
+                                                                        print "Curso nao existente."
                                                                     else:
                                                                         sql = "update disciplinas set curso_disciplina='%s' where id_disciplina='%s'" %(curso, id_disciplina)
                                                                         try:
@@ -757,7 +757,7 @@ while inicio == 0:
                                                                             db.commit()
                                                                             print "Curso da disciplina editado com sucesso."
                                                                         except:
-                                                                            print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
+                                                                            print "Erro na edicao. Por favor verifique se os campos foram inseridos corretamente."
                                                                             db.rollback()
                                         
                                                         saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
@@ -786,7 +786,7 @@ while inicio == 0:
                                                             verificar_dis = "select id_disciplina from disciplinas where id_disciplina='%s'" %(deletado)
                                                             existe = cursor.execute(verificar_dis)
                                                             if existe < 1:
-                                                                print "Disciplina não existente."
+                                                                print "Disciplina nao existente."
                                                                 continue
                                                             else:
                                                                 sql = "delete from disciplinas where id_disciplina='%s'" %(deletado)
@@ -795,7 +795,7 @@ while inicio == 0:
                                                                     db.commit()
                                                                     print "Disciplina excluida com sucesso."
                                                                 except:
-                                                                    print "Erro na exclusão."
+                                                                    print "Erro na exclusao."
                                                                     db.rollback()
                                                                                                                     
                                                                 saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
@@ -815,7 +815,7 @@ while inicio == 0:
                                         
                                         choice6=input("Digite:\n1 - Adicionar\n2 - Editar\n3 - Excluir\n4 - Disciplinas\n5 - Sair\n->")
                                         if choice6 > 5 or choice6 <1:
-                                            print "[ERRO 001] Opção inválida. Tente novamente\n"
+                                            print "[ERRO 001] Opcao invalida. Tente novamente\n"
                                         else:
                                             saida = None
                                             while saida <> "s":
@@ -878,12 +878,12 @@ while inicio == 0:
                                                         verificar_user = "select usuario_cpf from usuarios where usuario_cpf='%s'" %(id_CPF)
                                                         existe = cursor.execute(verificar_user)
                                                         if existe < 1:
-                                                            print "Usuario não existente."
+                                                            print "Usuario nao existente."
                                                             continue
                                                         else:
                                                             opcao = input("EDITAR:\n 1 (CPF)   2 (NOME)   3 (SENHA)   4 (CLASSE)\n->")
                                                             if opcao > 4 or opcao < 1:
-                                                                print "Opção incorreta."
+                                                                print "Opcao incorreta."
                                                             else:
                                                                 if opcao == 1:
                                                                     print "\nOpcao valida apenas para professores sem reservas e disciplinas.\n"
@@ -894,7 +894,7 @@ while inicio == 0:
                                                                         db.commit()
                                                                         print "CPF editado com sucesso."
                                                                     except:
-                                                                        print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
+                                                                        print "Erro na edicao. Por favor verifique se os campos foram inseridos corretamente."
                                                                         db.rollback()
                                                                     #muda ID do USUARIO do PROFESSOR
                                                                     sql = "update professores set id_professor='%s' where id_professor='%s'" %(id_novo, id_CPF)
@@ -903,7 +903,7 @@ while inicio == 0:
                                                                         db.commit()
                                                                         print "CPF editado com sucesso."
                                                                     except:
-                                                                        print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
+                                                                        print "Erro na edicao. Por favor verifique se os campos foram inseridos corretamente."
                                                                         db.rollback()
                                                                         
                                                                     saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
@@ -919,7 +919,7 @@ while inicio == 0:
                                                                         db.commit()
                                                                         print "Nome editado com sucesso."
                                                                     except:
-                                                                        print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
+                                                                        print "Erro na edicao. Por favor verifique se os campos foram inseridos corretamente."
                                                                         db.rollback()
                                                                         
                                                                     saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
@@ -938,7 +938,7 @@ while inicio == 0:
                                                                             db.commit()
                                                                             print "Senha editada com sucesso."
                                                                         except:
-                                                                            print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
+                                                                            print "Erro na edicao. Por favor verifique se os campos foram inseridos corretamente."
                                                                             db.rollback()
                                                                     else:
                                                                         errorrrr = raw_input ("\n[ERRO 003] Senhas diferentes. Press ENTER ")
@@ -955,7 +955,7 @@ while inicio == 0:
                                                                     verificar_user = "select usuario_cpf from usuarios where usuario_cpf='%s'" %(id_CPF)
                                                                     existe = cursor.execute(verificar_user)
                                                                     if existe < 1:
-                                                                        erororor=raw_input("Usuario não existente. PRESS ENTER")
+                                                                        erororor=raw_input("Usuario nao existente. PRESS ENTER")
                                                                         continue
                                                                     else:
                                                                         classe = input("Digite o valor da nova classe (0 ou 1): ")
@@ -967,7 +967,7 @@ while inicio == 0:
                                                                                 db.commit()
                                                                                 print "Classe editada com sucesso."
                                                                             except:
-                                                                                print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
+                                                                                print "Erro na edicao. Por favor verifique se os campos foram inseridos corretamente."
                                                                                 db.rollback()
                                                                         else: 
                                                                             erorororororo = raw_input("\nClasse invalida. PRESS ENTER ")                               
@@ -992,16 +992,16 @@ while inicio == 0:
                                                         verificar_user = "select usuario_cpf from usuarios where usuario_cpf='%s'" %(id_CPF)
                                                         existe = cursor.execute(verificar_user)
                                                         if existe < 1:
-                                                            print "Professor/Usuário não existente."
+                                                            print "Professor/Usuario nao existente."
                                                         else:
                                                             
                                                             sql = "delete from usuarios where usuario_cpf='%s'" %(id_CPF)
                                                             try:
                                                                 cursor.execute(sql)
                                                                 db.commit()
-                                                                print "Usuário excluido com sucesso."
+                                                                print "Usuario excluido com sucesso."
                                                             except:
-                                                                print "Erro na exclusão."
+                                                                print "Erro na exclusao."
                                                                 db.rollback()
             
                                                             sql = "delete from professores where id_professor='%s'" %(id_CPF)
@@ -1010,7 +1010,7 @@ while inicio == 0:
                                                                 db.commit()
                                                                 print "Professor excluido com sucesso."
                                                             except:
-                                                                print "Erro na exclusão, há um usuário atrelado ao professor."
+                                                                print "Erro na exclusao, ha um usuario atrelado ao professor."
                                                                 db.rollback()
                                               
                                                         saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
@@ -1027,7 +1027,7 @@ while inicio == 0:
                                                     os.system('cls')
                                                     opcao_dis = input("DIGITE:\n 1 (ADICIONAR)   2 (EXCLUIR)   3 (SAIR)\n->")
                                                     if opcao_dis > 3 or opcao_dis < 1:
-                                                        print "Opção incorreta."
+                                                        print "Opcao incorreta."
                                                     else:
                                                         if opcao_dis == 1:
                                                             os.system('cls')
@@ -1048,7 +1048,7 @@ while inicio == 0:
                                                                     cursor.execute(sql)
                                                                     db.commit()
                                                                 except:
-                                                                    print "Erro no cadastro. O item foi digitado incorretamente ou a disciplina já está cadastrada."
+                                                                    print "Erro no cadastro. O item foi digitado incorretamente ou a disciplina ja esta cadastrada."
                                                                     db.rollback()
                                                                 
                                                                 
@@ -1097,7 +1097,7 @@ while inicio == 0:
                                                                         db.commit()
                                                                         print "Disciplina excluida com sucesso."
                                                                     except:
-                                                                        print "[ERRO XXX] Erro na exclusão."
+                                                                        print "[ERRO XXX] Erro na exclusao."
                                                                         db.rollback()
                                                                                                                     
                                                                 saida = raw_input('\nDigite s para sair ou ENTER para continuar excluindo: ')
@@ -1150,7 +1150,7 @@ while inicio == 0:
                                 print "\n                     PAINEL DO PROFESSOR.\n"
                                 choice=input("Digite:\n1 - Fazer Reserva\n2 - Deletar Reserva\n3 - Alterar senha\n4 - Sair\n->")
                                 if choice > 4 or choice <1:
-                                    print "[ERRO 001] Opção inválida. Tente novamente\n"
+                                    print "[ERRO 001] Opcao invalida. Tente novamente\n"
                                 else:
                             
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
@@ -1165,7 +1165,7 @@ while inicio == 0:
                                         while saida <> "s":
                                             is_today_the_future = False
                                             print_predios()
-                                            predio_reserva = raw_input("\n\nDigite o ID do prédio da reserva ou 0 para sair: ")
+                                            predio_reserva = raw_input("\n\nDigite o ID do predio da reserva ou 0 para sair: ")
                                             if predio_reserva == "0":
                                                 saida = "s"
                                                 os.system("cls")
@@ -1286,7 +1286,7 @@ while inicio == 0:
                                                                     db.commit()
                                                                     print "Cadastro efetuado com sucesso as %s horas" %(hora)
                                                                 except:
-                                                                    print "[ERRO 002] Reserva já existente para %s horas." %(hora)
+                                                                    print "[ERRO 002] Reserva ja existente para %s horas." %(hora)
                                                                     db.rollback()
                                                             #cadastrarReserva
                                                         else:
@@ -1362,7 +1362,7 @@ while inicio == 0:
                                                     db.commit()
                                                     print "Reserva excluida com sucesso."
                                                 except:
-                                                    print "Erro na exclusão, não existe reserva nesse horário."
+                                                    print "Erro na exclusao, nao existe reserva nesse horario."
                                                     db.rollback()
                                                                                                 
                                                 saida = raw_input('\nDigite s para sair ou ENTER para continuar excluindo: ')
@@ -1386,7 +1386,7 @@ while inicio == 0:
                                                 db.commit()
                                                 Okayyy = raw_input("\nSenha editada com sucesso. Pressione ENTER ")
                                             except:
-                                                print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
+                                                print "Erro na edicao. Por favor verifique se os campos foram inseridos corretamente."
                                                 db.rollback()
                                         else:
                                             errorrrr = raw_input ("\n[ERRO 003] Senhas diferentes. Pressione ENTER ")                        
