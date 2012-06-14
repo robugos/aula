@@ -12,8 +12,8 @@ from Validacao import Validacao
 import os
 import getpass
 from login import *
+from datetime import datetime
 #===============================================================================
-from edicao_usuario import *        #SO PARA ADM FAZER AMANHA
 #_______________________________________________________________________________________________________________
 #____________________________________________________________________________________FUNCAO PRINT NA TELA COMECO
 
@@ -79,6 +79,22 @@ def print_disciplinas(CURSO):
     print "  ID      NOME"
     for i in range (len(lista_disciplinas_ID)):
         print "["+lista_disciplinas_ID[i]+"] - "+lista_disciplinas_Nome[i]
+        
+def print_disciplinas_professor(cpf):
+    cursor.execute("select * from docencia where id_professor='%s'" %(cpf))
+    lista_disciplinas_ID=[]
+    lista_disciplinas_Nome=[]
+    lista_disciplinas_curso=[]
+    for row in cursor.fetchall():
+            lista_disciplinas_ID.append(row[2])
+    for j in range (len(lista_disciplinas_ID)): #pega nome da disciplina
+        cursor.execute("select * from disciplinas where id_disciplina='%s'" %(lista_disciplinas_ID[j]))        
+        for row in cursor.fetchall():
+            lista_disciplinas_Nome.append(row[1])
+            lista_disciplinas_curso.append(row[2])   
+    print "  ID     CURSO   DISCIPLINA\n"
+    for i in range (len(lista_disciplinas_ID)):
+        print "["+lista_disciplinas_ID[i]+"]   "+lista_disciplinas_curso[i]+"     "+lista_disciplinas_Nome[i]
     
 def print_predios():
     cursor.execute("select * from predios")
@@ -114,7 +130,29 @@ def print_departamentos():                                             #Novo pri
         print "["+lista_departamentos_ID[i]+"] - "+lista_departamentos_Nome[i]
         
         
-def print_professores():                                                    #Novo print 13/06
+def print_professores():
+    cursor.execute("select * from departamentos")
+    lista_departamentos_ID=[]
+    lista_departamentos_Nome=[]
+    for row in cursor.fetchall():
+        lista_departamentos_ID.append(row[0])
+        lista_departamentos_Nome.append(row[1])
+    print "  ID      NOME"
+    for i in range (len(lista_departamentos_ID)):
+        print "["+lista_departamentos_ID[i]+"] - "+lista_departamentos_Nome[i]
+    departamento = raw_input('\nDigite o ID do departamento do professor: ')
+    cursor.execute("select * from professores where departamento_professor='%s'" %(departamento))
+    os.system('cls')
+    lista_professores_ID=[]
+    lista_professores_Nome=[]
+    for row in cursor.fetchall():
+        lista_professores_ID.append(row[0])
+        lista_professores_Nome.append(row[1])
+    print "    CPF          NOME"
+    for i in range (len(lista_professores_ID)):
+        print "["+lista_professores_ID[i]+"] - "+lista_professores_Nome[i]
+        
+def print_professores_alone():                                                    #Copia de professores 13/06
     cursor.execute("select * from professores")
     lista_professores_ID=[]
     lista_professores_Nome=[]
@@ -152,6 +190,12 @@ while inicio == 0:
         if choice == 1:
             os.system("cls")
             print "\n                     PESQUISA.\n"
+            
+            
+            
+            
+            
+            
 #____________________________________________________________________SEARCH
 
                         #INICIO DO LOGIN--------->>>>>> main_PROF and main_ADM
@@ -214,21 +258,24 @@ while inicio == 0:
                                                 if choice2 == 1:
                                                     os.system("cls")
                                                     print "\n                   ADICIONAR PREDIO.\n"
-                                                    
-                                                    id_predio = raw_input('Digite o ID do predio: ')
-                                                    nome_predio = raw_input("Digite o nome do predio: ")
-                                                    sql = "insert into predios values('%s','%s')" %(id_predio, nome_predio)
-                                                    try:
-                                                        cursor.execute(sql)
-                                                        db.commit()
-                                                        print "Novo predio cadastrado com sucesso."
-                                                    except:
-                                                        print "Erro no cadastro. Por favor verifique se os campos foram inseridos corretamente."
-                                                        db.rollback()
-                                                        
-                                                    saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
-                                                    saida = saida.lower()
-                                                    os.system("cls")                   
+                                                    id_predio = raw_input('Digite o ID do predio ou 0 para sair: ')
+                                                    if id_predio == "0":
+                                                        saida = "s"
+                                                        os.system('cls')
+                                                    else:
+                                                        nome_predio = raw_input("Digite o nome do predio: ")
+                                                        sql = "insert into predios values('%s','%s')" %(id_predio, nome_predio)
+                                                        try:
+                                                            cursor.execute(sql)
+                                                            db.commit()
+                                                            print "Novo predio cadastrado com sucesso."
+                                                        except:
+                                                            print "Erro no cadastro. Por favor verifique se os campos foram inseridos corretamente."
+                                                            db.rollback()
+                                                            
+                                                        saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                        saida = saida.lower()
+                                                        os.system("cls")                   
 #ADD PREDIO 100% PERFEITO by Gustavo_____________________________________________________________________
                                                 if choice2 == 2:
                                                     os.system("cls")
@@ -236,45 +283,49 @@ while inicio == 0:
                                                     
                                                     print_predios()
                                                     
-                                                    id_predio = raw_input('\nDigite o ID do predio que deseja editar: ')
-                                                    verificar_predio = "select id_predio from predios where id_predio='%s'" %(id_predio)
-                                                    existe = cursor.execute(verificar_predio)
-                                                    if existe < 1:
-                                                        print "[ERRO 005] ID não existente."
-                                                        continue
+                                                    id_predio = raw_input('\nDigite o ID do predio que deseja editar ou 0 para sair: ')
+                                                    if id_predio == "0":
+                                                        saida = "s"
+                                                        os.system('cls')
                                                     else:
-                                                        opcao = input("\nDigite: [1] Editar o ID    [2] Editar o nome\n->")
-                                                        if opcao > 2 or opcao < 1:
-                                                            print "[ERRO 004] Opção incorreta."
+                                                        verificar_predio = "select id_predio from predios where id_predio='%s'" %(id_predio)
+                                                        existe = cursor.execute(verificar_predio)
+                                                        if existe < 1:
+                                                            print "[ERRO 005] ID não existente."
                                                             continue
                                                         else:
-                                                            if opcao == 1:
-                                                                id_novo = raw_input("Digite o novo ID do predio: ")
-                                                                
-                                                                sql = "update predios set id_predio='%s' where id_predio='%s'" %(id_novo, id_predio)
-                                                                try:
-                                                                    cursor.execute(sql)
-                                                                    db.commit()
-                                                                    print "ID do predio editado com sucesso."
-                                                                except:
-                                                                    print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
-                                                                    db.rollback()
-        
-                                                            if opcao == 2:
-                                                                nome_predio = raw_input("Digite o novo nome do predio: ")
-                                                                
-                                                                sql = "update predios set nome_predio='%s' where id_predio='%s'" %(nome_predio, id_predio)
-                                                                try:
-                                                                    cursor.execute(sql)
-                                                                    db.commit()
-                                                                    print "Nome do predio editado com sucesso."
-                                                                except:
-                                                                    print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
-                                                                    db.rollback()
-                                    
-                                                    saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
-                                                    saida = saida.lower()
-                                                    os.system("cls")                                                    
+                                                            opcao = input("\nDigite: [1] Editar o ID    [2] Editar o nome\n->")
+                                                            if opcao > 2 or opcao < 1:
+                                                                print "[ERRO 004] Opção incorreta."
+                                                                continue
+                                                            else:
+                                                                if opcao == 1:
+                                                                    id_novo = raw_input("Digite o novo ID do predio: ")
+                                                                    
+                                                                    sql = "update predios set id_predio='%s' where id_predio='%s'" %(id_novo, id_predio)
+                                                                    try:
+                                                                        cursor.execute(sql)
+                                                                        db.commit()
+                                                                        print "ID do predio editado com sucesso."
+                                                                    except:
+                                                                        print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
+                                                                        db.rollback()
+            
+                                                                if opcao == 2:
+                                                                    nome_predio = raw_input("Digite o novo nome do predio: ")
+                                                                    
+                                                                    sql = "update predios set nome_predio='%s' where id_predio='%s'" %(nome_predio, id_predio)
+                                                                    try:
+                                                                        cursor.execute(sql)
+                                                                        db.commit()
+                                                                        print "Nome do predio editado com sucesso."
+                                                                    except:
+                                                                        print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
+                                                                        db.rollback()
+                                        
+                                                        saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                        saida = saida.lower()
+                                                        os.system("cls")                                                    
 #EDITAR PREDIO 100% PERFEITO by Gustavo____________________________________________________________________
                                                 if choice2 == 3:
                                                     os.system("cls")
@@ -282,25 +333,28 @@ while inicio == 0:
                                                     
                                                     print_predios()
 
-                                                    deletado = raw_input('\nDigite o ID do predio que deseja excluir: ')
-                                                    verificar_predio = "select id_predio from predios where id_predio='%s'" %(deletado)
-                                                    existe = cursor.execute(verificar_predio)
-                                                    if existe < 1:
-                                                        print "Predio não existente."
-                                                        continue
-                                                    else:                                            
-                                                        sql = "delete from predios where id_predio='%s'" %(deletado)
-                                                        try:
-                                                            cursor.execute(sql)
-                                                            db.commit()
-                                                            print "Predio excluido com sucesso."
-                                                        except:
-                                                            print "Erro na exclusão."
-                                                            db.rollback()
-                                                        
-                                                    saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
-                                                    saida = saida.lower()
-                                                    os.system("cls")
+                                                    deletado = raw_input('\nDigite o ID do predio que deseja excluir ou 0 para sair: ')
+                                                    if deletado == "0":
+                                                        saida = "s"
+                                                        os.system("cls")
+                                                    else:
+                                                        verificar_predio = "select id_predio from predios where id_predio='%s'" %(deletado)
+                                                        existe = cursor.execute(verificar_predio)
+                                                        if existe < 1:
+                                                            print "Predio não existente."
+                                                        else:                                            
+                                                            sql = "delete from predios where id_predio='%s'" %(deletado)
+                                                            try:
+                                                                cursor.execute(sql)
+                                                                db.commit()
+                                                                print "Predio excluido com sucesso."
+                                                            except:
+                                                                print "Erro na exclusão."
+                                                                db.rollback()
+                                                            
+                                                        saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                        saida = saida.lower()
+                                                        os.system("cls")
 #EXCLUIR PREDIO 100% PERFEITO by Gustavo____________________________________________________________________
 
                                                 if choice2 == 4:
@@ -326,22 +380,26 @@ while inicio == 0:
                                                     os.system("cls")
                                                     print "\n                   ADICIONAR DEPARTAMENTO.\n"
 
-                                                    id_departamento = raw_input('Digite o ID do departamento: ')
-                                                    nome = raw_input("Digite o nome do departamento: ")
-                                                    coordenador = raw_input("Digite o nome do coordenador: ")
-                                                    
-                                                    sql = "insert into departamentos values('%s','%s','%s')" %(id_departamento, nome, coordenador)
-                                                    try:
-                                                        cursor.execute(sql)
-                                                        db.commit()
-                                                        print "Departamento cadastrado com sucesso."
-                                                    except:
-                                                        print "Erro no cadastro. Por favor verifique se os campos foram inseridos corretamente."
-                                                        db.rollback()
-                                                    
-                                                    saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
-                                                    saida = saida.lower()
-                                                    os.system("cls")
+                                                    id_departamento = raw_input('Digite o ID do departamento ou 0 para sair: ')
+                                                    if id_departamento == "0":
+                                                        saida = "s"
+                                                        os.system('cls')
+                                                    else:
+                                                        nome = raw_input("Digite o nome do departamento: ")
+                                                        coordenador = raw_input("Digite o nome do coordenador: ")
+                                                        
+                                                        sql = "insert into departamentos values('%s','%s','%s')" %(id_departamento, nome, coordenador)
+                                                        try:
+                                                            cursor.execute(sql)
+                                                            db.commit()
+                                                            print "Departamento cadastrado com sucesso."
+                                                        except:
+                                                            print "Erro no cadastro. Por favor verifique se os campos foram inseridos corretamente."
+                                                            db.rollback()
+                                                        
+                                                        saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                        saida = saida.lower()
+                                                        os.system("cls")
 #ADD DEPARTAMENTO 100% PERFEITO by Gustavo____________________________________________________________________                                               
                                                     
                                                 if choice3 == 2:
@@ -350,79 +408,85 @@ while inicio == 0:
                                                     
                                                     print_departamentos()
                                                     
-                                                    id_dep = raw_input('\nDigite o ID do departamento que deseja editar: \n')
-                                                    verificar_dep = "select id_departamento from departamentos where id_departamento='%s'" %(id_dep)
-                                                    existe = cursor.execute(verificar_dep)
-                                                    if existe < 1:
-                                                        print "[ERRO 005] ID não existente."
-                                                        continue
+                                                    id_dep = raw_input('\nDigite o ID do departamento ou 0 para sair: \n')
+                                                    if id_dep == "0":
+                                                        saida = "s"
+                                                        os.system('cls')
                                                     else:
-                                                        opcao = input("Digite:\n1 (editar id)     2 (editar nome)     3 (editar coordenador)\n-> ")
-                                                        if opcao > 3 or opcao < 1:
-                                                            print "[ERRO 004] Opção incorreta."
-                                                            continue
+                                                        os.system('cls')
+                                                        verificar_dep = "select id_departamento from departamentos where id_departamento='%s'" %(id_dep)
+                                                        existe = cursor.execute(verificar_dep)
+                                                        if existe < 1:
+                                                            print "[ERRO 005] ID não existente."
                                                         else:
-                                                            if opcao == 1:
-                                                                id_novo = raw_input("Digite o novo ID do departamento: ")
-                                                                sql = "update departamentos set id_departamento='%s' where id_departamento='%s'" %(id_novo, id_dep)
-                                                                try:
-                                                                    cursor.execute(sql)
-                                                                    db.commit()
-                                                                    print "ID editado com sucesso."
-                                                                except:
-                                                                    print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
-                                                                    db.rollback()
-                                                                
-                                                            if opcao == 2:
-                                                                nome = raw_input("Digite o novo nome do departamento: ")
-                                                                sql = "update departamentos set nome_departamento='%s' where id_departamento='%s'" %(nome, id_dep)
-                                                                try:
-                                                                    cursor.execute(sql)
-                                                                    db.commit()
-                                                                    print "Nome editado com sucesso."
-                                                                except:
-                                                                    print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
-                                                                    db.rollback()
-                                                                
-                                                            if opcao == 3:
-                                                                coordenador = raw_input("Digite o nome do novo coordenador: ")
-                                                                sql = "update departamentos set coordenador='%s' where id_departamento='%s'" %(coordenador, id_dep)
-                                                                try:
-                                                                    cursor.execute(sql)
-                                                                    db.commit()
-                                                                    print "Coordenador editado com sucesso."
-                                                                except:
-                                                                    print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
-                                                                    db.rollback()
-
-                                                    saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
-                                                    saida = saida.lower()
-                                                    os.system("cls")
+                                                            opcao = input("Digite:\n1 (editar id)     2 (editar nome)     3 (editar coordenador)\n-> ")
+                                                            if opcao > 3 or opcao < 1:
+                                                                print "[ERRO 004] Opção incorreta."
+                                                            else:
+                                                                if opcao == 1:
+                                                                    id_novo = raw_input("Digite o novo ID do departamento: ")
+                                                                    sql = "update departamentos set id_departamento='%s' where id_departamento='%s'" %(id_novo, id_dep)
+                                                                    try:
+                                                                        cursor.execute(sql)
+                                                                        db.commit()
+                                                                        print "ID editado com sucesso."
+                                                                    except:
+                                                                        print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
+                                                                        db.rollback()
+                                                                    
+                                                                if opcao == 2:
+                                                                    nome = raw_input("Digite o novo nome do departamento: ")
+                                                                    sql = "update departamentos set nome_departamento='%s' where id_departamento='%s'" %(nome, id_dep)
+                                                                    try:
+                                                                        cursor.execute(sql)
+                                                                        db.commit()
+                                                                        print "Nome editado com sucesso."
+                                                                    except:
+                                                                        print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
+                                                                        db.rollback()
+                                                                    
+                                                                if opcao == 3:
+                                                                    coordenador = raw_input("Digite o nome do novo coordenador: ")
+                                                                    sql = "update departamentos set coordenador='%s' where id_departamento='%s'" %(coordenador, id_dep)
+                                                                    try:
+                                                                        cursor.execute(sql)
+                                                                        db.commit()
+                                                                        print "Coordenador editado com sucesso."
+                                                                    except:
+                                                                        print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
+                                                                        db.rollback()
+    
+                                                        saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                        saida = saida.lower()
+                                                        os.system("cls")
 #EDITAR DEPARTAMENTO 100% PERFEITO by Gustavo____________________________________________________________________                                                      
                                                     
                                                 if choice3 == 3:
                                                     os.system("cls")
                                                     print "\n                   EXCLUIR DEPARTAMENTO.\n"
                                                     print_departamentos()
-                                                    deletado = raw_input('\nDigite o ID do departamento que deseja excluir: ')
-                                                    verificar_dep = "select id_departamento from departamentos where id_departamento='%s'" %(deletado)
-                                                    existe = cursor.execute(verificar_dep)
-                                                    if existe < 1:
-                                                        print "Departamento não existente."
-                                                        continue
+                                                    deletado = raw_input('\nDigite o ID do departamento ou 0 para sair: ')
+                                                    if deletado == "0":
+                                                        saida = "s"
+                                                        os.system("cls")
                                                     else:
-                                                        sql = "delete from departamentos where id_departamento='%s'" %(deletado)
-                                                        try:
-                                                            cursor.execute(sql)
-                                                            db.commit()
-                                                            print "Departamento excluido com sucesso."
-                                                        except:
-                                                            print "Erro na exclusão, há professores ou cursos atrelados ao departamento."
-                                                            db.rollback()
-                                                        
-                                                    saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
-                                                    saida = saida.lower()
-                                                    os.system("cls")
+                                                        verificar_dep = "select id_departamento from departamentos where id_departamento='%s'" %(deletado)
+                                                        existe = cursor.execute(verificar_dep)
+                                                        if existe < 1:
+                                                            print "Departamento não existente."
+                                                        else:
+                                                            sql = "delete from departamentos where id_departamento='%s'" %(deletado)
+                                                            try:
+                                                                cursor.execute(sql)
+                                                                db.commit()
+                                                                print "Departamento excluido com sucesso."
+                                                            except:
+                                                                print "Erro na exclusão, há professores ou cursos atrelados ao departamento."
+                                                                db.rollback()
+                                                            
+                                                        saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                        saida = saida.lower()
+                                                        os.system("cls")
 #EXCLUIR DEPARTAMENTO 100% PERFEITO by Gustavo____________________________________________________________________ 
                                                 if choice3 == 4:
                                                     os.system("cls")
@@ -448,30 +512,34 @@ while inicio == 0:
                                                     os.system("cls")
                                                     print "\n                   ADICIONAR CURSO.\n"
                                                     
-                                                    id_curso = raw_input("\nDigite o ID do curso: ")
-                                                    verificar_curso = "select id_curso from cursos where id_curso='%s'" %(id_curso)
-                                                    existe = cursor.execute(verificar_curso)
-                                                    if existe > 0:
-                                                        print "Curso já existe."
-                                                        continue
-                                                    else:
-                                                        nome_curso = raw_input("Digite o nome do curso: ")
+                                                    id_curso = raw_input("\nDigite o ID do curso ou 0 para sair: ")
+                                                    if id_curso == "0":
+                                                        saida = "s"
                                                         os.system("cls")
-                                                        print_departamentos()
-                                                        departamento_curso = raw_input("\nDigite o ID do departamento do curso: ")
-
-                                                        sql = "insert into cursos values('%s','%s','%s')"%(id_curso, nome_curso, departamento_curso)
-                                                        try:
-                                                            cursor.execute(sql)
-                                                            db.commit()
-                                                            print "Curso cadastrado com sucesso."
-                                                        except:
-                                                            print "Erro no cadastro. Por favor verifique se os campos foram inseridos corretamente."
-                                                            db.rollback()
-                                                                                                            
-                                                    saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
-                                                    saida = saida.lower()
-                                                    os.system("cls")
+                                                    else:
+                                                        verificar_curso = "select id_curso from cursos where id_curso='%s'" %(id_curso)
+                                                        existe = cursor.execute(verificar_curso)
+                                                        if existe > 0:
+                                                            print "Curso já existe."
+                                                            continue
+                                                        else:
+                                                            nome_curso = raw_input("Digite o nome do curso: ")
+                                                            os.system("cls")
+                                                            print_departamentos()
+                                                            departamento_curso = raw_input("\nDigite o ID do departamento do curso: ")
+    
+                                                            sql = "insert into cursos values('%s','%s','%s')"%(id_curso, nome_curso, departamento_curso)
+                                                            try:
+                                                                cursor.execute(sql)
+                                                                db.commit()
+                                                                print "Curso cadastrado com sucesso."
+                                                            except:
+                                                                print "Erro no cadastro. Por favor verifique se os campos foram inseridos corretamente."
+                                                                db.rollback()
+                                                                                                                
+                                                        saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                        saida = saida.lower()
+                                                        os.system("cls")
 #ADICIONAR CURSO 100% PERFEITO by Gustavo____________________________________________________________________
 
                                                 if choice4 == 2:
@@ -479,64 +547,67 @@ while inicio == 0:
                                                     print "\n                   EDITAR CURSO.\n"
                                                     print_cursos()
                                                     
-                                                    id_curso = raw_input('\nDigite o ID do curso que deseja editar: ')
-                                                    verificar_curso = "select id_curso from cursos where id_curso='%s'" %(id_curso)
-                                                    existe = cursor.execute(verificar_curso)
-                                                    if existe < 1:
-                                                        print "ID não existente."
-                                                        continue
+                                                    id_curso = raw_input('\nDigite o ID do curso ou 0 para sair: ')
+                                                    if id_curso == "0":
+                                                        saida = "s"
+                                                        os.system("cls")
                                                     else:
-                                                        opcao = input("\nEDITAR:\n1 (ID)     2 (NOME)     3 (DEPARTAMENTO)\n-> ")
-                                                        if opcao > 3 or opcao < 1:
-                                                            print "Opção incorreta."
-                                                            continue
+                                                        verificar_curso = "select id_curso from cursos where id_curso='%s'" %(id_curso)
+                                                        existe = cursor.execute(verificar_curso)
+                                                        if existe < 1:
+                                                            print "ID não existente."
                                                         else:
-                                                            if opcao == 1:
-                                                                id_novo = raw_input("\nDigite o novo ID do curso: ")
-                                                                
-                                                                sql = "update cursos set id_curso='%s' where id_curso='%s'" %(id_novo, id_curso)
-                                                                try:
-                                                                    cursor.execute(sql)
-                                                                    db.commit()
-                                                                    print "ID editado com sucesso."
-                                                                except:
-                                                                    print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente ou existe disciplinas e aulas relacionadas com esse curso."
-                                                                    db.rollback()
-                                                                
-                                                            if opcao == 2:
-                                                                nome = raw_input("\nDigite o novo nome do curso: ")
-                                                                
-                                                                sql = "update cursos set nome_curso='%s' where id_curso='%s'" %(nome, id_curso)
-                                                                try:
-                                                                    cursor.execute(sql)
-                                                                    db.commit()
-                                                                    print "Nome do curso editado com sucesso."
-                                                                except:
-                                                                    print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
-                                                                    db.rollback()
-                                                                
-                                                            if opcao == 3:
-                                                                os.system("cls")
-                                                                print_departamentos()
-                                                                departamento = raw_input("\nDigite o ID do novo departamento: ")
-                                                                os.system("cls")
-                                                                verificar_dep = "select id_departamento from departamentos where id_departamento='%s'" %(departamento)
-                                                                existe = cursor.execute(verificar_dep)
-                                                                if existe < 1:
-                                                                    print "Departamento não existente."
-                                                                else:
-                                                                    sql = "update cursos set departamento_curso='%s' where id_curso='%s'" %(departamento, id_curso)
+                                                            os.system("cls")
+                                                            opcao = input("\nEDITAR:\n1 (ID)     2 (NOME)     3 (DEPARTAMENTO)\n-> ")
+                                                            if opcao > 3 or opcao < 1:
+                                                                print "Opção incorreta."
+                                                            else:
+                                                                if opcao == 1:
+                                                                    id_novo = raw_input("\nDigite o novo ID do curso: ")
+                                                                    
+                                                                    sql = "update cursos set id_curso='%s' where id_curso='%s'" %(id_novo, id_curso)
                                                                     try:
                                                                         cursor.execute(sql)
                                                                         db.commit()
-                                                                        print "Departamento do curso editado com sucesso."
+                                                                        print "ID editado com sucesso."
+                                                                    except:
+                                                                        print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente ou existe disciplinas e aulas relacionadas com esse curso."
+                                                                        db.rollback()
+                                                                    
+                                                                if opcao == 2:
+                                                                    nome = raw_input("\nDigite o novo nome do curso: ")
+                                                                    
+                                                                    sql = "update cursos set nome_curso='%s' where id_curso='%s'" %(nome, id_curso)
+                                                                    try:
+                                                                        cursor.execute(sql)
+                                                                        db.commit()
+                                                                        print "Nome do curso editado com sucesso."
                                                                     except:
                                                                         print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
                                                                         db.rollback()
-
-                                                    saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
-                                                    saida = saida.lower()
-                                                    os.system("cls")
+                                                                    
+                                                                if opcao == 3:
+                                                                    os.system("cls")
+                                                                    print_departamentos()
+                                                                    departamento = raw_input("\nDigite o ID do novo departamento: ")
+                                                                    os.system("cls")
+                                                                    verificar_dep = "select id_departamento from departamentos where id_departamento='%s'" %(departamento)
+                                                                    existe = cursor.execute(verificar_dep)
+                                                                    if existe < 1:
+                                                                        print "Departamento não existente."
+                                                                    else:
+                                                                        sql = "update cursos set departamento_curso='%s' where id_curso='%s'" %(departamento, id_curso)
+                                                                        try:
+                                                                            cursor.execute(sql)
+                                                                            db.commit()
+                                                                            print "Departamento do curso editado com sucesso."
+                                                                        except:
+                                                                            print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
+                                                                            db.rollback()
+    
+                                                        saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                        saida = saida.lower()
+                                                        os.system("cls")
 #EDITAR CURSO 100% PERFEITO by Gustavo____________________________________________________________________
                                             
                                                 if choice4 == 3:
@@ -544,25 +615,29 @@ while inicio == 0:
                                                     print "\n                   EXCLUIR CURSO.\n"
                                                     print_cursos()
                                                     
-                                                    deletado = raw_input('\nDigite o ID do curso que deseja excluir: ')
-                                                    verificar_curso = "select id_curso from cursos where id_curso='%s'" %(deletado)
-                                                    existe = cursor.execute(verificar_curso)
-                                                    if existe < 1:
-                                                        print "Curso não existente." #Mudar esse erro e definir um padrao TESTERS
-                                                        continue
+                                                    deletado = raw_input('\nDigite o ID do curso ou 0 para sair: ')
+                                                    if deletado == "0":
+                                                        saida = "s"
+                                                        os.system("cls")
                                                     else:
-                                                        sql = "delete from cursos where id_curso='%s'" %(deletado)
-                                                        try:
-                                                            cursor.execute(sql)
-                                                            db.commit()
-                                                            print "Curso excluido com sucesso."
-                                                        except:
-                                                            print "Erro na exclusão. Verifique se existe disciplinas e aulas relacionadas com esse curso"
-                                                            db.rollback()
-
-                                                    saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
-                                                    saida = saida.lower()
-                                                    os.system("cls")
+                                                        verificar_curso = "select id_curso from cursos where id_curso='%s'" %(deletado)
+                                                        existe = cursor.execute(verificar_curso)
+                                                        if existe < 1:
+                                                            print "Curso não existente." #Mudar esse erro e definir um padrao TESTERS
+                                                            continue
+                                                        else:
+                                                            sql = "delete from cursos where id_curso='%s'" %(deletado)
+                                                            try:
+                                                                cursor.execute(sql)
+                                                                db.commit()
+                                                                print "Curso excluido com sucesso."
+                                                            except:
+                                                                print "Erro na exclusão. Verifique se existe disciplinas e aulas relacionadas com esse curso"
+                                                                db.rollback()
+    
+                                                        saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                        saida = saida.lower()
+                                                        os.system("cls")
 #EXCLUIR CURSO 100% PERFEITO by Gustavo____________________________________________________________________
                                      
                                                 if choice4 == 4:
@@ -587,30 +662,35 @@ while inicio == 0:
                                                     os.system("cls")
                                                     print "\n                   ADICIONAR DISCIPLINA.\n"
                                                     
-                                                    id_disciplina = raw_input("Digite o ID da disciplina: ")
-                                                    verificar_dis = "select id_disciplina from disciplinas where id_disciplina='%s'" %(id_disciplina)
-                                                    existe = cursor.execute(verificar_dis)
-                                                    if existe > 0:
-                                                        print "Disciplina já existente."
-                                                        continue
+                                                    id_disciplina = raw_input("Digite o ID da disciplina ou 0 para sair: ")
+                                                    if id_disciplina == "0":
+                                                        saida = "s"
+                                                        os.system("cls")
                                                     else:
-                                                        nome_disciplina = raw_input("Digite o nome da disciplina: ")
                                                         os.system("cls")
-                                                        print_cursos()                                          
-                                                        curso_disciplina = raw_input("Digite o curso da disciplina: ")
+                                                        verificar_dis = "select id_disciplina from disciplinas where id_disciplina='%s'" %(id_disciplina)
+                                                        existe = cursor.execute(verificar_dis)
+                                                        if existe > 0:
+                                                            print "Disciplina já existente."
+                                                            continue
+                                                        else:
+                                                            nome_disciplina = raw_input("Digite o nome da disciplina: ")
+                                                            os.system("cls")
+                                                            print_cursos()                                          
+                                                            curso_disciplina = raw_input("Digite o curso da disciplina: ")
+                                                            os.system("cls")
+                                                            sql = "insert into disciplinas values('%s','%s','%s')"%(id_disciplina, nome_disciplina, curso_disciplina)
+                                                            try:
+                                                                cursor.execute(sql)
+                                                                db.commit()
+                                                                print "Disciplina cadastrada com sucesso."
+                                                            except:
+                                                                print "Erro no cadastro. Por favor verifique se os campos foram inseridos corretamente."
+                                                                db.rollback()
+                                                                                                                
+                                                        saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                        saida = saida.lower()
                                                         os.system("cls")
-                                                        sql = "insert into disciplinas values('%s','%s','%s')"%(id_disciplina, nome_disciplina, curso_disciplina)
-                                                        try:
-                                                            cursor.execute(sql)
-                                                            db.commit()
-                                                            print "Disciplina cadastrada com sucesso."
-                                                        except:
-                                                            print "Erro no cadastro. Por favor verifique se os campos foram inseridos corretamente."
-                                                            db.rollback()
-                                                                                                            
-                                                    saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
-                                                    saida = saida.lower()
-                                                    os.system("cls")
 #ADICIONAR DISCIPLINA 100% PERFEITO by Gustavo____________________________________________________________________
                                                  
                                                 if choice5 == 2:
@@ -618,67 +698,71 @@ while inicio == 0:
                                                     print "\n                   EDITAR DISCIPLINA.\n"
                                                     
                                                     print_cursos()
-                                                    CURSO = raw_input("\nDigite o ID do curso da disciplina: ")
-                                                    os.system("cls")
-                                                    print_disciplinas(CURSO)
-                                                    
-                                                    id_disciplina = raw_input('\nDigite o ID da disciplina que deseja editar: ')
-                                                    verificar_dis = "select id_disciplina from disciplinas where id_disciplina='%s'" %(id_disciplina)
-                                                    existe = cursor.execute(verificar_dis)
-                                                    if existe < 1:
-                                                        print "ID não existente."
-                                                        continue
+                                                    CURSO = raw_input("\nDigite o ID do curso da disciplina ou 0 para sair: ")
+                                                    if CURSO == "0":
+                                                        saida = "s"
+                                                        os.system("cls")
                                                     else:
-                                                        opcao = input("Digite:\n 1 (ID), 2 (NOME) ou 3 (CURSO): ")
-                                                        if opcao > 3 or opcao < 1:
-                                                            print "Opção incorreta."
+                                                        os.system("cls")
+                                                        print_disciplinas(CURSO)
+                                                        
+                                                        id_disciplina = raw_input('\nDigite o ID da disciplina que deseja editar: ')
+                                                        verificar_dis = "select id_disciplina from disciplinas where id_disciplina='%s'" %(id_disciplina)
+                                                        existe = cursor.execute(verificar_dis)
+                                                        if existe < 1:
+                                                            print "ID não existente."
                                                             continue
                                                         else:
-                                                            if opcao == 1:
-                                                                id_novo = raw_input("Digite o novo ID da disciplina: ")
-
-                                                                sql = "update disciplinas set id_disciplina='%s' where id_disciplina='%s'" %(id_novo, id_disciplina)
-                                                                try:
-                                                                    cursor.execute(sql)
-                                                                    db.commit()
-                                                                    print "ID editado com sucesso."
-                                                                except:
-                                                                    print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
-                                                                    db.rollback()
-  
-                                                            if opcao == 2:
-                                                                nome = raw_input("Digite o novo nome da disciplina: ")
-                                                                sql = "update disciplinas set nome_disciplina='%s' where id_disciplina='%s'" %(nome, id_disciplina)
-                                                                try:
-                                                                    cursor.execute(sql)
-                                                                    db.commit()
-                                                                    print "Nome da disciplina editado com sucesso."
-                                                                except:
-                                                                    print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
-                                                                    db.rollback()
-                                                                
-                                                            if opcao == 3:
-                                                                os.system("cls")
-                                                                print_cursos()   
-                                                                curso = raw_input("Digite o id do novo curso: ")
-                                                                os.system("cls")
-                                                                verificar_curso = "select id_curso from cursos where id_curso='%s'" %(curso)
-                                                                existe = cursor.execute(verificar_curso)
-                                                                if existe < 1:
-                                                                    print "Curso não existente."
-                                                                else:
-                                                                    sql = "update disciplinas set curso_disciplina='%s' where id_disciplina='%s'" %(curso, id_disciplina)
+                                                            opcao = input("Digite:\n 1 (ID), 2 (NOME) ou 3 (CURSO): ")
+                                                            if opcao > 3 or opcao < 1:
+                                                                print "Opção incorreta."
+                                                                continue
+                                                            else:
+                                                                if opcao == 1:
+                                                                    id_novo = raw_input("Digite o novo ID da disciplina: ")
+    
+                                                                    sql = "update disciplinas set id_disciplina='%s' where id_disciplina='%s'" %(id_novo, id_disciplina)
                                                                     try:
                                                                         cursor.execute(sql)
                                                                         db.commit()
-                                                                        print "Curso da disciplina editado com sucesso."
+                                                                        print "ID editado com sucesso."
                                                                     except:
                                                                         print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
                                                                         db.rollback()
-                                    
-                                                    saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
-                                                    saida = saida.lower()
-                                                    os.system("cls")
+      
+                                                                if opcao == 2:
+                                                                    nome = raw_input("Digite o novo nome da disciplina: ")
+                                                                    sql = "update disciplinas set nome_disciplina='%s' where id_disciplina='%s'" %(nome, id_disciplina)
+                                                                    try:
+                                                                        cursor.execute(sql)
+                                                                        db.commit()
+                                                                        print "Nome da disciplina editado com sucesso."
+                                                                    except:
+                                                                        print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
+                                                                        db.rollback()
+                                                                    
+                                                                if opcao == 3:
+                                                                    os.system("cls")
+                                                                    print_cursos()   
+                                                                    curso = raw_input("Digite o id do novo curso: ")
+                                                                    os.system("cls")
+                                                                    verificar_curso = "select id_curso from cursos where id_curso='%s'" %(curso)
+                                                                    existe = cursor.execute(verificar_curso)
+                                                                    if existe < 1:
+                                                                        print "Curso não existente."
+                                                                    else:
+                                                                        sql = "update disciplinas set curso_disciplina='%s' where id_disciplina='%s'" %(curso, id_disciplina)
+                                                                        try:
+                                                                            cursor.execute(sql)
+                                                                            db.commit()
+                                                                            print "Curso da disciplina editado com sucesso."
+                                                                        except:
+                                                                            print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
+                                                                            db.rollback()
+                                        
+                                                        saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                        saida = saida.lower()
+                                                        os.system("cls")
 #EDITAR DISCIPLINA 100% PERFEITO by Gustavo____________________________________________________________________                                               
                                                 
                                                 if choice5 == 3:
@@ -686,29 +770,37 @@ while inicio == 0:
                                                     print "\n                   EXCLUIR DISCIPLINA.\n"
                                                     
                                                     print_cursos()
-                                                    CURSO = raw_input("\nDigite o ID do curso da disciplina: ")
-                                                    os.system("cls")
-                                                    print_disciplinas(CURSO)
-                                                    
-                                                    deletado = raw_input('\nDigite o ID da disciplina que deseja excluir: ')
-                                                    verificar_dis = "select id_disciplina from disciplinas where id_disciplina='%s'" %(deletado)
-                                                    existe = cursor.execute(verificar_dis)
-                                                    if existe < 1:
-                                                        print "Disciplina não existente."
-                                                        continue
+                                                    CURSO = raw_input("\nDigite o ID do curso da disciplina ou 0 para sair: ")
+                                                    if CURSO == "0":
+                                                        saida = "s"
+                                                        os.system("cls")
                                                     else:
-                                                        sql = "delete from disciplinas where id_disciplina='%s'" %(deletado)
-                                                        try:
-                                                            cursor.execute(sql)
-                                                            db.commit()
-                                                            print "Disciplina excluida com sucesso."
-                                                        except:
-                                                            print "Erro na exclusão."
-                                                            db.rollback()
-                                                                                                            
-                                                    saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
-                                                    saida = saida.lower()
-                                                    os.system("cls")
+                                                        os.system("cls")
+                                                        print_disciplinas(CURSO)
+                                                        
+                                                        deletado = raw_input('\nDigite o ID da disciplina que deseja excluir ou 0 para sair: ')
+                                                        if deletado == "0":
+                                                            saida = "s"
+                                                            os.system('cls')
+                                                        else:
+                                                            verificar_dis = "select id_disciplina from disciplinas where id_disciplina='%s'" %(deletado)
+                                                            existe = cursor.execute(verificar_dis)
+                                                            if existe < 1:
+                                                                print "Disciplina não existente."
+                                                                continue
+                                                            else:
+                                                                sql = "delete from disciplinas where id_disciplina='%s'" %(deletado)
+                                                                try:
+                                                                    cursor.execute(sql)
+                                                                    db.commit()
+                                                                    print "Disciplina excluida com sucesso."
+                                                                except:
+                                                                    print "Erro na exclusão."
+                                                                    db.rollback()
+                                                                                                                    
+                                                                saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                                saida = saida.lower()
+                                                                os.system("cls")
 #EXCLUIR DISCIPLINA 100% PERFEITO by Gustavo____________________________________________________________________                                                                                              
 
                                                 if choice5 == 4:
@@ -727,43 +819,48 @@ while inicio == 0:
                                         else:
                                             saida = None
                                             while saida <> "s":
-#ESSE E DIFICIL VOU DEIXAR PRA DEPOIS
 #FAZENDO AGORA BY GUSTAVO
 #________________________________________________________________________________________________________________________
 
                                                 if choice6 == 1:
                                                     os.system("cls")
                                                     print "\n                   ADICIONAR PROFESSOR.\n"
-                                                    
+
                                                     Test = Validacao()
-                                                    id_professor = Test.CPF_Check(raw_input("Digite o CPF do professor: "))
-                                                    nome_professor = raw_input("Digite o nome do professor: ")
-                                                    os.system("cls")
-                                                    print_departamentos()    
-                                                    departamento_professor = raw_input("\nDigite o departamento do professor: ")
-                                                    os.system("cls")
+                                                    id_professor = raw_input("Digite o CPF do professor ou 0 para sair: ")
+                                                    if id_professor == "0":
+                                                        saida = "s"
+                                                        os.system("cls")
+                                                    else:
+                                                        os.system("cls")
+                                                        id_professor = Test.CPF_Check(id_professor)
+                                                        nome_professor = raw_input("Digite o nome do professor: ")
+                                                        os.system("cls")
+                                                        print_departamentos()    
+                                                        departamento_professor = raw_input("\nDigite o departamento do professor: ")
+                                                        os.system("cls")
+                                                        
+                                                        #Cadastra o prof
                                                     
-                                                    #Cadastra o prof
-                                                    #CAMPO EM BRANCO QUE PRECISA SER TIRADO DISCIPLINAS
-                                                    sql = "insert into professores values('%s','%s','%s', '%s')"%(id_professor, nome_professor, "", departamento_professor)
-                                                    try:
+                                                        sql = "insert into professores values('%s','%s','%s')"%(id_professor, nome_professor, departamento_professor)
+                                                        try:
+                                                            cursor.execute(sql)
+                                                            db.commit()
+                                                        except:
+                                                            print "Erro no cadastro. Por favor verifique se os campos foram inseridos corretamente."
+                                                            db.rollback()
+                                                            
+                                                        #Cadastra o usuario
+                                                        
+                                                        classe = 0 #Classe 0 para professores
+                                                        senha = "UFRPE1234" #DEFAULT 
+                                                        sql = "insert into usuarios values('%s','%s','%s')"%(id_professor, senha, classe)
                                                         cursor.execute(sql)
                                                         db.commit()
-                                                    except:
-                                                        print "Erro no cadastro. Por favor verifique se os campos foram inseridos corretamente."
-                                                        db.rollback()
-                                                        
-                                                    #Cadastra o usuario
-                                                    
-                                                    classe = 0 #Classe 0 para professores
-                                                    senha = "UFRPE1234" #DEFAULT 
-                                                    sql = "insert into usuarios values('%s','%s','%s')"%(id_professor, senha, classe)
-                                                    cursor.execute(sql)
-                                                    db.commit()
-                                                       
-                                                    saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
-                                                    saida = saida.lower()
-                                                    os.system("cls")                                                
+                                                           
+                                                        saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                        saida = saida.lower()
+                                                        os.system("cls")                                                
 #________________________________________________________________________________________________________________________
 
                                                 if choice6 == 2:
@@ -772,108 +869,111 @@ while inicio == 0:
                                                     teste = Validacao()
                                                     print_professores()
                                             
-                                                    id_CPF = raw_input('\nDigite o CPF do usuario que deseja editar: ')
-                                                    os.system("cls")
-                                                    verificar_user = "select usuario_cpf from usuarios where usuario_cpf='%s'" %(id_CPF)
-                                                    existe = cursor.execute(verificar_user)
-                                                    if existe < 1:
-                                                        print "Usuario não existente."
-                                                        continue
+                                                    id_CPF = raw_input('\nDigite o CPF do usuario ou 0 para sair: ')
+                                                    if id_CPF == "0":
+                                                        saida = "s"
+                                                        os.system("cls")
                                                     else:
-                                                        opcao = input("EDITAR:\n 1 (CPF)   2 (NOME)   3 (SENHA)   4 (CLASSE)\n->")
-                                                        if opcao > 4 or opcao < 1:
-                                                            print "Opção incorreta."
+                                                        os.system("cls")
+                                                        verificar_user = "select usuario_cpf from usuarios where usuario_cpf='%s'" %(id_CPF)
+                                                        existe = cursor.execute(verificar_user)
+                                                        if existe < 1:
+                                                            print "Usuario não existente."
                                                             continue
                                                         else:
-                                                            if opcao == 1:
-                                                                print "\nOpcao valida apenas para professores sem reservas e disciplinas.\n"
-                                                                id_novo = teste.CPF_Check(raw_input("Digite o novo CPF do usuario: "))
-                                                                sql = "update usuarios set usuario_cpf='%s' where usuario_CPF='%s'" %(id_novo, id_CPF)
-                                                                try:
-                                                                    cursor.execute(sql)
-                                                                    db.commit()
-                                                                    print "CPF editado com sucesso."
-                                                                except:
-                                                                    print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
-                                                                    db.rollback()
-                                                                #muda ID do USUARIO do PROFESSOR
-                                                                sql = "update professores set id_professor='%s' where id_professor='%s'" %(id_novo, id_CPF)
-                                                                try:
-                                                                    cursor.execute(sql)
-                                                                    db.commit()
-                                                                    print "CPF editado com sucesso."
-                                                                except:
-                                                                    print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
-                                                                    db.rollback()
-                                                                    
-                                                                saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
-                                                                saida = saida.lower()
-                                                                os.system("cls")
-
-
-                                                            if opcao == 2:
-                                                                novo_nome = raw_input("\nDigite o nome do professor: ")
-                                                                sql = "update professores set nome_professor='%s' where id_professor='%s'" %(novo_nome, id_CPF)
-                                                                try:
-                                                                    cursor.execute(sql)
-                                                                    db.commit()
-                                                                    print "Nome editado com sucesso."
-                                                                except:
-                                                                    print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
-                                                                    db.rollback()
-                                                                    
-                                                                saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
-                                                                saida = saida.lower()
-                                                                os.system("cls")
-
-                                                            if opcao == 3:
-                                                                os.system("cls")
-                                                                teste = Validacao()
-                                                                senha1 = teste.SENHA_Check(getpass.getpass(prompt="Digite a nova senha do usuario: "))
-                                                                senha2 = teste.SENHA_Check(getpass.getpass(prompt="CONFIRME: "))
-                                                                if senha1 == senha2:
-                                                                    sql = "update usuarios set senha='%s' where usuario_cpf='%s'" %(senha1, id_CPF)
+                                                            opcao = input("EDITAR:\n 1 (CPF)   2 (NOME)   3 (SENHA)   4 (CLASSE)\n->")
+                                                            if opcao > 4 or opcao < 1:
+                                                                print "Opção incorreta."
+                                                            else:
+                                                                if opcao == 1:
+                                                                    print "\nOpcao valida apenas para professores sem reservas e disciplinas.\n"
+                                                                    id_novo = teste.CPF_Check(raw_input("Digite o novo CPF do usuario: "))
+                                                                    sql = "update usuarios set usuario_cpf='%s' where usuario_CPF='%s'" %(id_novo, id_CPF)
                                                                     try:
                                                                         cursor.execute(sql)
                                                                         db.commit()
-                                                                        print "Senha editada com sucesso."
+                                                                        print "CPF editado com sucesso."
                                                                     except:
                                                                         print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
                                                                         db.rollback()
-                                                                else:
-                                                                    errorrrr = raw_input ("\n[ERRO 003] Senhas diferentes. Press ENTER ")
-                                                                    
-                                                                saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
-                                                                saida = saida.lower()
-                                                                os.system("cls") 
-
-                                                            if opcao == 4:  
-                                                                os.system("cls")
-                                                                print_professores()
-                                                                id_CPF = raw_input('\nDigite o CPF do usuario que deseja editar: ')
-                                                                os.system("cls")
-                                                                verificar_user = "select usuario_cpf from usuarios where usuario_cpf='%s'" %(id_CPF)
-                                                                existe = cursor.execute(verificar_user)
-                                                                if existe < 1:
-                                                                    erororor=raw_input("Usuario não existente. PRESS ENTER")
-                                                                    continue
-                                                                else:
-                                                                    classe = input("Digite o valor da nova classe (0 ou 1): ")
-
-                                                                    if classe == 1 or classe == 0:
-                                                                        sql = "update usuarios set classe='%d' where usuario_cpf='%s'" %(classe, id_CPF)
+                                                                    #muda ID do USUARIO do PROFESSOR
+                                                                    sql = "update professores set id_professor='%s' where id_professor='%s'" %(id_novo, id_CPF)
+                                                                    try:
+                                                                        cursor.execute(sql)
+                                                                        db.commit()
+                                                                        print "CPF editado com sucesso."
+                                                                    except:
+                                                                        print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
+                                                                        db.rollback()
+                                                                        
+                                                                    saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                                    saida = saida.lower()
+                                                                    os.system("cls")
+    
+    
+                                                                if opcao == 2:
+                                                                    novo_nome = raw_input("\nDigite o nome do professor: ")
+                                                                    sql = "update professores set nome_professor='%s' where id_professor='%s'" %(novo_nome, id_CPF)
+                                                                    try:
+                                                                        cursor.execute(sql)
+                                                                        db.commit()
+                                                                        print "Nome editado com sucesso."
+                                                                    except:
+                                                                        print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
+                                                                        db.rollback()
+                                                                        
+                                                                    saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                                    saida = saida.lower()
+                                                                    os.system("cls")
+    
+                                                                if opcao == 3:
+                                                                    os.system("cls")
+                                                                    teste = Validacao()
+                                                                    senha1 = teste.SENHA_Check(getpass.getpass(prompt="Digite a nova senha do usuario: "))
+                                                                    senha2 = teste.SENHA_Check(getpass.getpass(prompt="CONFIRME: "))
+                                                                    if senha1 == senha2:
+                                                                        sql = "update usuarios set senha='%s' where usuario_cpf='%s'" %(senha1, id_CPF)
                                                                         try:
                                                                             cursor.execute(sql)
                                                                             db.commit()
-                                                                            print "Classe editada com sucesso."
+                                                                            print "Senha editada com sucesso."
                                                                         except:
                                                                             print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
                                                                             db.rollback()
-                                                                    else: 
-                                                                        erorororororo = raw_input("\nClasse invalida. PRESS ENTER ")                               
-                                                                saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
-                                                                saida = saida.lower()
-                                                                os.system("cls")
+                                                                    else:
+                                                                        errorrrr = raw_input ("\n[ERRO 003] Senhas diferentes. Press ENTER ")
+                                                                        
+                                                                    saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                                    saida = saida.lower()
+                                                                    os.system("cls") 
+    
+                                                                if opcao == 4:  
+                                                                    os.system("cls")
+                                                                    print_professores()
+                                                                    id_CPF = raw_input('\nDigite o CPF do usuario que deseja editar: ')
+                                                                    os.system("cls")
+                                                                    verificar_user = "select usuario_cpf from usuarios where usuario_cpf='%s'" %(id_CPF)
+                                                                    existe = cursor.execute(verificar_user)
+                                                                    if existe < 1:
+                                                                        erororor=raw_input("Usuario não existente. PRESS ENTER")
+                                                                        continue
+                                                                    else:
+                                                                        classe = input("Digite o valor da nova classe (0 ou 1): ")
+    
+                                                                        if classe == 1 or classe == 0:
+                                                                            sql = "update usuarios set classe='%d' where usuario_cpf='%s'" %(classe, id_CPF)
+                                                                            try:
+                                                                                cursor.execute(sql)
+                                                                                db.commit()
+                                                                                print "Classe editada com sucesso."
+                                                                            except:
+                                                                                print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
+                                                                                db.rollback()
+                                                                        else: 
+                                                                            erorororororo = raw_input("\nClasse invalida. PRESS ENTER ")                               
+                                                                    saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                                    saida = saida.lower()
+                                                                    os.system("cls")
 #________________________________________________________________________________________________________________________
 
                                                 if choice6 == 3:
@@ -883,48 +983,133 @@ while inicio == 0:
                                                     print "\nOpcao valida apenas para professores sem reservas e disciplinas.\n"
 
                                                     print_professores()
-                                                    id_CPF = raw_input('\nDigite o CPF do professor que deseja excluir: ')
-                                                    os.system("cls")                                                
-                                                    
-                                                    verificar_user = "select usuario_cpf from usuarios where usuario_cpf='%s'" %(id_CPF)
-                                                    existe = cursor.execute(verificar_user)
-                                                    if existe < 1:
-                                                        print "Professor/Usuário não existente."
-                                                        continue
+                                                    id_CPF = raw_input('\nDigite o CPF do professor ou 0 para sair: ')
+                                                    if id_CPF == "0":
+                                                        saida = "s"
+                                                        os.system("cls")
                                                     else:
-                                                        
-                                                        sql = "delete from usuarios where usuario_cpf='%s'" %(id_CPF)
-                                                        try:
-                                                            cursor.execute(sql)
-                                                            db.commit()
-                                                            print "Usuário excluido com sucesso."
-                                                        except:
-                                                            print "Erro na exclusão."
-                                                            db.rollback()
-        
-                                                        sql = "delete from professores where id_professor='%s'" %(id_CPF)
-                                                        try:
-                                                            cursor.execute(sql)
-                                                            db.commit()
-                                                            print "Professor excluido com sucesso."
-                                                        except:
-                                                            print "Erro na exclusão, há um usuário atrelado ao professor."
-                                                            db.rollback()
-                                          
-                                                    saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
-                                                    saida = saida.lower()
-                                                    os.system("cls")
+                                                        os.system("cls")                                                
+                                                        verificar_user = "select usuario_cpf from usuarios where usuario_cpf='%s'" %(id_CPF)
+                                                        existe = cursor.execute(verificar_user)
+                                                        if existe < 1:
+                                                            print "Professor/Usuário não existente."
+                                                        else:
+                                                            
+                                                            sql = "delete from usuarios where usuario_cpf='%s'" %(id_CPF)
+                                                            try:
+                                                                cursor.execute(sql)
+                                                                db.commit()
+                                                                print "Usuário excluido com sucesso."
+                                                            except:
+                                                                print "Erro na exclusão."
+                                                                db.rollback()
+            
+                                                            sql = "delete from professores where id_professor='%s'" %(id_CPF)
+                                                            try:
+                                                                cursor.execute(sql)
+                                                                db.commit()
+                                                                print "Professor excluido com sucesso."
+                                                            except:
+                                                                print "Erro na exclusão, há um usuário atrelado ao professor."
+                                                                db.rollback()
+                                              
+                                                        saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                        saida = saida.lower()
+                                                        os.system("cls")
 #________________________________________________________________________________________________________________________
 
 
                                                 if choice6 == 4:
                                                     os.system("cls")
                                                     print "\n             GERENCIAR DISCIPLINAS DO PROFESSOR.\n"
-                                                    
-                                                                                                            
-                                                    saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
-                                                    saida = saida.lower()
-                                                    os.system("cls")
+                                                    print_professores()
+                                                    cpf_professor = raw_input('\nDigite o CPF do professor: ')
+                                                    os.system('cls')
+                                                    opcao_dis = input("DIGITE:\n 1 (ADICIONAR)   2 (EXCLUIR)   3 (SAIR)\n->")
+                                                    if opcao_dis > 3 or opcao_dis < 1:
+                                                        print "Opção incorreta."
+                                                    else:
+                                                        if opcao_dis == 1:
+                                                            os.system('cls')
+                                                            print "\n               ADICIONAR DISCIPLINA.\n"
+                                                            print_cursos()
+                                                            CURSO = raw_input('\nDigite o ID do curso: ')
+                                                            os.system('cls')
+                                                            
+                                                            saida=None
+                                                            while saida <> "s":
+                                                                
+                                                                print_disciplinas(CURSO)
+                                                                DISCIPLINA = raw_input('\nDigite o ID da disciplina: ')
+                                                                os.system('cls')
+                                                                id_docencia = cpf_professor+'_'+DISCIPLINA
+                                                                sql = "insert into docencia values('%s','%s','%s')"%(id_docencia, cpf_professor, DISCIPLINA)
+                                                                try:
+                                                                    cursor.execute(sql)
+                                                                    db.commit()
+                                                                except:
+                                                                    print "Erro no cadastro. O item foi digitado incorretamente ou a disciplina já está cadastrada."
+                                                                    db.rollback()
+                                                                
+                                                                
+                                                                saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                                saida = saida.lower()
+                                                                os.system("cls")
+                                                        
+                                                        if opcao_dis == 2: 
+                                                            os.system("cls")
+                                                            print "\n               EXCLUIR DISCIPLINA.\n"
+                                                            saida = None
+                                                            while saida <> "s":              
+                                                                cursor.execute("select * from docencia where id_professor='%s'" %(cpf_professor))
+                                                                lista_disprof_ID = []
+                                                                lista_disciplina_ID= []
+                                                                
+                                                                for row in cursor.fetchall(): #pega ID
+                                                                    lista_disprof_ID.append(row[0])
+                                                                    lista_disciplina_ID.append(row[2])
+                                                                
+                                                                lista_disciplina_NOME = []
+                                                                lista_disciplina_DEP = []
+                                                            
+                                                                for j in range (len(lista_disciplina_ID)): #pega nome da disciplina
+                                                                    cursor.execute("select * from disciplinas where id_disciplina='%s'" %(lista_disciplina_ID[j]))
+                                                                    
+                                                                    for row in cursor.fetchall():
+                                                                        lista_disciplina_NOME.append(row[1])
+                                                                        lista_disciplina_DEP.append(row[2])
+                                                                        
+                                                                
+                                                                print "                      DISCIPLINAS.\n"
+                                                                print "item   disciplina    departamento\n"  
+                                                                for i in range (len(lista_disciplina_ID)):
+                                                                    print "[%.2d]   %s   (%s)" %(i+1,lista_disciplina_NOME[i],lista_disciplina_DEP[i])
+                                                                
+                                                                danosse = input("\nDigite o item a ser excluido ou 0 para sair: ")
+                                                                
+                                                                if danosse == 0:
+                                                                    saida = "s"
+                                                                else:
+                                                                    del_disciplina = lista_disprof_ID[danosse-1]
+                                                                    sql = "delete from docencia where id_docencia='%s'" %(del_disciplina)
+                                                                    try:
+                                                                        cursor.execute(sql)
+                                                                        db.commit()
+                                                                        print "Disciplina excluida com sucesso."
+                                                                    except:
+                                                                        print "[ERRO XXX] Erro na exclusão."
+                                                                        db.rollback()
+                                                                                                                    
+                                                                saida = raw_input('\nDigite s para sair ou ENTER para continuar excluindo: ')
+                                                                saida = saida.lower()
+                                                                os.system("cls")
+                                                        
+                                                        if opcao_dis == 3:
+                                                            os.system("cls")
+                                                            print "\n                   EXIT.\n"
+                                                            saida = "s"
+                                                        os.system("cls") 
+                                                        
 #________________________________________________________________________________________________________________________
 
                                                 if choice6 == 5:
@@ -970,89 +1155,150 @@ while inicio == 0:
                             
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
 
+##### FAZER ERRO DA HORA #####
+
                                     if choice == 1:
                                         os.system("cls")
                                         print "\n                   FAZER RESERVA.\n"
                                         
                                         saida = None
                                         while saida <> "s":
+                                            is_today_the_future = False
                                             print_predios()
-                                            predio_reserva = raw_input("\n\nDigite o ID do prédio da reserva ")
-                                            os.system("cls")
-                                            
-                                            print_local(predio_reserva)
-                                            local_reserva = raw_input("\n\nDigite o ID do local da reserva: ")
-                                            os.system("cls")
-                                            
-                                            data = raw_input("Digite a data da reserva ano-mes-dia (0000-00-00) ")
-                                            os.system("cls")
-                                            
-                                            professor_reserva = cpf
-                                            
-#############################################print_disciplinas(professor_reserva)
-                                            #Fazer disciplinas apenas do professor
-                                            
-                                            disciplina_reserva = raw_input("\n\nDigite o ID da disciplina da reserva: ")
-                                
-                                            os.system("cls")
-                                            print "Digite a hora da reserva (funcionamento das 7 as 22 horas)\n"
-                                            hora1 = input("Inicio: ")
-                                            hora2 = input("Fim: ")
-                                            
-#############################################Fazer verificacao de horario negativo ou fora do funcionamento
-                                            
-                                            count_erros = 0
-                                            nova_reserva = 0
-                                            
-                                            for horario in range (hora1,hora2,1):
-                                                hora = str(horario)
-                                                id_reserva = hora+"_"+data+"_"+predio_reserva+"_"+local_reserva
-                                                
-                                                verificar_reserva = "select id_reserva from reservas where id_reserva='%s'" %(id_reserva)
-                                                existe = cursor.execute(verificar_reserva)
-                                                if existe < 1:
-                                                    print "[LIVRE]      %s horas" %(hora)
-                                                    continue
-                                                else:
-                                                    print "[RESERVADO]  %s horas"%(hora)
-                                                    count_erros = count_erros + 1
-                                                    
-                                            while count_erros != 0:
-                                                Resposta = input("\n1 - Continuar\n2 - Alterar reserva\n3 - Sair\n->")
+                                            predio_reserva = raw_input("\n\nDigite o ID do prédio da reserva ou 0 para sair: ")
+                                            if predio_reserva == "0":
+                                                saida = "s"
                                                 os.system("cls")
-                                                if Resposta == 1:
-                                                    count_erros = 0
-                                                elif Resposta == 2:
-                                                    nova_reserva = 1
-                                                    count_erros = 0
-                                                elif Resposta == 3:
-                                                    nova_reserva = 3
-                                                    count_erros = 0
-                                                    saida = "s"
-                                                else:
-                                                    print "[ERRO 004] Opcao invalida"
                                             else:
-                                                if nova_reserva == 1:
-                                                    continue
-                                                elif nova_reserva == 0:
-                                                    #cadastrarReserva
+                                                os.system("cls")
+                                                print_local(predio_reserva)
+                                                local_reserva = raw_input("\n\nDigite o ID do local da reserva: ")
+                                                os.system("cls")
+                                                
+                                                data = raw_input("Digite a data da reserva ano-mes-dia (0000-00-00) ")
+                                                date = data
+                                                year,month,day = date.split('-')
+                                                year,month,day = int(year),int(month),int(day)
+                                                today = datetime.now()
+                                                if year == today.year:                                                    
+                                                    if today.month >= 1 and today.month <= 6:
+                                                        if month == today.month:
+                                                            if month == 1 or month == 3 or month == 5: # 31 dias
+                                                                if day >= today.day and day <= 31:
+                                                                    is_today_the_future = True
+                                                            if month == 2:
+                                                                if (year % 4) <> 0: # 28 dias
+                                                                    if day >= today.day and day <= 28:
+                                                                        is_today_the_future = True 
+                                                                else: # 29 dias (bissexto)
+                                                                    if day >= today.day and day <= 29:
+                                                                        is_today_the_future = True     
+                                                            else: # 30 dias
+                                                                if day >= today.day and day <= 30:
+                                                                    is_today_the_future = True
+                                                                    
+                                                        if month > today.month and month <= 6 and month >= 1:
+                                                            if month == 1 or month == 3 or month == 5: # 31 dias
+                                                                if day >= 1 and day <= 31:
+                                                                    is_today_the_future = True
+                                                            if month == 2:
+                                                                if (year % 4) <> 0: # 28 dias
+                                                                    if day >= 1 and day <= 28:
+                                                                        is_today_the_future = True
+                                                                else: # 29 dias (bissexto)
+                                                                    if day >= 1 and day <= 29:
+                                                                        is_today_the_future = True            
+                                                            else: # 30 dias
+                                                                if day >= 1 and day <= 30:
+                                                                    is_today_the_future = True                                             
+                                                    if today.month >= 7 and today.month <= 12:
+                                                        if month == today.month:
+                                                            if month == 7 or month == 8 or month == 10 or month == 12: # 31 dias
+                                                                if day >= today.day and day <= 31:
+                                                                    is_today_the_future = True
+                                                            else: # 30 dias
+                                                                if day >= today.day and day <= 30:
+                                                                    is_today_the_future = True
+                                                        if month > today.month and month <= 12 and month >= 7:
+                                                            if month == 7 or month == 8 or month == 10 or month == 12: # 31 dias
+                                                                if day >= 1 and day <= 31:
+                                                                    is_today_the_future = True                                                                    
+                                                            else: # 30 dias
+                                                                if day >= 1 and day <= 30:
+                                                                    is_today_the_future = True
+                                                
+                                                if is_today_the_future == True:
+                                                    os.system("cls")
+                                                    
+                                                    professor_reserva = cpf
+                                                    print_disciplinas_professor(professor_reserva)
+                                                    
+                                                    disciplina_reserva = raw_input("\n\nDigite o ID da disciplina da reserva: ")
+                                        
+                                                    os.system("cls")
+                                                    print "Digite a hora da reserva (funcionamento das 7 as 22 horas)\n"
+                                                    hora1 = input("Inicio: ")
+                                                    hora2 = input("Fim: ")
+                                                    
+        #############################################Fazer verificacao de horario negativo ou fora do funcionamento
+                                                    
+                                                    count_erros = 0
+                                                    nova_reserva = 0
+                                                    
                                                     for horario in range (hora1,hora2,1):
                                                         hora = str(horario)
-                                                        id_reserva = hora+"_"+data+"_"+predio_reserva+"_"+local_reserva
-                                                        sql = "insert into reservas values('%s','%s','%s', '%s', '%s', '%s', '%d')"%(id_reserva, predio_reserva, local_reserva, data, disciplina_reserva, professor_reserva, horario)
-                                                        try:
-                                                            cursor.execute(sql)
-                                                            db.commit()
-                                                            print "Cadastro efetuado com sucesso as %s horas" %(hora)
-                                                        except:
-                                                            print "[ERRO 002] Reserva já existente para %s horas." %(hora)
-                                                            db.rollback()
-                                                    #cadastrarReserva
+                                                        id_reserva = data+"_"+hora+"_"+predio_reserva+"_"+local_reserva
+                                                        
+                                                        verificar_reserva = "select id_reserva from reservas where id_reserva='%s'" %(id_reserva)
+                                                        existe = cursor.execute(verificar_reserva)
+                                                        if existe < 1:
+                                                            print "[LIVRE]      %s horas" %(hora)
+                                                            continue
+                                                        else:
+                                                            print "[RESERVADO]  %s horas"%(hora)
+                                                            count_erros = count_erros + 1
+                                                            
+                                                    while count_erros != 0:
+                                                        Resposta = input("\n1 - Continuar\n2 - Alterar reserva\n3 - Sair\n->")
+                                                        os.system("cls")
+                                                        if Resposta == 1:
+                                                            count_erros = 0
+                                                        elif Resposta == 2:
+                                                            nova_reserva = 1
+                                                            count_erros = 0
+                                                        elif Resposta == 3:
+                                                            nova_reserva = 3
+                                                            count_erros = 0
+                                                            saida = "s"
+                                                        else:
+                                                            print "[ERRO 004] Opcao invalida"
+                                                    else:
+                                                        if nova_reserva == 1:
+                                                            continue
+                                                        elif nova_reserva == 0:
+                                                            #cadastrarReserva
+                                                            for horario in range (hora1,hora2,1):
+                                                                hora = str(horario)
+                                                                id_reserva = data+"_"+hora+"_"+predio_reserva+"_"+local_reserva
+                                                                sql = "insert into reservas values('%s','%s','%s', '%s', '%s', '%s', '%d')"%(id_reserva, predio_reserva, local_reserva, data, disciplina_reserva, professor_reserva, horario)
+                                                                try:
+                                                                    cursor.execute(sql)
+                                                                    db.commit()
+                                                                    print "Cadastro efetuado com sucesso as %s horas" %(hora)
+                                                                except:
+                                                                    print "[ERRO 002] Reserva já existente para %s horas." %(hora)
+                                                                    db.rollback()
+                                                            #cadastrarReserva
+                                                        else:
+                                                            saida="s"
+                                                    saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                    saida = saida.lower()
+                                                    os.system("cls")
                                                 else:
-                                                    saida="s"
-                                            saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
-                                            saida = saida.lower()
-                                            os.system("cls")
+                                                    saida = "s"
+                                                    os.system("cls")
+                                                    print "ERRO: IMPOSSIVEL RESERVAR NESSA DATA\n"
+                                                    fap = raw_input('ENTER')
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
                                     if choice == 2:
                                         os.system("cls")
@@ -1119,31 +1365,31 @@ while inicio == 0:
                                                     print "Erro na exclusão, não existe reserva nesse horário."
                                                     db.rollback()
                                                                                                 
-                                            saida = raw_input('\nDigite s para sair ou ENTER para continuar excluindo: ')
-                                            saida = saida.lower()
-                                            os.system("cls")
-                                                
-                                        print "    FINISH"
+                                                saida = raw_input('\nDigite s para sair ou ENTER para continuar excluindo: ')
+                                                saida = saida.lower()
+                                                os.system("cls")
+                                        
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
-#ERRO DA SENHA CORRIGIDO!
+
                                     if choice == 3:
                                         os.system("cls")
                                         print "\n                  ALTERAR SENHA.\n"
+                                        print "OBS: \n1 - A senha deve ter mais que 3 e menos que 17 caracteres.\n2 - A senha deve conter apenas letras e numeros."
                                         teste = Validacao()
-                                        senha1 = teste.SENHA_Check(getpass.getpass(prompt="Digite a nova senha do usuario: "))
-                                        senha2 = teste.SENHA_Check(getpass.getpass(prompt="Confirme a nova senha do usuario: "))
+                                        senha1 = teste.SENHA_Check(getpass.getpass(prompt="Digite a nova senha: "))
+                                        senha2 = teste.SENHA_Check(getpass.getpass(prompt="CONFIRME: "))
                                         if senha1 == senha2:
                                             
                                             sql = "update usuarios set senha='%s' where usuario_cpf='%s'" %(senha1, cpf)
                                             try:
                                                 cursor.execute(sql)
                                                 db.commit()
-                                                Okayyy = raw_input("\nSenha editada com sucesso. PRESS ENTER ")
+                                                Okayyy = raw_input("\nSenha editada com sucesso. Pressione ENTER ")
                                             except:
                                                 print "Erro na edição. Por favor verifique se os campos foram inseridos corretamente."
                                                 db.rollback()
                                         else:
-                                            errorrrr = raw_input ("\n[ERRO 003] Senhas diferentes. Press ENTER ")                        
+                                            errorrrr = raw_input ("\n[ERRO 003] Senhas diferentes. Pressione ENTER ")                        
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
                             
                                     if choice == 4:
