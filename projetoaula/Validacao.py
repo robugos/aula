@@ -29,7 +29,7 @@ class Validacao():
         resultteste = True
         c = 0 #Contador
         while resultteste == True and c < len(self.senha):
-            if (self.senha[c] in self.numeros or self.senha[c].upper() in self.alfabeto) and len(self.senha) <= 16:
+            if (self.senha[c] in self.numeros or self.senha[c].upper() in self.alfabeto) and len(self.senha) <= 16 and len(self.senha) >= 4:
                 c+=1
             else:
                 print "Senha fora do padrão"
