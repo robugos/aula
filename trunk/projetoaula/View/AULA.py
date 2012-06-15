@@ -174,10 +174,13 @@ inicio=0
 print "+-----------------------------------------------+"
 print "|                    AULA                       |"
 print "+-----------------------------------------------+"
-choice=input("[1] Pesquisa  [2] Login  [3] Sair\nDigite: ")
+choice=input("\n[1] Pesquisa  [2] Login  [3] Sair\n\nDigite: ")
 if choice > 3 or choice <1:
     os.system("cls")
-    print "[ERRO 001] Opcao invalida. Tente novamente.\n"
+    print "+-----------------------------------------------+"
+    print "|                    AULA                       |"
+    print "+-----------------------------------------------+"
+    print "\n[ERRO 001] Opcao invalida. Tente novamente.\n"
 else:
 #____________________________________________________________________SEARCH
     if choice == 1:
@@ -208,7 +211,6 @@ else:
             existe = cursor.execute(verificar_CPF)
             if existe < 1:
                 print "[ERRO 002] Usuario nao existente."
-                continue
             else:
                 Login.prof_CPF(cpf)
                 acesso = False
@@ -233,10 +235,11 @@ else:
 ############################# MAIN_ADM ################################
 
                         inicio_ADM = 0
-                        while inicio_ADM == 0:
-                            print "\n                     PAINEL DO ADMINISTRADOR.\n"    
-                            
-                            choice=input("Gerenciar:\n1 - Predios\n2 - Departamentos\n3 - Cursos\n4 - Disciplinas\n5 - Professores\n6 - Sair\n->")
+                        while inicio_ADM == 0:  
+                            print "+-----------------------------------------------+"
+                            print "|            PAINEL DO ADMINISTRADOR            |"
+                            print "+-----------------------------------------------+"
+                            choice=input("\nGerenciar:\n1 - Predios\n2 - Departamentos\n3 - Cursos\n4 - Disciplinas\n5 - Professores\n6 - Sair\n->")
                            
                             if choice > 6 or choice <1:
                                 print "[ERRO 001] Opcao invalida. Tente novamente.\n"
@@ -244,8 +247,9 @@ else:
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
                                 if choice == 1:
                                     os.system("cls")
-                                    print "\n                   GERENCIAR PREDIOS.\n"
-                                    
+                                    print "+-----------------------------------------------+"
+                                    print "|               GERENCIAR PREDIOS               |"
+                                    print "+-----------------------------------------------+"
                                     choice2=input("Digite:\n1 - Adicionar\n2 - Editar\n3 - Excluir\n4 - Sair\n->")
                                     if choice2 > 4 or choice2 <1:
                                         print "[ERRO 001] Opcao invalida. Tente novamente\n"
@@ -254,7 +258,9 @@ else:
                                         while saida <> "s":
                                             if choice2 == 1:
                                                 os.system("cls")
-                                                print "\n                   ADICIONAR PREDIO.\n"
+                                                print "+-----------------------------------------------+"
+                                                print "|               ADICIONAR PREDIO                |"
+                                                print "+-----------------------------------------------+"
                                                 id_predio = raw_input('Digite o ID do predio ou 0 para sair: ')
                                                 if id_predio == "0":
                                                     saida = "s"
@@ -276,8 +282,9 @@ else:
 #ADD PREDIO 100% PERFEITO by Gustavo_____________________________________________________________________
                                             if choice2 == 2:
                                                 os.system("cls")
-                                                print "\n                   EDITAR PREDIO.\n"
-                                                
+                                                print "+-----------------------------------------------+"
+                                                print "|                 EDITAR PREDIO                 |"
+                                                print "+-----------------------------------------------+"
                                                 print_predios()
                                                 
                                                 id_predio = raw_input('\nDigite o ID do predio que deseja editar ou 0 para sair: ')
@@ -326,8 +333,9 @@ else:
 #EDITAR PREDIO 100% PERFEITO by Gustavo____________________________________________________________________
                                             if choice2 == 3:
                                                 os.system("cls")
-                                                print "\n                   EXCLUIR PREDIO.\n"
-                                                
+                                                print "+-----------------------------------------------+"
+                                                print "|                EXCLUIR PREDIO                 |"
+                                                print "+-----------------------------------------------+"
                                                 print_predios()
 
                                                 deletado = raw_input('\nDigite o ID do predio que deseja excluir ou 0 para sair: ')
@@ -356,7 +364,9 @@ else:
 
                                             if choice2 == 4:
                                                 os.system("cls")
-                                                print "\n                   EXIT.\n"
+                                                print "+-----------------------------------------------+"
+                                                print "|                     EXIT                      |"
+                                                print "+-----------------------------------------------+"
                                                 saida = "s"
                                                 
                                             os.system("cls")
@@ -365,7 +375,9 @@ else:
 
                                 if choice == 2:
                                     os.system("cls")
-                                    print "\n                   GERENCIAR DEPARTAMENTOS.\n"
+                                    print "+-----------------------------------------------+"
+                                    print "|            GERENCIAR DEPARTAMENTOS            |"
+                                    print "+-----------------------------------------------+"
                                     
                                     choice3=input("Digite:\n1 - Adicionar\n2 - Editar\n3 - Excluir\n4 - Sair\n->")
                                     if choice3 > 4 or choice3 <1:
@@ -375,7 +387,9 @@ else:
                                         while saida <> "s":
                                             if choice3 == 1:
                                                 os.system("cls")
-                                                print "\n                   ADICIONAR DEPARTAMENTO.\n"
+                                                print "+-----------------------------------------------+"
+                                                print "|            ADICIONAR DEPARTAMENTO             |"
+                                                print "+-----------------------------------------------+"
 
                                                 id_departamento = raw_input('Digite o ID do departamento ou 0 para sair: ')
                                                 if id_departamento == "0":
@@ -401,7 +415,9 @@ else:
                                                 
                                             if choice3 == 2:
                                                 os.system("cls")
-                                                print "\n                   EDITAR DEPARTAMENTO.\n"
+                                                print "+-----------------------------------------------+"
+                                                print "|              EDITAR DEPARTAMENTO              |"
+                                                print "+-----------------------------------------------+"
                                                 
                                                 print_departamentos()
                                                 
@@ -460,7 +476,9 @@ else:
                                                 
                                             if choice3 == 3:
                                                 os.system("cls")
-                                                print "\n                   EXCLUIR DEPARTAMENTO.\n"
+                                                print "+-----------------------------------------------+"
+                                                print "|              EXCLUIR DEPARTAMENTO             |"
+                                                print "+-----------------------------------------------+"
                                                 print_departamentos()
                                                 deletado = raw_input('\nDigite o ID do departamento ou 0 para sair: ')
                                                 if deletado == "0":
@@ -487,7 +505,9 @@ else:
 #EXCLUIR DEPARTAMENTO 100% PERFEITO by Gustavo____________________________________________________________________ 
                                             if choice3 == 4:
                                                 os.system("cls")
-                                                print "\n                   EXIT.\n"
+                                                print "+-----------------------------------------------+"
+                                                print "|                      EXIT                     |"
+                                                print "+-----------------------------------------------+"
                                                 saida = "s"
                                         
                                             os.system("cls")
@@ -496,9 +516,11 @@ else:
 
                                 if choice == 3:
                                     os.system("cls")
-                                    print "\n                   GERENCIAR CURSOS.\n"
+                                    print "+-----------------------------------------------+"
+                                    print "|               GERENCIAR CURSOS                |"
+                                    print "+-----------------------------------------------+"
                                     
-                                    choice4=input("Digite:\n1 - Adicionar\n2 - Editar\n3 - Excluir\n4 - Sair\n->")
+                                    choice4=input("\nDigite:\n1 - Adicionar\n2 - Editar\n3 - Excluir\n4 - Sair\n->")
                                     if choice4 > 4 or choice4 <1:
                                         print "[ERRO 001] Opcao invalida. Tente novamente\n"
                                     else:
@@ -507,7 +529,9 @@ else:
 
                                             if choice4 == 1:
                                                 os.system("cls")
-                                                print "\n                   ADICIONAR CURSO.\n"
+                                                print "+-----------------------------------------------+"
+                                                print "|                ADICIONAR CURSO                |"
+                                                print "+-----------------------------------------------+"
                                                 
                                                 id_curso = raw_input("\nDigite o ID do curso ou 0 para sair: ")
                                                 if id_curso == "0":
@@ -541,7 +565,9 @@ else:
 
                                             if choice4 == 2:
                                                 os.system("cls")
-                                                print "\n                   EDITAR CURSO.\n"
+                                                print "+-----------------------------------------------+"
+                                                print "|                  EDITAR CURSO                 |"
+                                                print "+-----------------------------------------------+"
                                                 print_cursos()
                                                 
                                                 id_curso = raw_input('\nDigite o ID do curso ou 0 para sair: ')
@@ -609,7 +635,9 @@ else:
                                         
                                             if choice4 == 3:
                                                 os.system("cls")
-                                                print "\n                   EXCLUIR CURSO.\n"
+                                                print "+-----------------------------------------------+"
+                                                print "|                 EXCLUIR CURSO                 |"
+                                                print "+-----------------------------------------------+"
                                                 print_cursos()
                                                 
                                                 deletado = raw_input('\nDigite o ID do curso ou 0 para sair: ')
@@ -639,7 +667,9 @@ else:
                                  
                                             if choice4 == 4:
                                                 os.system("cls")
-                                                print "\n                   EXIT.\n"
+                                                print "+-----------------------------------------------+"
+                                                print "|                     EXIT                      |"
+                                                print "+-----------------------------------------------+"
                                                 saida = "s"
                                         
                                             os.system("cls")                                                           
@@ -647,9 +677,11 @@ else:
             
                                 if choice == 4:
                                     os.system("cls")
-                                    print "\n                   GERENCIAR DISCIPLINAS.\n"
+                                    print "+-----------------------------------------------+"
+                                    print "|             GERENCIAR DISCIPLINAS             |"
+                                    print "+-----------------------------------------------+"
                                     
-                                    choice5=input("Digite:\n1 - Adicionar\n2 - Editar\n3 - Excluir\n4 - Sair\n->")
+                                    choice5=input("\nDigite:\n1 - Adicionar\n2 - Editar\n3 - Excluir\n4 - Sair\n->")
                                     if choice5 > 4 or choice5 <1:
                                         print "[ERRO 001] Opcao invalida. Tente novamente\n"
                                     else:
@@ -657,9 +689,11 @@ else:
                                         while saida <> "s":
                                             if choice5 == 1:
                                                 os.system("cls")
-                                                print "\n                   ADICIONAR DISCIPLINA.\n"
+                                                print "+-----------------------------------------------+"
+                                                print "|             ADICIONAR DISCIPLINA              |"
+                                                print "+-----------------------------------------------+"
                                                 
-                                                id_disciplina = raw_input("Digite o ID da disciplina ou 0 para sair: ")
+                                                id_disciplina = raw_input("\nDigite o ID da disciplina ou 0 para sair: ")
                                                 if id_disciplina == "0":
                                                     saida = "s"
                                                     os.system("cls")
@@ -692,7 +726,10 @@ else:
                                              
                                             if choice5 == 2:
                                                 os.system("cls")
-                                                print "\n                   EDITAR DISCIPLINA.\n"
+                                         
+                                                print "+-----------------------------------------------+"
+                                                print "|               EDITAR DISCIPLINA               |"
+                                                print "+-----------------------------------------------+"
                                                 
                                                 print_cursos()
                                                 CURSO = raw_input("\nDigite o ID do curso da disciplina ou 0 para sair: ")
@@ -764,7 +801,10 @@ else:
                                             
                                             if choice5 == 3:
                                                 os.system("cls")
-                                                print "\n                   EXCLUIR DISCIPLINA.\n"
+                                                
+                                                print "+-----------------------------------------------+"
+                                                print "|               EXCLUIR DISCIPLINA              |"
+                                                print "+-----------------------------------------------+"
                                                 
                                                 print_cursos()
                                                 CURSO = raw_input("\nDigite o ID do curso da disciplina ou 0 para sair: ")
@@ -802,15 +842,20 @@ else:
 
                                             if choice5 == 4:
                                                 os.system("cls")
-                                                print "\n                   EXIT.\n"
+                                                print "+-----------------------------------------------+"
+                                                print "|                     EXIT                      |"
+                                                print "+-----------------------------------------------+"
                                                 saida = "s"
                                             os.system("cls")  
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
                                 if choice == 5:
                                     os.system("cls")
-                                    print "\n                   GERENCIAR PROFESSORES.\n"
+                                  
+                                    print "+-----------------------------------------------+"
+                                    print "|            GERENCIAR PROFESSORES              |"
+                                    print "+-----------------------------------------------+"
                                     
-                                    choice6=input("Digite:\n1 - Adicionar\n2 - Editar\n3 - Excluir\n4 - Disciplinas\n5 - Sair\n->")
+                                    choice6=input("\nDigite:\n1 - Adicionar\n2 - Editar\n3 - Excluir\n4 - Disciplinas\n5 - Sair\n->")
                                     if choice6 > 5 or choice6 <1:
                                         print "[ERRO 001] Opcao invalida. Tente novamente\n"
                                     else:
@@ -821,10 +866,13 @@ else:
 
                                             if choice6 == 1:
                                                 os.system("cls")
-                                                print "\n                   ADICIONAR PROFESSOR.\n"
+                                              
+                                                print "+-----------------------------------------------+"
+                                                print "|              ADICIONAR PROFESSOR              |"
+                                                print "+-----------------------------------------------+"
 
                                                 Test = Validacao()
-                                                id_professor = raw_input("Digite o CPF do professor ou 0 para sair: ")
+                                                id_professor = raw_input("\nDigite o CPF do professor ou 0 para sair: ")
                                                 if id_professor == "0":
                                                     saida = "s"
                                                     os.system("cls")
@@ -862,7 +910,10 @@ else:
 
                                             if choice6 == 2:
                                                 os.system("cls")
-                                                print "\n                   EDITAR PROFESSOR.\n"
+                                                
+                                                print "+-----------------------------------------------+"
+                                                print "|                 EDITAR PROFESSOR              |"
+                                                print "+-----------------------------------------------+"
                                                 teste = Validacao()
                                                 print_professores()
                                         
@@ -878,7 +929,10 @@ else:
                                                         print "Usuario nao existente."
                                                         continue
                                                     else:
-                                                        opcao = input("EDITAR:\n 1 (CPF)   2 (NOME)   3 (SENHA)   4 (CLASSE)\n->")
+                                                        print "+-----------------------------------------------+"
+                                                        print "|                 EDITAR PROFESSOR              |"
+                                                        print "+-----------------------------------------------+"
+                                                        opcao = input("\nEDITAR:\n 1 (CPF)   2 (NOME)   3 (SENHA)   4 (CLASSE)\n->")
                                                         if opcao > 4 or opcao < 1:
                                                             print "Opcao incorreta."
                                                         else:
@@ -975,7 +1029,9 @@ else:
 
                                             if choice6 == 3:
                                                 os.system("cls")
-                                                print "\n                   EXCLUIR PROFESSOR.\n"
+                                                print "+-----------------------------------------------+"
+                                                print "|                EXCLUIR PROFESSOR              |"
+                                                print "+-----------------------------------------------+"
                             
                                                 print "\nOpcao valida apenas para professores sem reservas e disciplinas.\n"
 
@@ -1018,24 +1074,35 @@ else:
 
                                             if choice6 == 4:
                                                 os.system("cls")
-                                                print "\n             GERENCIAR DISCIPLINAS DO PROFESSOR.\n"
+                                               
+                                                print "+-----------------------------------------------+"
+                                                print "|      GERENCIAR DISCIPLINAS DO PROFESSOR       |"
+                                                print "+-----------------------------------------------+"
                                                 print_professores()
                                                 cpf_professor = raw_input('\nDigite o CPF do professor: ')
                                                 os.system('cls')
-                                                opcao_dis = input("DIGITE:\n 1 (ADICIONAR)   2 (EXCLUIR)   3 (SAIR)\n->")
+                                                print "+-----------------------------------------------+"
+                                                print "|      GERENCIAR DISCIPLINAS DO PROFESSOR       |"
+                                                print "+-----------------------------------------------+"
+                                                opcao_dis = input("\nDIGITE:\n 1 (ADICIONAR)   2 (EXCLUIR)   3 (SAIR)\n->")
                                                 if opcao_dis > 3 or opcao_dis < 1:
                                                     print "Opcao incorreta."
                                                 else:
                                                     if opcao_dis == 1:
                                                         os.system('cls')
-                                                        print "\n               ADICIONAR DISCIPLINA.\n"
+                                                        
+                                                        print "+-----------------------------------------------+"
+                                                        print "|             ADICIONAR DISCIPLINA              |"
+                                                        print "+-----------------------------------------------+"
                                                         print_cursos()
                                                         CURSO = raw_input('\nDigite o ID do curso: ')
                                                         os.system('cls')
                                                         
                                                         saida=None
                                                         while saida <> "s":
-                                                            
+                                                            print "+-----------------------------------------------+"
+                                                            print "|             ADICIONAR DISCIPLINA              |"
+                                                            print "+-----------------------------------------------+"
                                                             print_disciplinas(CURSO)
                                                             DISCIPLINA = raw_input('\nDigite o ID da disciplina: ')
                                                             os.system('cls')
@@ -1055,7 +1122,10 @@ else:
                                                     
                                                     if opcao_dis == 2: 
                                                         os.system("cls")
-                                                        print "\n               EXCLUIR DISCIPLINA.\n"
+                                                       
+                                                        print "+-----------------------------------------------+"
+                                                        print "|               EXCLUIR DISCIPLINA              |"
+                                                        print "+-----------------------------------------------+"
                                                         saida = None
                                                         while saida <> "s":              
                                                             cursor.execute("select * from docencia where id_professor='%s'" %(cpf_professor))
@@ -1075,10 +1145,11 @@ else:
                                                                 for row in cursor.fetchall():
                                                                     lista_disciplina_NOME.append(row[1])
                                                                     lista_disciplina_DEP.append(row[2])
-                                                                    
-                                                            
-                                                            print "                      DISCIPLINAS.\n"
-                                                            print "item   disciplina    departamento\n"  
+
+                                                            print "+-----------------------------------------------+"
+                                                            print "|                  DISCIPLINAS                  |"
+                                                            print "+-----------------------------------------------+"
+                                                            print "\nitem   disciplina    departamento\n"  
                                                             for i in range (len(lista_disciplina_ID)):
                                                                 print "[%.2d]   %s   (%s)" %(i+1,lista_disciplina_NOME[i],lista_disciplina_DEP[i])
                                                             
@@ -1094,7 +1165,7 @@ else:
                                                                     db.commit()
                                                                     print "Disciplina excluida com sucesso."
                                                                 except:
-                                                                    print "[ERRO XXX] Erro na exclusao."
+                                                                    print "[ERRO 004] Erro na exclusao."
                                                                     db.rollback()
                                                                                                                 
                                                             saida = raw_input('\nDigite s para sair ou ENTER para continuar excluindo: ')
@@ -1103,7 +1174,9 @@ else:
                                                     
                                                     if opcao_dis == 3:
                                                         os.system("cls")
-                                                        print "\n                   EXIT.\n"
+                                                        print "+-----------------------------------------------+"
+                                                        print "|                      EXIT                     |"
+                                                        print "+-----------------------------------------------+"
                                                         saida = "s"
                                                     os.system("cls") 
                                                     
@@ -1111,7 +1184,9 @@ else:
 
                                             if choice6 == 5:
                                                 os.system("cls")
-                                                print "\n                   EXIT.\n"
+                                                print "+-----------------------------------------------+"
+                                                print "|                      EXIT                     |"
+                                                print "+-----------------------------------------------+"
                                                 saida = "s"
                                             os.system("cls")  
 
@@ -1122,7 +1197,10 @@ else:
                          
                                 if choice == 6:
                                     os.system("cls")
-                                    print "\n                   LOG OFF.\n"
+                                    
+                                    print "+-----------------------------------------------+"
+                                    print "|                    LOG OFF                    |"
+                                    print "+-----------------------------------------------+"
                                     inicio_ADM = 1
 
                             os.system("cls")                          
@@ -1141,11 +1219,14 @@ else:
                         nome_usuario = ""
                         for row in cursor.fetchall():
                             nome_usuario = row[1]
-                        print "Bem vindo, Professor %s" %(nome_usuario)
+                        
                         inicio_prof=0
                         while inicio_prof == 0:
-                            print "\n                     PAINEL DO PROFESSOR.\n"
-                            choice=input("Digite:\n1 - Fazer Reserva\n2 - Deletar Reserva\n3 - Alterar senha\n4 - Sair\n->")
+                            print "Bem vindo, Professor %s" %(nome_usuario)
+                            print "+-----------------------------------------------+"
+                            print "|              PAINEL DO PROFESSOR              |"
+                            print "+-----------------------------------------------+"
+                            choice=input("\nDigite:\n1 - Fazer Reserva\n2 - Deletar Reserva\n3 - Alterar senha\n4 - Sair\n->")
                             if choice > 4 or choice <1:
                                 print "[ERRO 001] Opcao invalida. Tente novamente\n"
                             else:
@@ -1156,7 +1237,10 @@ else:
 
                                 if choice == 1:
                                     os.system("cls")
-                                    print "\n                   FAZER RESERVA.\n"
+                                   
+                                    print "+-----------------------------------------------+"
+                                    print "|                 FAZER RESERVA                 |"
+                                    print "+-----------------------------------------------+"
                                     
                                     saida = None
                                     while saida <> "s":
@@ -1168,10 +1252,15 @@ else:
                                             os.system("cls")
                                         else:
                                             os.system("cls")
+                                            print "+-----------------------------------------------+"
+                                            print "|                 FAZER RESERVA                 |"
+                                            print "+-----------------------------------------------+\n"
                                             print_local(predio_reserva)
                                             local_reserva = raw_input("\n\nDigite o ID do local da reserva: ")
                                             os.system("cls")
-                                            
+                                            print "+-----------------------------------------------+"
+                                            print "|                 FAZER RESERVA                 |"
+                                            print "+-----------------------------------------------+"
                                             data = raw_input("Digite a data da reserva ano-mes-dia (0000-00-00) ")
                                             date = data
                                             year,month,day = date.split('-')
@@ -1226,14 +1315,19 @@ else:
                                             
                                             if is_today_the_future == True:
                                                 os.system("cls")
-                                                
+                                                print "+-----------------------------------------------+"
+                                                print "|                 FAZER RESERVA                 |"
+                                                print "+-----------------------------------------------+\n"
                                                 professor_reserva = cpf
                                                 print_disciplinas_professor(professor_reserva)
                                                 
                                                 disciplina_reserva = raw_input("\n\nDigite o ID da disciplina da reserva: ")
                                     
                                                 os.system("cls")
-                                                print "Digite a hora da reserva (funcionamento das 7 as 22 horas)\n"
+                                                print "+-----------------------------------------------+"
+                                                print "|                 FAZER RESERVA                 |"
+                                                print "+-----------------------------------------------+"
+                                                print "\nDigite a hora da reserva (funcionamento das 7 as 22 horas)\n"
                                                 hora1 = input("Inicio: ")
                                                 hora2 = input("Fim: ")
                                                 
@@ -1282,7 +1376,7 @@ else:
                                                                 db.commit()
                                                                 print "Cadastro efetuado com sucesso as %s horas" %(hora)
                                                             except:
-                                                                print "[ERRO 002] Reserva ja existente para %s horas." %(hora)
+                                                                print "[ERRO 005] Reserva ja existente para %s horas." %(hora)
                                                                 db.rollback()
                                                     else:
                                                         saida="s"
@@ -1297,7 +1391,10 @@ else:
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
                                 if choice == 2:
                                     os.system("cls")
-                                    print "\n               DELETAR RESERVA.\n"
+                             
+                                    print "+-----------------------------------------------+"
+                                    print "|                DELETAR RESERVA                |"
+                                    print "+-----------------------------------------------+"
                                     saida = None
                                     while saida <> "s":              
                                         cursor.execute("select * from reservas where professor_reserva='%s'" %(cpf))
@@ -1339,11 +1436,13 @@ else:
                                             for row in cursor.fetchall():
                                                 lista_disciplinaNOME.append(row[1])
                                                 lista_cursoNOME.append(row[2])
-                                    
-                                        print "                      RESERVAS.\n"
-                                        print "item   ano-mes-dia    hora     predio local    Disciplina\n"  
+
+                                        print "+-----------------------------------------------+"
+                                        print "|                DELETAR RESERVA                |"
+                                        print "+-----------------------------------------------+"
+                                        print "\nitem   ano-mes-dia    hora   predio local  Disciplina\n"  
                                         for i in range (len(lista_reserva_ID)):
-                                            print "[%.2d]   %s  as  %.2d h    %s  %s    %s - %s  " %(i+1,lista_data[i],lista_hora[i],lista_predioNOME[i],lista_localNOME[i],lista_disciplinaNOME[i],lista_cursoNOME[i])
+                                            print "[%.2d]   %s  as  %.2d h  %s  %s  %s - %s  " %(i+1,lista_data[i],lista_hora[i],lista_predioNOME[i],lista_localNOME[i],lista_disciplinaNOME[i],lista_cursoNOME[i])
                                         
                                         danosse = input("\nDigite o item a ser excluido ou 0 para sair: ")
                                         
@@ -1368,8 +1467,11 @@ else:
 
                                 if choice == 3:
                                     os.system("cls")
-                                    print "\n                  ALTERAR SENHA.\n"
-                                    print "OBS: \n1 - A senha deve ter mais que 3 e menos que 17 caracteres.\n2 - A senha deve conter apenas letras e numeros."
+                                
+                                    print "+-----------------------------------------------+"
+                                    print "|                 ALTERAR SENHA                 |"
+                                    print "+-----------------------------------------------+"
+                                    print "\nOBS: \n1 - A senha deve ter mais que 3 e menos que 17 caracteres.\n2 - A senha deve conter apenas letras e numeros."
                                     teste = Validacao()
                                     senha1 = teste.SENHA_Check(getpass.getpass(prompt="Digite a nova senha: "))
                                     senha2 = teste.SENHA_Check(getpass.getpass(prompt="CONFIRME: "))
@@ -1390,7 +1492,9 @@ else:
                                 if choice == 4:
                                     os.system("cls")
                                     inicio_prof = 1
-                                    print "\n                      LOG OFF.\n"
+                                    print "+-----------------------------------------------+"
+                                    print "|                    LOG OFF                    |"
+                                    print "+-----------------------------------------------+"
                             os.system("cls")
                 end=1
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
@@ -1398,6 +1502,7 @@ else:
     if choice == 3:
         os.system("cls")
         inicio = 1
-        print "\n             PROGRAMA FINALIZADO.\n"
+        print "+-----------------------------------------------+"
+        print "|              PROGRAMA FINALIZADO              |"
+        print "+-----------------------------------------------+"
         db.close()
-#-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
