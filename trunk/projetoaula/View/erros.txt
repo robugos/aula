@@ -1,4 +1,6 @@
 ERRO
 [ERRO 001] Opcao invalida. Tente novamente.
 [ERRO 002] Usuario nao existente.
-[ERRO 003] Senha incorreta.
+[ERRO 003] Senha incorreta ou diferentes.
+[ERRO 004] Erro na exclusao.
+[ERRO 005] Reserva ja existente.
