@@ -184,7 +184,7 @@ while inicio == 0:
     choice=input("[1] Pesquisa  [2] Login  [3] Sair\nDigite: ")
     if choice > 3 or choice <1:
         os.system("cls")
-        print "[ERRO 000] Opcao invalida. Tente novamente\n"
+        print "[ERRO 001] Opcao invalida. Tente novamente.\n"
     else:
 #____________________________________________________________________SEARCH
         if choice == 1:
@@ -201,7 +201,9 @@ while inicio == 0:
                         #INICIO DO LOGIN--------->>>>>> main_PROF and main_ADM
         if choice == 2:
             os.system("cls")
-            print "\n                         LOGIN.\n"
+            print "+-----------------------------------------------+"
+            print "|                   LOGIN                       |"
+            print "+-----------------------------------------------+"
             
             Login = Login_professor()
             end=0
@@ -210,7 +212,7 @@ while inicio == 0:
                 verificar_CPF = "select usuario_cpf from usuarios where usuario_cpf='%s'" %(cpf)
                 existe = cursor.execute(verificar_CPF)
                 if existe < 1:
-                    print "Usuario nao existente."
+                    print "[ERRO 002] Usuario nao existente."
                     continue
                 else:
                     Login.prof_CPF(cpf)
@@ -220,7 +222,7 @@ while inicio == 0:
                         verificar_senha = "select usuario_cpf='%s' from usuarios where senha='%s'" %(cpf,senha)
                         executar = cursor.execute(verificar_senha)
                         if executar < 1:
-                            print "Senha incorreta."
+                            print "[ERRO 003] Senha incorreta."
                         else:
                             acesso = True
                             Login.userSenha(senha)
@@ -242,7 +244,7 @@ while inicio == 0:
                                 choice=input("Gerenciar:\n1 - Predios\n2 - Departamentos\n3 - Cursos\n4 - Disciplinas\n5 - Professores\n6 - Sair\n->")
                                
                                 if choice > 6 or choice <1:
-                                    print "[ERRO 001] Opcao invalida. Tente novamente\n"
+                                    print "[ERRO 001] Opcao invalida. Tente novamente.\n"
                                 else:
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
                                     if choice == 1:
