@@ -208,7 +208,7 @@ while inicio == 0:
             Login = Login_professor()
             end=0
             while end == 0:
-                cpf = raw_input("Digite o login (CPF): ")
+                cpf = raw_input("\nDigite o login (CPF): ")
                 verificar_CPF = "select usuario_cpf from usuarios where usuario_cpf='%s'" %(cpf)
                 existe = cursor.execute(verificar_CPF)
                 if existe < 1:
