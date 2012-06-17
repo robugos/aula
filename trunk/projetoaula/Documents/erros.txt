@@ -1,6 +1,16 @@
 ERRO
-[ERRO 001] Opcao invalida. Tente novamente.
+\n\t\t[ERRO 001] Opcao invalida. Tente novamente.\n
 [ERRO 002] Usuario nao existente.
 [ERRO 003] Senha incorreta ou diferentes.
 [ERRO 004] Erro na exclusao.
 [ERRO 005] Reserva ja existente.
+
+
+OBS: Colocar no inicio e na continuação dos erros \n\t
+
+Testar os erros que não aparecem na tela (por serem muito rapidos)...
+...trocar os prints por raw_input para que o usuario veja o erro antes de continuar
+
+PADRONIZAR A VARIÁVEL DO ERRO TAMBEM (26 é o exemplo para teste e tem que ser PADRÃO em todos os outros)
+
+ERRO_AULA = raw_input("\n\t[ERRO 001] Opcao invalida.\n\tPressione ENTER para continuar.\n")

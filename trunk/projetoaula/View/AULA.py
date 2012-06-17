@@ -17,13 +17,14 @@ while inicio == 0:
     print "+-----------------------------------------------+"
     print "|                    AULA                       |"
     print "+-----------------------------------------------+"
-    choice=input("\n[1] Pesquisa  [2] Login  [3] Sair\n\nDigite: ")
+    choice=input("\n1 (PESQUISA)  2 (LOGIN)  3 (SAIR)\n\nDigite: ")
     if choice > 3 or choice <1:
         os.system("cls")
         print "+-----------------------------------------------+"
         print "|                    AULA                       |"
         print "+-----------------------------------------------+"
-        print "\n[ERRO 001] Opcao invalida. Tente novamente.\n"
+        ERRO_AULA = raw_input("\n\t[ERRO 001] Opcao invalida.\n\tPressione ENTER para continuar.\n")
+        os.system("cls")
     else:
 #____________________________________________________________________SEARCH
         if choice == 1:
@@ -49,7 +50,7 @@ while inicio == 0:
                 verificar_CPF = "select usuario_cpf from usuarios where usuario_cpf='%s'" %(cpf)
                 existe = cursor.execute(verificar_CPF)
                 if existe < 1:
-                    print "[ERRO 002] Usuario nao existente."
+                    print "\n\t\t[ERRO 002] Usuario nao existente.\n"
                 else:
                     Login.prof_CPF(cpf)
                     acesso = False
@@ -58,7 +59,7 @@ while inicio == 0:
                         verificar_senha = "select usuario_cpf='%s' from usuarios where senha='%s'" %(cpf,senha)
                         executar = cursor.execute(verificar_senha)
                         if executar < 1:
-                            print "[ERRO 003] Senha incorreta."
+                            print "\n\t\t[ERRO 003] Senha incorreta.\n"
                         else:
                             acesso = True
                             Login.userSenha(senha)
@@ -77,10 +78,10 @@ while inicio == 0:
                                 print "+-----------------------------------------------+"
                                 print "|            PAINEL DO ADMINISTRADOR            |"
                                 print "+-----------------------------------------------+"
-                                choice=input("\nGerenciar:\n1 - Predios\n2 - Departamentos\n3 - Cursos\n4 - Disciplinas\n5 - Professores\n6 - Sair\n->")
+                                choice=input("\nGerenciar:\n\n1 - Predios\n2 - Departamentos\n3 - Cursos\n4 - Disciplinas\n5 - Professores\n6 - Sair\n->")
                                
                                 if choice > 6 or choice <1:
-                                    print "[ERRO 001] Opcao invalida. Tente novamente.\n"
+                                    print "\n\t\t[ERRO 001] Opcao invalida. Tente novamente.\n"
                                 else:
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
                                     if choice == 1:
@@ -88,9 +89,9 @@ while inicio == 0:
                                         print "+-----------------------------------------------+"
                                         print "|               GERENCIAR PREDIOS               |"
                                         print "+-----------------------------------------------+"
-                                        choice2=input("\nDigite:\n1 - Adicionar\n2 - Editar\n3 - Excluir\n4 - Sair\n->")
+                                        choice2=input("\nDigite:\n\n1 - Adicionar\n2 - Editar\n3 - Excluir\n4 - Sair\n->")
                                         if choice2 > 4 or choice2 <1:
-                                            print "[ERRO 001] Opcao invalida. Tente novamente\n"
+                                            print "\n\t\t[ERRO 001] Opcao invalida. Tente novamente\n"
                                         else:
                                             saida = None
                                             while saida <> "s":
@@ -136,7 +137,7 @@ while inicio == 0:
                                                             print "[ERRO 005] ID nao existente."
                                                             continue
                                                         else:
-                                                            opcao = input("\nDigite: [1] Editar o ID    [2] Editar o nome\n->")
+                                                            opcao = input("\nDigite: 1 (EDITAR ID)    2 (EDITAR NOME)\n->")
                                                             if opcao > 2 or opcao < 1:
                                                                 print "[ERRO 004] Opcao incorreta."
                                                                 continue
@@ -217,9 +218,9 @@ while inicio == 0:
                                         print "|            GERENCIAR DEPARTAMENTOS            |"
                                         print "+-----------------------------------------------+"
                                         
-                                        choice3=input("\nDigite:\n1 - Adicionar\n2 - Editar\n3 - Excluir\n4 - Sair\n->")
+                                        choice3=input("\nDigite:\n\n1 - Adicionar\n2 - Editar\n3 - Excluir\n4 - Sair\n->")
                                         if choice3 > 4 or choice3 <1:
-                                            print "[ERRO 001] Opcao invalida. Tente novamente\n"
+                                            print "\n\t\t[ERRO 001] Opcao invalida. Tente novamente\n"
                                         else:
                                             saida = None
                                             while saida <> "s":
@@ -268,11 +269,11 @@ while inicio == 0:
                                                         verificar_dep = "select id_departamento from departamentos where id_departamento='%s'" %(id_dep)
                                                         existe = cursor.execute(verificar_dep)
                                                         if existe < 1:
-                                                            print "[ERRO 005] ID nao existente."
+                                                            print "\n\t\t[ERRO 005] ID nao existente.\n"
                                                         else:
-                                                            opcao = input("Digite:\n1 (editar id)     2 (editar nome)     3 (editar coordenador)\n-> ")
+                                                            opcao = input("EDITAR:\n\n1 (ID)     2 (NOME)     3 (COORDENADOR)\n-> ")
                                                             if opcao > 3 or opcao < 1:
-                                                                print "[ERRO 004] Opcao incorreta."
+                                                                print "\n\t\t[ERRO 004] Opcao incorreta.\n"
                                                             else:
                                                                 if opcao == 1:
                                                                     id_novo = raw_input("Digite o novo ID do departamento: ")
@@ -358,9 +359,9 @@ while inicio == 0:
                                         print "|               GERENCIAR CURSOS                |"
                                         print "+-----------------------------------------------+"
                                         
-                                        choice4=input("\nDigite:\n1 - Adicionar\n2 - Editar\n3 - Excluir\n4 - Sair\n->")
+                                        choice4=input("\nDigite:\n\n1 - Adicionar\n2 - Editar\n3 - Excluir\n4 - Sair\n->")
                                         if choice4 > 4 or choice4 <1:
-                                            print "[ERRO 001] Opcao invalida. Tente novamente\n"
+                                            print "\n\t\t[ERRO 001] Opcao invalida. Tente novamente\n"
                                         else:
                                             saida = None
                                             while saida <> "s":
@@ -419,9 +420,9 @@ while inicio == 0:
                                                             print "ID nao existente."
                                                         else:
                                                             os.system("cls")
-                                                            opcao = input("\nEDITAR:\n1 (ID)     2 (NOME)     3 (DEPARTAMENTO)\n-> ")
+                                                            opcao = input("\nEDITAR:\n\n1 (ID)     2 (NOME)     3 (DEPARTAMENTO)\n-> ")
                                                             if opcao > 3 or opcao < 1:
-                                                                print "Opcao incorreta."
+                                                                print "\n\t\t[ERRO 001] Opcao invalida. Tente novamente.\n"
                                                             else:
                                                                 if opcao == 1:
                                                                     id_novo = raw_input("\nDigite o novo ID do curso: ")
@@ -519,9 +520,9 @@ while inicio == 0:
                                         print "|             GERENCIAR DISCIPLINAS             |"
                                         print "+-----------------------------------------------+"
                                         
-                                        choice5=input("\nDigite:\n1 - Adicionar\n2 - Editar\n3 - Excluir\n4 - Sair\n->")
+                                        choice5=input("\nDigite:\n\n1 - Adicionar\n2 - Editar\n3 - Excluir\n4 - Sair\n->")
                                         if choice5 > 4 or choice5 <1:
-                                            print "[ERRO 001] Opcao invalida. Tente novamente\n"
+                                            ERRO_AULA = raw_input("\n\t\t[ERRO 001] Opcao invalida.\n\t\tPressione ENTER para continuar\n")
                                         else:
                                             saida = None
                                             while saida <> "s":
@@ -584,13 +585,11 @@ while inicio == 0:
                                                         verificar_dis = "select id_disciplina from disciplinas where id_disciplina='%s'" %(id_disciplina)
                                                         existe = cursor.execute(verificar_dis)
                                                         if existe < 1:
-                                                            print "ID nao existente."
-                                                            continue
+                                                            ERRO_AULA = raw_input("ID nao existente. Tente novamente")
                                                         else:
-                                                            opcao = input("Digite:\n 1 (ID), 2 (NOME) ou 3 (CURSO): ")
+                                                            opcao = input("EDITE:\n\n1 (ID)     2 (NOME)     3 (CURSO)\n-> ")
                                                             if opcao > 3 or opcao < 1:
-                                                                print "Opcao incorreta."
-                                                                continue
+                                                                ERRO_AULA = raw_input("\n\t\t[ERRO 001] Opcao invalida. Tente novamente.\n")
                                                             else:
                                                                 if opcao == 1:
                                                                     id_novo = raw_input("Digite o novo ID da disciplina: ")
@@ -695,9 +694,9 @@ while inicio == 0:
                                         print "|            GERENCIAR PROFESSORES              |"
                                         print "+-----------------------------------------------+"
                                         
-                                        choice6=input("\nDigite:\n1 - Adicionar\n2 - Editar\n3 - Excluir\n4 - Disciplinas\n5 - Sair\n->")
+                                        choice6=input("\nDigite:\n\n1 - Adicionar\n2 - Editar\n3 - Excluir\n4 - Disciplinas\n5 - Sair\n->")
                                         if choice6 > 5 or choice6 <1:
-                                            print "[ERRO 001] Opcao invalida. Tente novamente\n"
+                                            ERRO_AULA = raw_input("\n\t\t[ERRO 001] Opcao invalida. Tente novamente\n")
                                         else:
                                             saida = None
                                             while saida <> "s":
@@ -772,7 +771,7 @@ while inicio == 0:
                                                             print "+-----------------------------------------------+"
                                                             print "|                 EDITAR PROFESSOR              |"
                                                             print "+-----------------------------------------------+"
-                                                            opcao = input("\nEDITAR:\n 1 (CPF)   2 (NOME)   3 (SENHA)   4 (CLASSE)\n->")
+                                                            opcao = input("\nEDITAR:\n\n1 (CPF)   2 (NOME)   3 (SENHA)   4 (CLASSE)\n->")
                                                             if opcao > 4 or opcao < 1:
                                                                 print "Opcao incorreta."
                                                             else:
@@ -924,7 +923,7 @@ while inicio == 0:
                                                     print "+-----------------------------------------------+"
                                                     print "|      GERENCIAR DISCIPLINAS DO PROFESSOR       |"
                                                     print "+-----------------------------------------------+"
-                                                    opcao_dis = input("\nDIGITE:\n 1 (ADICIONAR)   2 (EXCLUIR)   3 (SAIR)\n->")
+                                                    opcao_dis = input("\nDIGITE:\n\n1 (ADICIONAR)   2 (EXCLUIR)   3 (SAIR)\n->")
                                                     if opcao_dis > 3 or opcao_dis < 1:
                                                         print "Opcao incorreta."
                                                     else:
@@ -1055,7 +1054,7 @@ while inicio == 0:
                                 print "|              PAINEL DO PROFESSOR              |"
                                 print "+-----------------------------------------------+"
                                 print "Bem vindo, Professor %s\n" %(nome_usuario)
-                                choice=input("\nDigite:\n1 - Fazer Reserva\n2 - Deletar Reserva\n3 - Alterar senha\n4 - Sair\n->")
+                                choice=input("\nDigite:\n\n1 - Fazer Reserva\n2 - Deletar Reserva\n3 - Alterar senha\n4 - Sair\n->")
                                 if choice > 4 or choice <1:
                                     print "[ERRO 001] Opcao invalida. Tente novamente\n"
                                 else:
