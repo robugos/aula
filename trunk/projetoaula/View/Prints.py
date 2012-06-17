@@ -43,8 +43,10 @@ class prints():
                 lista_disciplinas_Nome.append(row[1])
                 lista_disciplinas_curso.append(row[2])   
         print "  ID     CURSO   DISCIPLINA\n"
+        print "-------------------------------------------------"
         for i in range (len(lista_disciplinas_ID)):
-            print "["+lista_disciplinas_ID[i]+"]   "+lista_disciplinas_curso[i]+"     "+lista_disciplinas_Nome[i]
+            print lista_disciplinas_ID[i]+"    "+lista_disciplinas_curso[i]+"     "+lista_disciplinas_Nome[i]
+        print "-------------------------------------------------"
         
     def print_predios(self):
         cursor.execute("select * from predios")
@@ -53,9 +55,11 @@ class prints():
         for row in cursor.fetchall():
             lista_predios_ID.append(row[0])
             lista_predios_Nome.append(row[1])
-        print "  ID      NOME"
+        print " ID\tPREDIO"
+        print "-------------------------------------------------"
         for i in range (len(lista_predios_ID)):
-            print "["+lista_predios_ID[i]+"] - "+lista_predios_Nome[i]
+            print lista_predios_ID[i]+"\t"+lista_predios_Nome[i]
+        print "-------------------------------------------------"
             
     def print_cursos(self):                                                
         cursor.execute("select * from cursos")
@@ -64,9 +68,11 @@ class prints():
         for row in cursor.fetchall():
             lista_cursos_ID.append(row[0])
             lista_cursos_Nome.append(row[1])
-        print "  ID      NOME"
+        print "  ID\tCURSOS"
+        print "-------------------------------------------------"
         for i in range (len(lista_cursos_ID)):
-            print "["+lista_cursos_ID[i]+"] - "+lista_cursos_Nome[i]
+            print lista_cursos_ID[i]+"\t"+lista_cursos_Nome[i]
+        print "-------------------------------------------------"
         
     def print_departamentos(self):                        
         cursor.execute("select * from departamentos")
@@ -101,9 +107,11 @@ class prints():
         for row in cursor.fetchall():
             lista_departamentos_ID.append(row[0])
             lista_departamentos_Nome.append(row[1])
-        print "  ID      NOME"
+        print "  ID        NOME"
+        print "-------------------------------------------------"
         for i in range (len(lista_departamentos_ID)):
-            print "["+lista_departamentos_ID[i]+"] - "+lista_departamentos_Nome[i]
+            print lista_departamentos_ID[i]+"      "+lista_departamentos_Nome[i]
+        print "-------------------------------------------------"
         departamento = raw_input('\nDigite o ID do departamento do professor: ')
         cursor.execute("select * from professores where departamento_professor='%s'" %(departamento))
         os.system('cls')
@@ -113,8 +121,10 @@ class prints():
             lista_professores_ID.append(row[0])
             lista_professores_Nome.append(row[1])
         print "    CPF          NOME"
+        print "-------------------------------------------------"
         for i in range (len(lista_professores_ID)):
-            print "["+lista_professores_ID[i]+"] - "+lista_professores_Nome[i]
+            print lista_professores_ID[i]+"\t"+lista_professores_Nome[i]
+        print "-------------------------------------------------"
             
     def print_professores_alone(self):                                      
         cursor.execute("select * from professores")
@@ -123,10 +133,12 @@ class prints():
         for row in cursor.fetchall():
             lista_professores_ID.append(row[0])
             lista_professores_Nome.append(row[1])
-        print "    CPF          NOME"
+        print "        CPF\tNOME"
+        print "-------------------------------------------------"
         for i in range (len(lista_professores_ID)):
-            print "["+lista_professores_ID[i]+"] - "+lista_professores_Nome[i]
-            
+            print lista_professores_ID[i]+"\t"+lista_professores_Nome[i]
+        print "-------------------------------------------------"
+        
     def print_local(self,predio_reserva):
         cursor.execute("select * from locais where predio_local='%s'" %(predio_reserva))
         lista_locais_ID=[]
@@ -136,6 +148,8 @@ class prints():
             lista_locais_ID.append(row[0])
             lista_locais_Nome.append(row[1])
             lista_locais_Tipo.append(row[2])
-        print " ID     NOME     TIPO"
+        print " ID\tNOME\tTIPO"
+        print "-------------------------------------------------"
         for i in range (len(lista_locais_ID)):
-            print "["+lista_locais_ID[i]+"] - "+lista_locais_Nome[i]+" - "+lista_locais_Tipo[i]
+            print lista_locais_ID[i]+"\t"+lista_locais_Nome[i]+"\t"+lista_locais_Tipo[i]
+        print "-------------------------------------------------"

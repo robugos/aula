@@ -1,9 +1,9 @@
 import MySQLdb
 db = MySQLdb.connect("aula.myftp.org","yoshi","mario1234","auladb")
 cursor = db.cursor()
-import os
 from Prints import *
 show = prints()
+import os
 
 class Search():
     def openPESQUISA(self):
