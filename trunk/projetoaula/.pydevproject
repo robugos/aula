@@ -8,5 +8,6 @@
 <path>/projetoaula</path>
 <path>/projetoaula/Controller</path>
 <path>/projetoaula/View</path>
+<path>/projetoaula/Documents</path>
 </pydev_pathproperty>
 </pydev_project>
