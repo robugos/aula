@@ -1,10 +1,12 @@
 ERRO
-\n\t\t[ERRO 001] Opcao invalida. Tente novamente.\n
-[ERRO 002] Usuario nao existente.
-[ERRO 003] Senha incorreta ou diferentes.
-[ERRO 004] Erro na exclusao.
-[ERRO 005] Reserva ja existente.
-
+\n\t[ERRO 001] Opcao invalida. Tente novamente.\n
+\n\t[ERRO 002] Item nao existente.
+\n\t[ERRO 003] Senha incorreta .
+\n\t[ERRO 004] Erro na exclusao.
+\n\t[ERRO 005] Item ja existente.
+\n\t[ERRO 006] Erro no cadastro.
+\n\t[ERRO 007] Erro na edicao.
+\n\t[ERRO 008] Impossivel fazer reservas nessa data.
 
 OBS: Colocar no inicio e na continuação dos erros \n\t
 
