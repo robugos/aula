@@ -986,10 +986,11 @@ while inicio == 0:
                                                                         lista_disciplina_NOME.append(row[1])
                                                                         lista_disciplina_DEP.append(row[2])
     
-                                                                print "\nitem\tcurso\tdisciplina\n"  
+                                                                print "\nITEM\tCURSO\tDISCIPLINA\n"
+                                                                print "-------------------------------------------------"  
                                                                 for i in range (len(lista_disciplina_ID)):
                                                                     print "[%.2d]\t%s\t%s" %(i+1,lista_disciplina_DEP[i],lista_disciplina_NOME[i])
-                                                                
+                                                                print "-------------------------------------------------"
                                                                 danosse = input("\nDigite o item a ser excluido ou 0 para sair: ")
                                                                 
                                                                 if danosse == 0:
@@ -1265,9 +1266,14 @@ while inicio == 0:
                                             print "+-----------------------------------------------+"
                                             print "|                DELETAR RESERVA                |"
                                             print "+-----------------------------------------------+"
-                                            print "\nitem   ano-mes-dia    hora   predio local  Disciplina\n"  
+                                            print "\nitem   ano-mes-dia    hora   predio local  Disciplina\n"
+                                            print "-------------------------------------------------"  
                                             for i in range (len(lista_reserva_ID)):
-                                                print "[%.2d]   %s  as  %.2d h  %s  %s  %s - %s  " %(i+1,lista_data[i],lista_hora[i],lista_predioNOME[i],lista_localNOME[i],lista_disciplinaNOME[i],lista_cursoNOME[i])
+                                                DATA = lista_data[i]
+                                                DATA = str(DATA)
+                                                ano,mes,dia = DATA.split("-")
+                                                NovaData = dia+"/"+mes+"/"+ano
+                                                print "[%.2d]   %s  as  %.2d h  %s  %s  %s - %s  " %(i+1,NovaData,lista_hora[i],lista_predioNOME[i],lista_localNOME[i],lista_disciplinaNOME[i],lista_cursoNOME[i])
                                             
                                             danosse = input("\nDigite o item a ser excluido ou 0 para sair: ")
                                             
