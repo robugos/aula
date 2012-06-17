@@ -107,10 +107,10 @@ class prints():
         for row in cursor.fetchall():
             lista_departamentos_ID.append(row[0])
             lista_departamentos_Nome.append(row[1])
-        print "  ID        NOME"
+        print "  ID               NOME"
         print "-------------------------------------------------"
         for i in range (len(lista_departamentos_ID)):
-            print lista_departamentos_ID[i]+"      "+lista_departamentos_Nome[i]
+            print lista_departamentos_ID[i]+"\t\t"+lista_departamentos_Nome[i]
         print "-------------------------------------------------"
         departamento = raw_input('\nDigite o ID do departamento do professor: ')
         cursor.execute("select * from professores where departamento_professor='%s'" %(departamento))
