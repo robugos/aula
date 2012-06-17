@@ -4,58 +4,6 @@ cursor = db.cursor()
 import os
 
 class prints():
-    def print_reservas_prof(self,cpf_prof): 
-        cursor.execute("select * from reservas where professor_reserva='%s'" %(cpf_prof))
-        global lista_reserva_ID
-        lista_reserva_ID =[]
-        lista_predioID = []
-        lista_localID = []
-        lista_data = []
-        lista_disciplinaID = []
-        lista_hora = []
-        
-        for row in cursor.fetchall(): #pega ID
-            lista_reserva_ID.append(row[0])
-            lista_predioID.append(row[1])
-            lista_localID.append(row[2])
-            lista_data.append(row[3])
-            lista_disciplinaID.append(row[4])
-            lista_hora.append(row[6])
-            
-        
-        lista_predioNOME = []
-        lista_localNOME = []
-        lista_disciplinaNOME = []
-        lista_cursoNOME = []
-    
-        for j in range (len(lista_predioID)): #pega nome do predio
-            cursor.execute("select * from predios where id_predio='%s'" %(lista_predioID[j]))
-            
-            for row in cursor.fetchall():
-                lista_predioNOME.append(row[1])
-                
-                
-        for j in range (len(lista_localID)): #pega nome do local
-            cursor.execute("select * from locais where id_local='%s'" %(lista_localID[j]))
-            
-            for row in cursor.fetchall():
-                lista_localNOME.append(row[1])
-                
-        for j in range (len(lista_disciplinaID)): #pega nome da disciplina
-            cursor.execute("select * from disciplinas where id_disciplina='%s'" %(lista_disciplinaID[j]))
-            
-            for row in cursor.fetchall():
-                lista_disciplinaNOME.append(row[1])
-                lista_cursoNOME.append(row[2])
-    
-        print "                      RESERVAS.\n"
-        print "item   ano-mes-dia    hora     predio local    Disciplina\n"  
-        for i in range (len(lista_reserva_ID)):
-            print "[%.2d]   %s  as  %.2d h    %s  %s    %s - %s  " %(i+1,lista_data[i],lista_hora[i],lista_predioNOME[i],lista_localNOME[i],lista_disciplinaNOME[i],lista_cursoNOME[i])
-        
-        danone = input("\nDigite o item a ser excluido: ")
-        return lista_reserva_ID[danone-1]
-    
     def print_disciplinas(self,CURSO):
         cursor.execute("select * from disciplinas where curso_disciplina='%s'" %(CURSO))
         lista_disciplinas_ID=[]
@@ -63,9 +11,24 @@ class prints():
         for row in cursor.fetchall():
                 lista_disciplinas_ID.append(row[0])
                 lista_disciplinas_Nome.append(row[1])
-        print "  ID      NOME"
+        print "  ID\tDISCIPLINA"
+        print "-------------------------------------------------"
         for i in range (len(lista_disciplinas_ID)):
-            print "["+lista_disciplinas_ID[i]+"] - "+lista_disciplinas_Nome[i]
+            print lista_disciplinas_ID[i]+"\t"+lista_disciplinas_Nome[i]
+        print "-------------------------------------------------"
+            
+    def print_disciplinas_filtro(self,PERIODO):
+        cursor.execute("select * from disciplinas where periodo='%s'" %(PERIODO))
+        lista_disciplinas_ID=[]
+        lista_disciplinas_Nome=[]
+        for row in cursor.fetchall():
+                lista_disciplinas_ID.append(row[0])
+                lista_disciplinas_Nome.append(row[1])
+        print "  ID\tDISCIPLINA"
+        print "-------------------------------------------------"
+        for i in range (len(lista_disciplinas_ID)):
+            print lista_disciplinas_ID[i]+"\t"+lista_disciplinas_Nome[i]
+        print "-------------------------------------------------"
             
     def print_disciplinas_professor(self,cpf):
         cursor.execute("select * from docencia where id_professor='%s'" %(cpf))
@@ -112,10 +75,25 @@ class prints():
         for row in cursor.fetchall():
             lista_departamentos_ID.append(row[0])
             lista_departamentos_Nome.append(row[1])
-        print "  ID      NOME"
+        print "  ID\tDEPARTAMENTO"
+        print "-------------------------------------------------"
         for i in range (len(lista_departamentos_ID)):
-            print "["+lista_departamentos_ID[i]+"] - "+lista_departamentos_Nome[i]
-                    
+            print lista_departamentos_ID[i]+"\t"+lista_departamentos_Nome[i]
+        print "-------------------------------------------------"
+        
+    def print_departamentos_cursos(self,DEPARTAMENTO):                        
+        cursor.execute("select * from cursos where departamento_curso='%s'" %(DEPARTAMENTO))
+        lista_cursos_ID=[]
+        lista_cursos_Nome=[]
+        for row in cursor.fetchall():
+            lista_cursos_ID.append(row[0])
+            lista_cursos_Nome.append(row[1])
+        print "  ID\tCURSO"
+        print "-------------------------------------------------"
+        for i in range (len(lista_cursos_ID)):
+            print lista_cursos_ID[i]+"\t"+lista_cursos_Nome[i]
+        print "-------------------------------------------------"
+                   
     def print_professores(self):
         cursor.execute("select * from departamentos")
         lista_departamentos_ID=[]

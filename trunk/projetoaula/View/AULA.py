@@ -7,9 +7,9 @@ cursor = db.cursor()
 from Validacao import *
 import os
 import getpass
-#from login import Login_professor
 from datetime import datetime
-from prints import *
+from Prints import *
+from Search import *
 #===============================================================================PRINTS
 show = prints()
 inicio=0
@@ -25,19 +25,15 @@ while inicio == 0:
         print "+-----------------------------------------------+"
         print "\n[ERRO 001] Opcao invalida. Tente novamente.\n"
     else:
-    #____________________________________________________________________SEARCH
+#____________________________________________________________________SEARCH
         if choice == 1:
             os.system("cls")
             print "+-----------------------------------------------+"
             print "|                  PESQUISA                     |"
             print "+-----------------------------------------------+"
-            
-            
-            
-            
-            
-            
-    #____________________________________________________________________SEARCH
+            pesquisa = Search()
+            pesquisa.openPESQUISA()
+#____________________________________________________________________SEARCH
     
                         #INICIO DO LOGIN--------->>>>>> main_PROF and main_ADM
         if choice == 2:
@@ -73,9 +69,8 @@ while inicio == 0:
             
                         if classe_user == 1:
                             os.system("cls")
-                            print "Bem vindo, ADMINISTRADOR" #PAINEL DO ADMIN
     
-    ############################# MAIN_ADM ################################
+############################# MAIN_ADM ################################
     
                             inicio_ADM = 0
                             while inicio_ADM == 0:  
@@ -87,7 +82,7 @@ while inicio == 0:
                                 if choice > 6 or choice <1:
                                     print "[ERRO 001] Opcao invalida. Tente novamente.\n"
                                 else:
-    #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
+#-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
                                     if choice == 1:
                                         os.system("cls")
                                         print "+-----------------------------------------------+"
@@ -122,7 +117,7 @@ while inicio == 0:
                                                         saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
                                                         saida = saida.lower()
                                                         os.system("cls")                   
-    #ADD PREDIO 100% PERFEITO by Gustavo_____________________________________________________________________
+#ADD PREDIO 100% PERFEITO by Gustavo_____________________________________________________________________
                                                 if choice2 == 2:
                                                     os.system("cls")
                                                     print "+-----------------------------------------------+"
@@ -173,7 +168,7 @@ while inicio == 0:
                                                         saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
                                                         saida = saida.lower()
                                                         os.system("cls")                                                    
-    #EDITAR PREDIO 100% PERFEITO by Gustavo____________________________________________________________________
+#EDITAR PREDIO 100% PERFEITO by Gustavo____________________________________________________________________
                                                 if choice2 == 3:
                                                     os.system("cls")
                                                     print "+-----------------------------------------------+"
@@ -203,7 +198,7 @@ while inicio == 0:
                                                         saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
                                                         saida = saida.lower()
                                                         os.system("cls")
-    #EXCLUIR PREDIO 100% PERFEITO by Gustavo____________________________________________________________________
+#EXCLUIR PREDIO 100% PERFEITO by Gustavo____________________________________________________________________
     
                                                 if choice2 == 4:
                                                     os.system("cls")
@@ -214,7 +209,7 @@ while inicio == 0:
                                                     
                                                 os.system("cls")
                                         
-    #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
+#-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
     
                                     if choice == 2:
                                         os.system("cls")
@@ -254,7 +249,7 @@ while inicio == 0:
                                                         saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
                                                         saida = saida.lower()
                                                         os.system("cls")
-    #ADD DEPARTAMENTO 100% PERFEITO by Gustavo____________________________________________________________________                                               
+#ADD DEPARTAMENTO 100% PERFEITO by Gustavo____________________________________________________________________                                               
                                                     
                                                 if choice3 == 2:
                                                     os.system("cls")
@@ -315,7 +310,7 @@ while inicio == 0:
                                                         saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
                                                         saida = saida.lower()
                                                         os.system("cls")
-    #EDITAR DEPARTAMENTO 100% PERFEITO by Gustavo____________________________________________________________________                                                      
+#EDITAR DEPARTAMENTO 100% PERFEITO by Gustavo____________________________________________________________________                                                      
                                                     
                                                 if choice3 == 3:
                                                     os.system("cls")
@@ -345,7 +340,7 @@ while inicio == 0:
                                                         saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
                                                         saida = saida.lower()
                                                         os.system("cls")
-    #EXCLUIR DEPARTAMENTO 100% PERFEITO by Gustavo____________________________________________________________________ 
+#EXCLUIR DEPARTAMENTO 100% PERFEITO by Gustavo____________________________________________________________________ 
                                                 if choice3 == 4:
                                                     os.system("cls")
                                                     print "+-----------------------------------------------+"
@@ -355,7 +350,7 @@ while inicio == 0:
                                             
                                                 os.system("cls")
                                         
-    #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
+#-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
     
                                     if choice == 3:
                                         os.system("cls")
@@ -404,7 +399,7 @@ while inicio == 0:
                                                         saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
                                                         saida = saida.lower()
                                                         os.system("cls")
-    #ADICIONAR CURSO 100% PERFEITO by Gustavo____________________________________________________________________
+#ADICIONAR CURSO 100% PERFEITO by Gustavo____________________________________________________________________
     
                                                 if choice4 == 2:
                                                     os.system("cls")
@@ -474,7 +469,7 @@ while inicio == 0:
                                                         saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
                                                         saida = saida.lower()
                                                         os.system("cls")
-    #EDITAR CURSO 100% PERFEITO by Gustavo____________________________________________________________________
+#EDITAR CURSO 100% PERFEITO by Gustavo____________________________________________________________________
                                             
                                                 if choice4 == 3:
                                                     os.system("cls")
@@ -506,7 +501,7 @@ while inicio == 0:
                                                         saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
                                                         saida = saida.lower()
                                                         os.system("cls")
-    #EXCLUIR CURSO 100% PERFEITO by Gustavo____________________________________________________________________
+#EXCLUIR CURSO 100% PERFEITO by Gustavo____________________________________________________________________
                                      
                                                 if choice4 == 4:
                                                     os.system("cls")
@@ -516,7 +511,7 @@ while inicio == 0:
                                                     saida = "s"
                                             
                                                 os.system("cls")                                                           
-    #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
+#-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
                 
                                     if choice == 4:
                                         os.system("cls")
@@ -553,7 +548,9 @@ while inicio == 0:
                                                             show.print_cursos()                                          
                                                             curso_disciplina = raw_input("Digite o curso da disciplina: ")
                                                             os.system("cls")
-                                                            sql = "insert into disciplinas values('%s','%s','%s')"%(id_disciplina, nome_disciplina, curso_disciplina)
+                                                            periodo = input("Digite o periodo da disciplina: ")
+                                                            os.system("cls")
+                                                            sql = "insert into disciplinas values('%s','%s','%s','%s')"%(id_disciplina, nome_disciplina, curso_disciplina,periodo)
                                                             try:
                                                                 cursor.execute(sql)
                                                                 db.commit()
@@ -565,7 +562,7 @@ while inicio == 0:
                                                         saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
                                                         saida = saida.lower()
                                                         os.system("cls")
-    #ADICIONAR DISCIPLINA 100% PERFEITO by Gustavo____________________________________________________________________
+#ADICIONAR DISCIPLINA 100% PERFEITO by Gustavo____________________________________________________________________
                                                  
                                                 if choice5 == 2:
                                                     os.system("cls")
@@ -640,7 +637,7 @@ while inicio == 0:
                                                         saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
                                                         saida = saida.lower()
                                                         os.system("cls")
-    #EDITAR DISCIPLINA 100% PERFEITO by Gustavo____________________________________________________________________                                               
+#EDITAR DISCIPLINA 100% PERFEITO by Gustavo____________________________________________________________________                                               
                                                 
                                                 if choice5 == 3:
                                                     os.system("cls")
@@ -681,7 +678,7 @@ while inicio == 0:
                                                                 saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
                                                                 saida = saida.lower()
                                                                 os.system("cls")
-    #EXCLUIR DISCIPLINA 100% PERFEITO by Gustavo____________________________________________________________________                                                                                              
+#EXCLUIR DISCIPLINA 100% PERFEITO by Gustavo____________________________________________________________________                                                                                              
     
                                                 if choice5 == 4:
                                                     os.system("cls")
@@ -690,7 +687,7 @@ while inicio == 0:
                                                     print "+-----------------------------------------------+"
                                                     saida = "s"
                                                 os.system("cls")  
-    #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
+#-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
                                     if choice == 5:
                                         os.system("cls")
                                       
@@ -704,8 +701,8 @@ while inicio == 0:
                                         else:
                                             saida = None
                                             while saida <> "s":
-    #FAZENDO AGORA BY GUSTAVO
-    #________________________________________________________________________________________________________________________
+#FAZENDO AGORA BY GUSTAVO
+#________________________________________________________________________________________________________________________
     
                                                 if choice6 == 1:
                                                     os.system("cls")
@@ -749,7 +746,7 @@ while inicio == 0:
                                                         saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
                                                         saida = saida.lower()
                                                         os.system("cls")                                                
-    #________________________________________________________________________________________________________________________
+#________________________________________________________________________________________________________________________
     
                                                 if choice6 == 2:
                                                     os.system("cls")
@@ -868,7 +865,7 @@ while inicio == 0:
                                                                     saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
                                                                     saida = saida.lower()
                                                                     os.system("cls")
-    #________________________________________________________________________________________________________________________
+#________________________________________________________________________________________________________________________
     
                                                 if choice6 == 3:
                                                     os.system("cls")
@@ -912,7 +909,7 @@ while inicio == 0:
                                                         saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
                                                         saida = saida.lower()
                                                         os.system("cls")
-    #________________________________________________________________________________________________________________________
+#________________________________________________________________________________________________________________________
     
     
                                                 if choice6 == 4:
@@ -989,12 +986,9 @@ while inicio == 0:
                                                                         lista_disciplina_NOME.append(row[1])
                                                                         lista_disciplina_DEP.append(row[2])
     
-                                                                print "+-----------------------------------------------+"
-                                                                print "|                  DISCIPLINAS                  |"
-                                                                print "+-----------------------------------------------+"
-                                                                print "\nitem   disciplina    departamento\n"  
+                                                                print "\nitem\tcurso\tdisciplina\n"  
                                                                 for i in range (len(lista_disciplina_ID)):
-                                                                    print "[%.2d]   %s   (%s)" %(i+1,lista_disciplina_NOME[i],lista_disciplina_DEP[i])
+                                                                    print "[%.2d]\t%s\t%s" %(i+1,lista_disciplina_DEP[i],lista_disciplina_NOME[i])
                                                                 
                                                                 danosse = input("\nDigite o item a ser excluido ou 0 para sair: ")
                                                                 
@@ -1023,7 +1017,7 @@ while inicio == 0:
                                                             saida = "s"
                                                         os.system("cls") 
                                                         
-    #________________________________________________________________________________________________________________________
+#________________________________________________________________________________________________________________________
     
                                                 if choice6 == 5:
                                                     os.system("cls")
@@ -1033,23 +1027,20 @@ while inicio == 0:
                                                     saida = "s"
                                                 os.system("cls")  
     
-    #________________________________________________________________________________________________________________________
+#________________________________________________________________________________________________________________________
     
                                
-    #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
+#-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
                              
                                     if choice == 6:
                                         os.system("cls")
-                                        
                                         print "+-----------------------------------------------+"
                                         print "|                    LOG OFF                    |"
                                         print "+-----------------------------------------------+"
                                         inicio_ADM = 1
-    
                                 os.system("cls")                          
-                                        
-                                        
-    #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_# MAIN PROF
+
+#-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_# MAIN PROF
                         else:
                             os.system("cls")
                             cursor.execute("select * from professores where id_professor='%s'" %(cpf))
@@ -1059,18 +1050,18 @@ while inicio == 0:
                             
                             inicio_prof=0
                             while inicio_prof == 0:
-                                print "Bem vindo, Professor %s" %(nome_usuario)
                                 print "+-----------------------------------------------+"
                                 print "|              PAINEL DO PROFESSOR              |"
                                 print "+-----------------------------------------------+"
+                                print "Bem vindo, Professor %s\n" %(nome_usuario)
                                 choice=input("\nDigite:\n1 - Fazer Reserva\n2 - Deletar Reserva\n3 - Alterar senha\n4 - Sair\n->")
                                 if choice > 4 or choice <1:
                                     print "[ERRO 001] Opcao invalida. Tente novamente\n"
                                 else:
                             
-    #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
+#-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
     
-    ##### FAZER ERRO DA HORA #####
+##### FAZER ERRO DA HORA #####
     
                                     if choice == 1:
                                         os.system("cls")
@@ -1168,7 +1159,7 @@ while inicio == 0:
                                                     hora1 = input("Inicio: ")
                                                     hora2 = input("Fim: ")
                                                     
-        #############################################Fazer verificacao de horario negativo ou fora do funcionamento
+#############################################Fazer verificacao de horario negativo ou fora do funcionamento
                                                     
                                                     count_erros = 0
                                                     nova_reserva = 0
@@ -1225,13 +1216,10 @@ while inicio == 0:
                                                     os.system("cls")
                                                     print "ERRO: IMPOSSIVEL RESERVAR NESSA DATA\n"
                                                     fap = raw_input('ENTER')
-    #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
+#-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
                                     if choice == 2:
                                         os.system("cls")
-                                 
-                                        print "+-----------------------------------------------+"
-                                        print "|                DELETAR RESERVA                |"
-                                        print "+-----------------------------------------------+"
+                                
                                         saida = None
                                         while saida <> "s":              
                                             cursor.execute("select * from reservas where professor_reserva='%s'" %(cpf))
@@ -1300,7 +1288,7 @@ while inicio == 0:
                                                 saida = saida.lower()
                                                 os.system("cls")
                                         
-    #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
+#-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
     
                                     if choice == 3:
                                         os.system("cls")
@@ -1324,7 +1312,7 @@ while inicio == 0:
                                                 db.rollback()
                                         else:
                                             errorrrr = raw_input ("\n[ERRO 003] Senhas diferentes. Pressione ENTER ")                        
-    #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
+#-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
                             
                                     if choice == 4:
                                         os.system("cls")
@@ -1334,7 +1322,7 @@ while inicio == 0:
                                         print "+-----------------------------------------------+"
                                 os.system("cls")
                     end=1
-    #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
+#-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
         
         if choice == 3:
             os.system("cls")
