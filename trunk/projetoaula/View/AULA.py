@@ -30,7 +30,7 @@ while inicio == 0:
             os.system("cls")
             print "+-----------------------------------------------+"
             print "|                  PESQUISA                     |"
-            print "+-----------------------------------------------+"
+            print "+-----------------------------------------------+\n"
             pesquisa = Search()
             pesquisa.openPESQUISA()
 #____________________________________________________________________SEARCH
@@ -88,7 +88,7 @@ while inicio == 0:
                                         print "+-----------------------------------------------+"
                                         print "|               GERENCIAR PREDIOS               |"
                                         print "+-----------------------------------------------+"
-                                        choice2=input("Digite:\n1 - Adicionar\n2 - Editar\n3 - Excluir\n4 - Sair\n->")
+                                        choice2=input("\nDigite:\n1 - Adicionar\n2 - Editar\n3 - Excluir\n4 - Sair\n->")
                                         if choice2 > 4 or choice2 <1:
                                             print "[ERRO 001] Opcao invalida. Tente novamente\n"
                                         else:
@@ -99,7 +99,7 @@ while inicio == 0:
                                                     print "+-----------------------------------------------+"
                                                     print "|               ADICIONAR PREDIO                |"
                                                     print "+-----------------------------------------------+"
-                                                    id_predio = raw_input('Digite o ID do predio ou 0 para sair: ')
+                                                    id_predio = raw_input('\nDigite o ID do predio ou 0 para sair: ')
                                                     if id_predio == "0":
                                                         saida = "s"
                                                         os.system('cls')
@@ -122,7 +122,7 @@ while inicio == 0:
                                                     os.system("cls")
                                                     print "+-----------------------------------------------+"
                                                     print "|                 EDITAR PREDIO                 |"
-                                                    print "+-----------------------------------------------+"
+                                                    print "+-----------------------------------------------+\n"
                                                     show.print_predios()
                                                     
                                                     id_predio = raw_input('\nDigite o ID do predio que deseja editar ou 0 para sair: ')
@@ -173,7 +173,7 @@ while inicio == 0:
                                                     os.system("cls")
                                                     print "+-----------------------------------------------+"
                                                     print "|                EXCLUIR PREDIO                 |"
-                                                    print "+-----------------------------------------------+"
+                                                    print "+-----------------------------------------------+\n"
                                                     show.print_predios()
     
                                                     deletado = raw_input('\nDigite o ID do predio que deseja excluir ou 0 para sair: ')
@@ -217,7 +217,7 @@ while inicio == 0:
                                         print "|            GERENCIAR DEPARTAMENTOS            |"
                                         print "+-----------------------------------------------+"
                                         
-                                        choice3=input("Digite:\n1 - Adicionar\n2 - Editar\n3 - Excluir\n4 - Sair\n->")
+                                        choice3=input("\nDigite:\n1 - Adicionar\n2 - Editar\n3 - Excluir\n4 - Sair\n->")
                                         if choice3 > 4 or choice3 <1:
                                             print "[ERRO 001] Opcao invalida. Tente novamente\n"
                                         else:
@@ -229,7 +229,7 @@ while inicio == 0:
                                                     print "|            ADICIONAR DEPARTAMENTO             |"
                                                     print "+-----------------------------------------------+"
     
-                                                    id_departamento = raw_input('Digite o ID do departamento ou 0 para sair: ')
+                                                    id_departamento = raw_input('\nDigite o ID do departamento ou 0 para sair: ')
                                                     if id_departamento == "0":
                                                         saida = "s"
                                                         os.system('cls')
@@ -255,7 +255,7 @@ while inicio == 0:
                                                     os.system("cls")
                                                     print "+-----------------------------------------------+"
                                                     print "|              EDITAR DEPARTAMENTO              |"
-                                                    print "+-----------------------------------------------+"
+                                                    print "+-----------------------------------------------+\n"
                                                     
                                                     show.print_departamentos()
                                                     
@@ -316,7 +316,7 @@ while inicio == 0:
                                                     os.system("cls")
                                                     print "+-----------------------------------------------+"
                                                     print "|              EXCLUIR DEPARTAMENTO             |"
-                                                    print "+-----------------------------------------------+"
+                                                    print "+-----------------------------------------------+\n"
                                                     show.print_departamentos()
                                                     deletado = raw_input('\nDigite o ID do departamento ou 0 para sair: ')
                                                     if deletado == "0":
@@ -405,7 +405,7 @@ while inicio == 0:
                                                     os.system("cls")
                                                     print "+-----------------------------------------------+"
                                                     print "|                  EDITAR CURSO                 |"
-                                                    print "+-----------------------------------------------+"
+                                                    print "+-----------------------------------------------+\n"
                                                     show.print_cursos()
                                                     
                                                     id_curso = raw_input('\nDigite o ID do curso ou 0 para sair: ')
@@ -475,7 +475,7 @@ while inicio == 0:
                                                     os.system("cls")
                                                     print "+-----------------------------------------------+"
                                                     print "|                 EXCLUIR CURSO                 |"
-                                                    print "+-----------------------------------------------+"
+                                                    print "+-----------------------------------------------+\n"
                                                     show.print_cursos()
                                                     
                                                     deletado = raw_input('\nDigite o ID do curso ou 0 para sair: ')
@@ -569,7 +569,7 @@ while inicio == 0:
                                              
                                                     print "+-----------------------------------------------+"
                                                     print "|               EDITAR DISCIPLINA               |"
-                                                    print "+-----------------------------------------------+"
+                                                    print "+-----------------------------------------------+\n"
                                                     
                                                     show.print_cursos()
                                                     CURSO = raw_input("\nDigite o ID do curso da disciplina ou 0 para sair: ")
@@ -644,7 +644,7 @@ while inicio == 0:
                                                     
                                                     print "+-----------------------------------------------+"
                                                     print "|               EXCLUIR DISCIPLINA              |"
-                                                    print "+-----------------------------------------------+"
+                                                    print "+-----------------------------------------------+\n"
                                                     
                                                     show.print_cursos()
                                                     CURSO = raw_input("\nDigite o ID do curso da disciplina ou 0 para sair: ")
@@ -753,7 +753,7 @@ while inicio == 0:
                                                     
                                                     print "+-----------------------------------------------+"
                                                     print "|                 EDITAR PROFESSOR              |"
-                                                    print "+-----------------------------------------------+"
+                                                    print "+-----------------------------------------------+\n"
                                                     teste = Validacao()
                                                     show.print_professores()
                                             
@@ -873,7 +873,7 @@ while inicio == 0:
                                                     print "|                EXCLUIR PROFESSOR              |"
                                                     print "+-----------------------------------------------+"
                                 
-                                                    print "\nOpcao valida apenas para professores sem reservas e disciplinas.\n"
+                                                    print "\nOBS: Opcao valida apenas para professores sem reservas e disciplinas.\n"
     
                                                     show.print_professores()
                                                     id_CPF = raw_input('\nDigite o CPF do professor ou 0 para sair: ')
@@ -917,7 +917,7 @@ while inicio == 0:
                                                    
                                                     print "+-----------------------------------------------+"
                                                     print "|      GERENCIAR DISCIPLINAS DO PROFESSOR       |"
-                                                    print "+-----------------------------------------------+"
+                                                    print "+-----------------------------------------------+\n"
                                                     show.print_professores()
                                                     cpf_professor = raw_input('\nDigite o CPF do professor: ')
                                                     os.system('cls')
@@ -942,7 +942,7 @@ while inicio == 0:
                                                             while saida <> "s":
                                                                 print "+-----------------------------------------------+"
                                                                 print "|             ADICIONAR DISCIPLINA              |"
-                                                                print "+-----------------------------------------------+"
+                                                                print "+-----------------------------------------------+\n"
                                                                 show.print_disciplinas(CURSO)
                                                                 DISCIPLINA = raw_input('\nDigite o ID da disciplina: ')
                                                                 os.system('cls')
@@ -1075,7 +1075,7 @@ while inicio == 0:
                                         while saida <> "s":
                                             is_today_the_future = False
                                             show.print_predios()
-                                            predio_reserva = raw_input("\n\nDigite o ID do predio da reserva ou 0 para sair: ")
+                                            predio_reserva = raw_input("\nDigite o ID do predio da reserva ou 0 para sair: ")
                                             if predio_reserva == "0":
                                                 saida = "s"
                                                 os.system("cls")
@@ -1085,7 +1085,7 @@ while inicio == 0:
                                                 print "|                 FAZER RESERVA                 |"
                                                 print "+-----------------------------------------------+\n"
                                                 show.print_local(predio_reserva)
-                                                local_reserva = raw_input("\n\nDigite o ID do local da reserva: ")
+                                                local_reserva = raw_input("\nDigite o ID do local da reserva: ")
                                                 os.system("cls")
                                                 print "+-----------------------------------------------+"
                                                 print "|                 FAZER RESERVA                 |"
@@ -1266,14 +1266,14 @@ while inicio == 0:
                                             print "+-----------------------------------------------+"
                                             print "|                DELETAR RESERVA                |"
                                             print "+-----------------------------------------------+"
-                                            print "\nitem   ano-mes-dia    hora   predio local  Disciplina\n"
+                                            print "\nITEM    DATA     HORA  PREDIO LOCAL  DISCIPLINA"
                                             print "-------------------------------------------------"  
                                             for i in range (len(lista_reserva_ID)):
                                                 DATA = lista_data[i]
                                                 DATA = str(DATA)
                                                 ano,mes,dia = DATA.split("-")
                                                 NovaData = dia+"/"+mes+"/"+ano
-                                                print "[%.2d]   %s  as  %.2d h  %s  %s  %s - %s  " %(i+1,NovaData,lista_hora[i],lista_predioNOME[i],lista_localNOME[i],lista_disciplinaNOME[i],lista_cursoNOME[i])
+                                                print "(%.2d) %s  %.2dh  %s  %s  %s - %s  " %(i+1,NovaData,lista_hora[i],lista_predioNOME[i],lista_localNOME[i],lista_disciplinaNOME[i],lista_cursoNOME[i])
                                             
                                             danosse = input("\nDigite o item a ser excluido ou 0 para sair: ")
                                             
