@@ -8,11 +8,3 @@ ERRO
 \n\t[ERRO 007] Erro na edicao.
 \n\t[ERRO 008] Impossivel fazer reservas nessa data.
 
-OBS: Colocar no inicio e na continuação dos erros \n\t
-
-Testar os erros que não aparecem na tela (por serem muito rapidos)...
-...trocar os prints por raw_input para que o usuario veja o erro antes de continuar
-
-PADRONIZAR A VARIÁVEL DO ERRO TAMBEM (26 é o exemplo para teste e tem que ser PADRÃO em todos os outros)
-
-ERRO_AULA = raw_input("\n\t[ERRO 001] Opcao invalida.\n\tPressione ENTER para continuar.\n")
