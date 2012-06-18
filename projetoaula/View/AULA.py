@@ -1462,6 +1462,12 @@ while inicio == 0:
                                                                 try:
                                                                     cursor.execute(sql)
                                                                     db.commit()
+                                                                    cursor.execute("select * from disciplinas where id_disciplina='%s'" %(disciplina_reserva)        
+                                                                    for row in cursor.fetchall():
+                                                                            up_curso = row[2]
+                                                                    sql = "insert into log values('%s','%s','%s')"%(id_log, log_texto, up_curso)
+                                                                    cursor.execute(sql)
+                                                                    db.commit()
                                                                     print "Cadastro efetuado com sucesso as %s horas" %(hora)
                                                                 except:
                                                                     ERRO_AULA = raw_input("\n\t[ERRO 005] Reserva ja existente para %s horas.\n\tPressione ENTER para continuar.\n") %(hora)
