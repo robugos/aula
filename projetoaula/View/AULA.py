@@ -17,8 +17,8 @@ while inicio == 0:
     print "+-----------------------------------------------+"
     print "|                    AULA                       |"
     print "+-----------------------------------------------+"
-    choice=input("\n1 (PESQUISA)  2 (LOGIN)  3 (SAIR)\n\nDigite: ")
-    if choice > 3 or choice <1:
+    choice=input("\n1 (PESQUISA)  2 (LOGIN)  3 (UPDATE)  4 (SAIR)\n\nDigite: ")
+    if choice > 4 or choice <1:
         os.system("cls")
         print "+-----------------------------------------------+"
         print "|                    AULA                       |"
@@ -39,27 +39,40 @@ while inicio == 0:
                         #INICIO DO LOGIN--------->>>>>> main_PROF and main_ADM
         if choice == 2:
             os.system("cls")
-            print "+-----------------------------------------------+"
-            print "|                   LOGIN                       |"
-            print "+-----------------------------------------------+"
-            
             Login = Login_professor()
             end=0
             while end == 0:
+                print "+-----------------------------------------------+"
+                print "|                    LOGIN                      |"
+                print "+-----------------------------------------------+"
                 cpf = raw_input("\nDigite o login (CPF): ")
                 verificar_CPF = "select usuario_cpf from usuarios where usuario_cpf='%s'" %(cpf)
                 existe = cursor.execute(verificar_CPF)
                 if existe < 1:
+                    os.system("cls")
+                    print "+-----------------------------------------------+"
+                    print "|                    LOGIN                      |"
+                    print "+-----------------------------------------------+"
                     ERRO_AULA = raw_input("\n\t[ERRO 002] Usuario nao existente.\n\tPressione ENTER para continuar.\n")
+                    os.system("cls")
                 else:
                     Login.prof_CPF(cpf)
                     acesso = False
                     while acesso == False:
-                        senha = getpass.getpass(prompt="Digite sua senha: ")
+                        os.system("cls")
+                        print "+-----------------------------------------------+"
+                        print "|                    LOGIN                      |"
+                        print "+-----------------------------------------------+"
+                        senha = getpass.getpass(prompt="\nDigite sua senha: ")
                         verificar_senha = "select usuario_cpf='%s' from usuarios where senha='%s'" %(cpf,senha)
                         executar = cursor.execute(verificar_senha)
                         if executar < 1:
+                            os.system("cls")
+                            print "+-----------------------------------------------+"
+                            print "|                    LOGIN                      |"
+                            print "+-----------------------------------------------+"
                             ERRO_AULA = raw_input("\n\t[ERRO 003] Senha incorreta.\n\tPressione ENTER para continuar.\n")
+                            os.system("cls")
                         else:
                             acesso = True
                             Login.userSenha(senha)
@@ -74,13 +87,18 @@ while inicio == 0:
 ############################# MAIN_ADM ################################
     
                             inicio_ADM = 0
-                            while inicio_ADM == 0:  
+                            while inicio_ADM == 0:
+                                os.system("cls")  
                                 print "+-----------------------------------------------+"
                                 print "|            PAINEL DO ADMINISTRADOR            |"
                                 print "+-----------------------------------------------+"
                                 choice=input("\nGerenciar:\n\n1 - Predios\n2 - Departamentos\n3 - Cursos\n4 - Disciplinas\n5 - Professores\n6 - Sair\n->")
                                
                                 if choice > 6 or choice <1:
+                                    os.system("cls")
+                                    print "+-----------------------------------------------+"
+                                    print "|            PAINEL DO ADMINISTRADOR            |"
+                                    print "+-----------------------------------------------+"
                                     ERRO_AULA = raw_input("\n\t[ERRO 001] Opcao invalida.\n\tPressione ENTER para continuar.\n")
                                 else:
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
@@ -91,6 +109,10 @@ while inicio == 0:
                                         print "+-----------------------------------------------+"
                                         choice2=input("\nDigite:\n\n1 - Adicionar\n2 - Editar\n3 - Excluir\n4 - Sair\n->")
                                         if choice2 > 4 or choice2 <1:
+                                            os.system("cls")
+                                            print "+-----------------------------------------------+"
+                                            print "|               GERENCIAR PREDIOS               |"
+                                            print "+-----------------------------------------------+"
                                             ERRO_AULA = raw_input("\n\t[ERRO 001] Opcao invalida.\n\tPressione ENTER para continuar.\n")
                                         else:
                                             saida = None
@@ -112,10 +134,14 @@ while inicio == 0:
                                                             db.commit()
                                                             print "Novo predio cadastrado com sucesso."
                                                         except:
+                                                            os.system("cls")
+                                                            print "+-----------------------------------------------+"
+                                                            print "|               ADICIONAR PREDIO                |"
+                                                            print "+-----------------------------------------------+"
                                                             ERRO_AULA = raw_input("\n\t[ERRO 006] Erro no cadastro.\n\tPressione ENTER para continuar.\n")
                                                             db.rollback()
                                                             
-                                                        saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                        saida = raw_input('\nDigite (S) para sair ou ENTER pra continuar: ')
                                                         saida = saida.lower()
                                                         os.system("cls")                   
 #ADD PREDIO 100% PERFEITO by Gustavo_____________________________________________________________________
@@ -134,16 +160,28 @@ while inicio == 0:
                                                         verificar_predio = "select id_predio from predios where id_predio='%s'" %(id_predio)
                                                         existe = cursor.execute(verificar_predio)
                                                         if existe < 1:
+                                                            os.system("cls")
+                                                            print "+-----------------------------------------------+"
+                                                            print "|                 EDITAR PREDIO                 |"
+                                                            print "+-----------------------------------------------+\n"
                                                             ERRO_AULA = raw_input("\n\t[ERRO 002] ID nao existente.\n\tPressione ENTER para continuar.\n")
                                                             continue
                                                         else:
+                                                            os.system("cls")
+                                                            print "+-----------------------------------------------+"
+                                                            print "|                 EDITAR PREDIO                 |"
+                                                            print "+-----------------------------------------------+"
                                                             opcao = input("\nDigite: 1 (EDITAR ID)    2 (EDITAR NOME)\n->")
                                                             if opcao > 2 or opcao < 1:
+                                                                os.system("cls")
+                                                                print "+-----------------------------------------------+"
+                                                                print "|                 EDITAR PREDIO                 |"
+                                                                print "+-----------------------------------------------+"
                                                                 ERRO_AULA = raw_input("\n\t[ERRO 001] Opcao invalida.\n\tPressione ENTER para continuar.\n")
                                                                 continue
                                                             else:
                                                                 if opcao == 1:
-                                                                    id_novo = raw_input("Digite o novo ID do predio: ")
+                                                                    id_novo = raw_input("\nDigite o novo ID do predio: ")
                                                                     
                                                                     sql = "update predios set id_predio='%s' where id_predio='%s'" %(id_novo, id_predio)
                                                                     try:
@@ -151,11 +189,15 @@ while inicio == 0:
                                                                         db.commit()
                                                                         print "ID do predio editado com sucesso."
                                                                     except:
+                                                                        os.system("cls")
+                                                                        print "+-----------------------------------------------+"
+                                                                        print "|                 EDITAR PREDIO                 |"
+                                                                        print "+-----------------------------------------------+"
                                                                         ERRO_AULA = raw_input("\n\t[ERRO 007] Erro na edicao. Verifique se os itens foram inseridos corretamente.\n\tPressione ENTER para continuar.\n")
                                                                         db.rollback()
             
                                                                 if opcao == 2:
-                                                                    nome_predio = raw_input("Digite o novo nome do predio: ")
+                                                                    nome_predio = raw_input("\nDigite o novo nome do predio: ")
                                                                     
                                                                     sql = "update predios set nome_predio='%s' where id_predio='%s'" %(nome_predio, id_predio)
                                                                     try:
@@ -163,10 +205,14 @@ while inicio == 0:
                                                                         db.commit()
                                                                         print "Nome do predio editado com sucesso."
                                                                     except:
+                                                                        os.system("cls")
+                                                                        print "+-----------------------------------------------+"
+                                                                        print "|                 EDITAR PREDIO                 |"
+                                                                        print "+-----------------------------------------------+"
                                                                         ERRO_AULA = raw_input("\n\t[ERRO 007] Erro na edicao. Verifique se os itens foram inseridos corretamente.\n\tPressione ENTER para continuar.\n")
                                                                         db.rollback()
                                         
-                                                        saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                        saida = raw_input('\nDigite (S) para sair ou ENTER pra continuar: ')
                                                         saida = saida.lower()
                                                         os.system("cls")                                                    
 #EDITAR PREDIO 100% PERFEITO by Gustavo____________________________________________________________________
@@ -185,7 +231,11 @@ while inicio == 0:
                                                         verificar_predio = "select id_predio from predios where id_predio='%s'" %(deletado)
                                                         existe = cursor.execute(verificar_predio)
                                                         if existe < 1:
-                                                            ERRO_AULA = raw_input("\n\t[ERRO 002] Predio nao existente.\n\tPressione ENTER para continuar.\n")
+                                                            os.system("cls")
+                                                            print "+-----------------------------------------------+"
+                                                            print "|                EXCLUIR PREDIO                 |"
+                                                            print "+-----------------------------------------------+"
+                                                            print "\n\t[ERRO 002] Predio nao existente.\n\tPressione ENTER para continuar.\n"
                                                         else:                                            
                                                             sql = "delete from predios where id_predio='%s'" %(deletado)
                                                             try:
@@ -193,6 +243,10 @@ while inicio == 0:
                                                                 db.commit()
                                                                 print "Predio excluido com sucesso."
                                                             except:
+                                                                os.system("cls")
+                                                                print "+-----------------------------------------------+"
+                                                                print "|                EXCLUIR PREDIO                 |"
+                                                                print "+-----------------------------------------------+"
                                                                 ERRO_AULA = raw_input("\n\t[ERRO 004] Erro na exclusao.\n\tPressione ENTER para continuar.\n")
                                                                 db.rollback()
                                                             
@@ -1330,6 +1384,14 @@ while inicio == 0:
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
         
         if choice == 3:
+            os.system("cls")
+            print "+-----------------------------------------------+"
+            print "|                    UPDATES                    |"
+            print "+-----------------------------------------------+"
+
+#-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
+            
+        if choice == 4:
             os.system("cls")
             inicio = 1
             print "+-----------------------------------------------+"
