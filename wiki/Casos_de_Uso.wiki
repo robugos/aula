@@ -25,10 +25,10 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 || *Fluxos alternativos* ||
 || 1.1 Se ao registrar, alguma informação digitada não estiver dentro dos padrões para registro, o sistema retorna a mensagem "[ERRO 006] Erro no cadastro. Verifique se os itens foram inseridos corretamente.".||
 || 1.2 Tentativa de registro de departamento e ele já existir. O existente não é sobrescrito. O sistema retorna uma mensagem de erro "[ERRO 005]Departamento ja existente.". ||
-|| 2.1 Se ao tentar editar as informações de um determinado departamento e for digitado alguma entrada fora dos padrões para edição, o sistema retorna uma mensagem "[ERRO 007]Erro na edição."||
+|| 2.1 Se ao tentar editar as informações de um determinado departamento e for digitado alguma entrada fora dos padrões para edição, o sistema retorna uma mensagem "[ERRO 007] Erro na edição."||
 || 2.2 Se ao tentar editar as informações de um determinado departamento que não possui cadastro, o programa informa uma mensagem de erro "[ERRO 002]Departamento nao existente." ||
 || 3.1 Se ao tentar excluir as informações de um departamento informando alguma entrada fora dos padrões de exclusão,o programa retorna uma mensagem "[ERRO 004]Erro na exclusao." ||
-|| 3.2 Se ao tentar excluir as informações de um departamento informando seu ID incorretamente, o sistema retorna uma mensagem "[ERRO 002]Departamento nao existente."
+|| 3.2 Se ao tentar excluir as informações de um departamento informando seu ID incorretamente, o sistema retorna uma mensagem "[ERRO 002]Departamento nao existente."||
 
 ---------------------------
 
@@ -54,7 +54,7 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 || 2.1 Se ao tentar editar as informações de um determinado curso e for digitado alguma entrada fora dos padrões para edição, o sistema retorna uma mensagem "[ERRO 007]Erro na edição."||
 || 2.2 Se ao tentar editar as informações de um determinado curso que não possui cadastro, o programa informa uma mensagem de erro "[ERRO 002]Curso nao existente." ||
 || 3.1 Se ao tentar excluir as informações de um curso informando alguma entrada fora dos padrões de exclusão,o programa retorna uma mensagem "[ERRO 004]Erro na exclusao.Verifique se existe disciplinas e aulas relacionadas com esse curso." ||
-|| 3.2 Se ao tentar excluir as informações de um curso informando seu ID incorretamente, o sistema retorna uma mensagem "[ERRO 002]Curso nao existente."
+|| 3.2 Se ao tentar excluir as informações de um curso informando seu ID incorretamente, o sistema retorna uma mensagem "[ERRO 002]Curso nao existente."||
 
 
 --------------------------
@@ -81,7 +81,7 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 || 2.1 Se ao tentar editar as informações de uma determinada disciplina e for digitado alguma entrada fora dos padrões para edição, o sistema retorna uma mensagem "[ERRO 007] Erro na edição."||
 || 2.2 Se ao tentar editar as informações de uma determinada disciplina que não possui cadastro, o programa informa uma mensagem de erro "[ERRO 002]Disciplina nao existente." ||
 || 3.1 Se ao tentar excluir as informações de uma disciplina informando alguma entrada fora dos padrões de exclusão,o programa retorna uma mensagem "[ERRO 004]Erro na exclusao." ||
-|| 3.2 Se ao tentar excluir as informações de uma disciplina informando um ID não existente, o sistema retorna uma mensagem "[ERRO 002]Disciplina nao existente."
+|| 3.2 Se ao tentar excluir as informações de uma disciplina informando um ID não existente, o sistema retorna uma mensagem "[ERRO 002]Disciplina nao existente."||
 
 
 --------------------------
@@ -120,38 +120,44 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 || *Ator* || Administrador ||
 || *Prioridade* || Média. ||
 || *Pré-condição* || O tipo de usuário "Administrador" é selecionado e ter acesso ao sistema. ||
-|| *Pós-condições* || Todas as salas do prédio poderão ser cadastradas. ||
+|| *Pós-condições* || O prédio é registrado, tem suas informações editadas ou excluídas. ||
 
 ==Cenários principais de sucesso== 
 
 || *Usuário* ||
-|| 1 - O prédio é cadastrado com sucesso. ||
+|| 1 -  ||
+|| 2 - Ao editar, o administrador acessa as informações já cadastradas do prédio e faz as alterações necessárias, ao final, o programa rearmazena os dados. ||
+|| 3 - Ao excluir, o administrador informa o ID do prédio que deseja excluir, e o sistema exclui todas as informações relacionadas a esse prédio. ||
 
 || *Fluxos alternativos* ||
-|| 1.1 - Ao tentar cadastrar um prédio já existente, o sistema retorna a mensagem de erro "[ERRO 005]. ||
-
+|| 1.1 - Ao tentar cadastro de prédio já existente, retorna uma mensagem "[ERRO 005]Predio ja existente.". ||
+|| 1.2 Se ao registrar, alguma informação digitada não estiver dentro dos padrões para registro, o sistema retorna a mensagem "[ERRO 006] Erro no cadastro. Verifique se os itens foram inseridos corretamente.".||
+|| 2.1 Se ao tentar editar as informações de um determinado prédio e for digitado alguma entrada fora dos padrões para edição, o sistema retorna uma mensagem "[ERRO 007] Erro na edição."||
+|| 2.2 Se ao tentar editar as informações de um determinado prédio que não possui cadastro, o programa informa uma mensagem de erro "[ERRO 002]Predio nao existente." ||
+|| 3.1 Se ao tentar excluir as informações de um prédio informando alguma entrada fora dos padrões de exclusão,o programa retorna uma mensagem "[ERRO 004]Erro na exclusao." ||
+|| 3.2 Se ao tentar excluir as informações de um prédio informando um ID não existente, o sistema retorna uma mensagem "[ERRO 002]Prédio nao existente."
 
 --------------------------
 
 ==UC0006 - Gerenciamento de Aulas==
 
-|| *Objetivo* || Consiste em gerenciar o cadastro de aulas, locais e horários. ||
-|| *Descrição* || Poderá selecionar , editar e excluir informações como aulas, locais e horários.  ||
+|| *Objetivo* || Consiste em gerenciar o cadastro de aulas para locais, datas e horários. ||
+|| *Descrição* || Poderá reservar e excluir reservas de aulas, informando entradas como ID do local, data, ID da disciplina e horário. ||
 || *Ator* || Professor ||
 || *Prioridade* || Alta. ||
-|| *Pré-condição* || Todas os horários, aulas e salas já estão cadastradas. || 
+|| *Pré-condição* || Todas os horários, aulas e salas já estão cadastradas e existir datas e horários livres para reservar aulas. || 
 || *Pós-condições* || A seleção é realizada. ||
 
 ==Cenários principais de sucesso== 
 
 || *Usuário* ||
-|| 1 - Existir locais livres para determinadas aulas;|| 
-|| 2 - Existir horários livres para determinadas aulas.||
+|| 1 - Ao reservar, o professor informa entradas como ID do local, a data , o ID disciplina e a hora da reserva da aula.|| 
+|| 2 - Ao excluir, o professor informa o item a ser excluído.||
 
 || *Fluxos alternativos* ||
-|| 1. Se a sala cadastrada estiver ocupada, retorna a mensagem "Sala já ocupada." para o usuário tentar selecionar uma sala desocupada;||
-|| 2. Se o horário para a sala estiver ocupado, retorna a mensagem "Horário já ocupado." para o usuário tentar outro horário ou outra sala desocupada.||
-
+|| 1.1 Se ao tentar reserva e a data estiver ocupada, o sistema retorna uma mensagem "[ ERRO 005] Reserva ja existente para determinada data."||
+|| 1.2 Se ao tentar reserva e o horário estiver ocupado, o sistema retorna uma mensagem "[ ERRO 005] Reserva ja existente para determinado horario."||
+|| 2.1 Se ao tentar deletar reserva que não possui horário cadastrado, o sistema informa a mensagem "[ ERRO 004]Erro na exclusao. Nao existe reserva nesse horario."||
 ----------------------------
 
 
