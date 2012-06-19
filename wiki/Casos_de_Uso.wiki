@@ -177,7 +177,7 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 
 
 || *Fluxos alternativos* ||
-|| 1. Campo selecionado não cadastrado: O sistema retorna a seguinte mensagem "Dado do campo ainda não cadastrado!" ||
+|| 1. Campo selecionado não cadastrado: O sistema retorna a seguinte mensagem "Nao ha reserva para determinada busca." ||
 
 
 -----------------------
