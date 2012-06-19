@@ -92,9 +92,9 @@ while inicio == 0:
                                 print "+-----------------------------------------------+"
                                 print "|            PAINEL DO ADMINISTRADOR            |"
                                 print "+-----------------------------------------------+"
-                                choice=input("\nGerenciar:\n\n1 - Predios\n2 - Departamentos\n3 - Cursos\n4 - Disciplinas\n5 - Professores\n6 - Sair\n->")
+                                choicea=input("\nGerenciar:\n\n1 - Predios\n2 - Departamentos\n3 - Cursos\n4 - Disciplinas\n5 - Professores\n6 - Sair\n->")
                                
-                                if choice > 6 or choice <1:
+                                if choicea > 6 or choicea <1:
                                     os.system("cls")
                                     print "+-----------------------------------------------+"
                                     print "|            PAINEL DO ADMINISTRADOR            |"
@@ -102,7 +102,7 @@ while inicio == 0:
                                     ERRO_AULA = raw_input("\n\t[ERRO 001] Opcao invalida.\n\tPressione ENTER para continuar.\n")
                                 else:
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
-                                    if choice == 1:
+                                    if choicea == 1:
                                         os.system("cls")
                                         print "+-----------------------------------------------+"
                                         print "|               GERENCIAR PREDIOS               |"
@@ -266,7 +266,7 @@ while inicio == 0:
                                         
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
     
-                                    if choice == 2:
+                                    if choicea == 2:
                                         os.system("cls")
                                         print "+-----------------------------------------------+"
                                         print "|            GERENCIAR DEPARTAMENTOS            |"
@@ -447,7 +447,7 @@ while inicio == 0:
                                         
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
     
-                                    if choice == 3:
+                                    if choicea == 3:
                                         os.system("cls")
                                         print "+-----------------------------------------------+"
                                         print "|               GERENCIAR CURSOS                |"
@@ -651,7 +651,7 @@ while inicio == 0:
                                                 os.system("cls")                                                           
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
                 
-                                    if choice == 4:
+                                    if choicea == 4:
                                         os.system("cls")
                                         print "+-----------------------------------------------+"
                                         print "|             GERENCIAR DISCIPLINAS             |"
@@ -871,7 +871,7 @@ while inicio == 0:
                                                     saida = "s"
                                                 os.system("cls")  
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
-                                    if choice == 5:
+                                    if choicea == 5:
                                         os.system("cls")
                                         print "+-----------------------------------------------+"
                                         print "|            GERENCIAR PROFESSORES              |"
@@ -903,9 +903,17 @@ while inicio == 0:
                                                         os.system("cls")
                                                     else:
                                                         os.system("cls")
+                                                        
+                                                        print "+-----------------------------------------------+"
+                                                        print "|              ADICIONAR PROFESSOR              |"
+                                                        print "+-----------------------------------------------+"
                                                         id_professor = Test.CPF_Check(id_professor)
-                                                        nome_professor = raw_input("Digite o nome do professor: ")
+                                                        nome_professor = raw_input("\nDigite o nome do professor: ")
                                                         os.system("cls")
+                                                        
+                                                        print "+-----------------------------------------------+"
+                                                        print "|              ADICIONAR PROFESSOR              |"
+                                                        print "+-----------------------------------------------+\n"
                                                         show.print_departamentos()    
                                                         departamento_professor = raw_input("\nDigite o departamento do professor: ")
                                                         os.system("cls")
@@ -932,7 +940,7 @@ while inicio == 0:
                                                         cursor.execute(sql)
                                                         db.commit()
                                                            
-                                                        saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                        saida = raw_input('\nDigite (S) para sair ou ENTER pra continuar: ')
                                                         saida = saida.lower()
                                                         os.system("cls")                                                
 #________________________________________________________________________________________________________________________
@@ -1283,14 +1291,16 @@ while inicio == 0:
                                
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
                              
-                                    if choice == 6:
+                                    if choicea == 6:
                                         os.system("cls")
                                         print "+-----------------------------------------------+"
                                         print "|                    LOG OFF                    |"
                                         print "+-----------------------------------------------+"
                                         inicio_ADM = 1
+                                        end=1
                                 os.system("cls")                          
-
+                
+                
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_# MAIN PROF
                         else:
                             os.system("cls")
@@ -1306,8 +1316,8 @@ while inicio == 0:
                                 print "|              PAINEL DO PROFESSOR              |"
                                 print "+-----------------------------------------------+"
                                 print "Bem vindo, Professor %s\n" %(nome_usuario)
-                                choice=input("\nDigite:\n\n1 - Fazer Reserva\n2 - Deletar Reserva\n3 - Alterar senha\n4 - Sair\n->")
-                                if choice > 4 or choice <1:
+                                choicep=input("\nDigite:\n\n1 - Fazer Reserva\n2 - Deletar Reserva\n3 - Alterar senha\n4 - Sair\n->")
+                                if choicep > 4 or choicep <1:
                                     os.system("cls")
                                     print "+-----------------------------------------------+"
                                     print "|              PAINEL DO PROFESSOR              |"
@@ -1319,7 +1329,7 @@ while inicio == 0:
     
 ##### FAZER ERRO DA HORA #####
     
-                                    if choice == 1:
+                                    if choicep == 1:
                                         os.system("cls")
                                        
                                         print "+-----------------------------------------------+"
@@ -1328,6 +1338,11 @@ while inicio == 0:
                                         
                                         saida = None
                                         while saida <> "s":
+                                            os.system("cls")
+                                       
+                                            print "+-----------------------------------------------+"
+                                            print "|                 FAZER RESERVA                 |"
+                                            print "+-----------------------------------------------+\n"
                                             is_today_the_future = False
                                             show.print_predios()
                                             predio_reserva = raw_input("\nDigite o ID do predio da reserva ou 0 para sair: ")
@@ -1348,6 +1363,7 @@ while inicio == 0:
                                                 data = raw_input("Digite a data da reserva ano-mes-dia (0000-00-00) ")
                                                 date = data
                                                 year,month,day = date.split('-')
+                                                DATARESERVA = day+"/"+month+"/"+year
                                                 year,month,day = int(year),int(month),int(day)
                                                 today = datetime.now()
                                                 if year == today.year:                                                    
@@ -1455,6 +1471,7 @@ while inicio == 0:
                                                         if nova_reserva == 1:
                                                             continue
                                                         elif nova_reserva == 0:
+                                                            okkkk = 0
                                                             for horario in range (hora1,hora2,1):
                                                                 hora = str(horario)
                                                                 id_reserva = data+"_"+hora+"_"+predio_reserva+"_"+local_reserva
@@ -1462,16 +1479,27 @@ while inicio == 0:
                                                                 try:
                                                                     cursor.execute(sql)
                                                                     db.commit()
-                                                                    cursor.execute("select * from disciplinas where id_disciplina='%s'" %(disciplina_reserva)        
-                                                                    for row in cursor.fetchall():
-                                                                            up_curso = row[2]
-                                                                    sql = "insert into log values('%s','%s','%s')"%(id_log, log_texto, up_curso)
-                                                                    cursor.execute(sql)
-                                                                    db.commit()
                                                                     print "Cadastro efetuado com sucesso as %s horas" %(hora)
+                                                                    okkkk+=1
                                                                 except:
                                                                     ERRO_AULA = raw_input("\n\t[ERRO 005] Reserva ja existente para %s horas.\n\tPressione ENTER para continuar.\n") %(hora)
                                                                     db.rollback()
+                                                                    
+                                                            if okkkk >= 1:
+                                                                CURSOAULA = ""
+                                                                DISCIPLINAAULA = ""
+                                                                
+                                                                cursor.execute("select * from disciplinas where id_disciplina='%s'" %(disciplina_reserva))
+
+                                                                for row in cursor.fetchall():
+                                                                        CURSOAULA = row[2]
+                                                                        DISCIPLINAAULA = row[1]
+
+                                                                logtexto = "%s - Prof. %s reservou aula de %s (%s)" %(DATARESERVA,nome_usuario,DISCIPLINAAULA,CURSOAULA)
+                                                                
+                                                                sql = "insert into log values('%s','%s','%s')"%(0, logtexto, CURSOAULA)
+                                                                cursor.execute(sql)
+                                                                db.commit()
                                                         else:
                                                             saida="s"
                                                     saida = raw_input('\nDigite (S) para sair ou ENTER pra continuar: ')
@@ -1487,7 +1515,7 @@ while inicio == 0:
                                                     ERRO_AULA = raw_input("\n\t[ERRO 008] Impossivel fazer reservas nessa data.\n\tPressione ENTER para continuar.\n")
                                                     
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
-                                    if choice == 2:
+                                    if choicep == 2:
                                         os.system("cls")
                                 
                                         saida = None
@@ -1548,13 +1576,29 @@ while inicio == 0:
                                             
                                             if danosse == 0:
                                                 saida = "s"
-                                            else:
+                                            if danosse <> 0 and lista_reserva_ID <> []:
                                                 del_reserva = lista_reserva_ID[danosse-1]
                                                 sql = "delete from reservas where id_reserva='%s'" %(del_reserva)
                                                 try:
                                                     cursor.execute(sql)
                                                     db.commit()
                                                     print "Reserva excluida com sucesso."
+                                                    
+                                                    up_nome_disciplina = lista_disciplinaNOME[danosse-1]
+                                                    up_curso = lista_cursoNOME[danosse-1]
+                                                    
+                                                    DATA = lista_data[danosse-1]
+                                                    DATA = str(DATA)
+                                                    ano,mes,dia = DATA.split("-")
+                                                    DELData = dia+"/"+mes+"/"+ano
+                                                    
+
+                                                    log_texto = "%s - Prof. %s cancelou a aula de %s (%s)" %(DELData,nome_usuario,up_nome_disciplina,up_curso)
+                                                    
+                                                    sql = "insert into log values('%s','%s','%s')"%(0, log_texto, up_curso)
+                                                    cursor.execute(sql)
+                                                    db.commit()
+                                                    
                                                 except:
                                                     os.system("cls")
                                                     print "+-----------------------------------------------+"
@@ -1563,13 +1607,13 @@ while inicio == 0:
                                                     ERRO_AULA = raw_input("\n\t[ERRO 004] Erro na exclusao. Nao existe reserva nesse horario.\n\tPressione ENTER para continuar.\n")
                                                     db.rollback()
                                                                                                 
-                                                saida = raw_input('\nDigite s para sair ou ENTER para continuar excluindo: ')
+                                                saida = raw_input('\nDigite (S) para sair ou ENTER para continuar excluindo: ')
                                                 saida = saida.lower()
                                                 os.system("cls")
                                         
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
     
-                                    if choice == 3:
+                                    if choicep == 3:
                                         os.system("cls")
                                     
                                         print "+-----------------------------------------------+"
@@ -1602,22 +1646,50 @@ while inicio == 0:
                                             ERRO_AULA = raw_input("\n\t[ERRO 003] Senha incorreta.\n\tPressione ENTER para continuar.\n")         
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
                             
-                                    if choice == 4:
+                                    if choicep == 4:
                                         os.system("cls")
                                         inicio_prof = 1
                                         print "+-----------------------------------------------+"
                                         print "|                    LOG OFF                    |"
                                         print "+-----------------------------------------------+"
+                                        end = 1
                                 os.system("cls")
-                    end=1
+                
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
-        
+                    
         if choice == 3:
             os.system("cls")
             print "+-----------------------------------------------+"
             print "|                    UPDATES                    |"
-            print "+-----------------------------------------------+"
-
+            print "+-----------------------------------------------+\n"
+            show.print_departamentos()
+            DEPARTAMENTO = raw_input("\nDigite o ID do departamento ou 0 para sair: ")
+            if DEPARTAMENTO == "0":
+                saida = "s"
+                os.system("cls")
+                continue
+                
+            else:
+                os.system("cls")
+                print "+-----------------------------------------------+"
+                print "|                    UPDATES                    |"
+                print "+-----------------------------------------------+\n"
+                show.print_departamentos_cursos(DEPARTAMENTO)
+                CURSO = raw_input("\nDigite o ID do curso ou 0 para sair: ")
+                if CURSO == "0":
+                    saida = "s"
+                    os.system("cls")
+                    continue
+                else:
+                    os.system("cls")
+                    print "+-----------------------------------------------+"
+                    print "|                    UPDATES                    |"
+                    print "+-----------------------------------------------+\n"
+                    show.print_log(CURSO)
+            
+            saida = raw_input('\nDigite (S) para sair ou ENTER para continuar excluindo: ')
+            saida = saida.lower()
+            os.system("cls")
 #-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_#
             
         if choice == 4:
@@ -1626,4 +1698,9 @@ while inicio == 0:
             print "+-----------------------------------------------+"
             print "|              PROGRAMA FINALIZADO              |"
             print "+-----------------------------------------------+"
+            okkay = raw_input("\n\t\tPressione ENTER")
             db.close()
+                    
+                    
+                    
+            

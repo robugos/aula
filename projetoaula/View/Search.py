@@ -1,8 +1,11 @@
 import MySQLdb
 db = MySQLdb.connect("aula.myftp.org","yoshi","mario1234","auladb")
 cursor = db.cursor()
+
 from Prints import *
+
 show = prints()
+
 import os
 
 class Search():
@@ -94,7 +97,5 @@ class Search():
                                 print "-------------------------------------------------"
                                 
                                 SAIDA_FINAL = raw_input("\nOK: ")
-        
             os.system("cls")
             exits = True
-      
