@@ -125,7 +125,7 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 ==Cenários principais de sucesso== 
 
 || *Usuário* ||
-|| 1 -  ||Ao cadastrar, o administrador insere informações como ID do prédio e nome do prédio.
+|| 1 -  ||Ao cadastrar, o administrador insere informações como ID do prédio e nome do prédio.||
 || 2 - Ao editar, o administrador acessa as informações já cadastradas do prédio e faz as alterações necessárias, ao final, o programa rearmazena os dados. ||
 || 3 - Ao excluir, o administrador informa o ID do prédio que deseja excluir, e o sistema exclui todas as informações relacionadas a esse prédio. ||
 
