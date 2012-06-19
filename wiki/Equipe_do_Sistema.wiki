@@ -2,17 +2,17 @@
 
 = Equipe =
 
-<b>Gustavo Magalhães Pereira</b> (Programação e Banco de Dados)
+<b>Gustavo Magalhães Pereira</b> (Programação, Banco de Dados e Testes)
 
-<b>Mario Fernandes de Oliveira Filho</b> (Programação e Banco de Dados)
+<b>Mario Fernandes de Oliveira Filho</b> (Programação, Banco de Dados e Testes)
 
-<b>Rafaella Leandra Souza do Nascimento</b> (Documentação e Testes)
+<b>Rafaella Leandra Souza do Nascimento</b> (Documentação, Testes e Revisão)
 
 <b>Robson Ugo Ferreira Souza Filho</b> (Documentação e Testes)
 
-<b>Thiago de Souza Felix</b> (Testes e Documentação)
+<b>Thiago de Souza Felix</b> (Testes)
 
-<b>Wendislau Victor Santos da Silva</b> (Documentação e Banco de Dados)
+<b>Wendislau Victor Santos da Silva</b> (Documentação, Banco de Dados e Testes)
 
 
 =Professor= 
