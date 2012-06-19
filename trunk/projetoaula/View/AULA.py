@@ -127,7 +127,11 @@ while inicio == 0:
                                                         saida = "s"
                                                         os.system('cls')
                                                     else:
-                                                        nome_predio = raw_input("Digite o nome do predio: ")
+                                                        os.system("cls")
+                                                        print "+-----------------------------------------------+"
+                                                        print "|               ADICIONAR PREDIO                |"
+                                                        print "+-----------------------------------------------+"
+                                                        nome_predio = raw_input("\nDigite o nome do predio: ")
                                                         sql = "insert into predios values('%s','%s')" %(id_predio, nome_predio)
                                                         try:
                                                             cursor.execute(sql)
@@ -287,13 +291,16 @@ while inicio == 0:
                                                     print "+-----------------------------------------------+"
                                                     print "|            ADICIONAR DEPARTAMENTO             |"
                                                     print "+-----------------------------------------------+"
-    
                                                     id_departamento = raw_input('\nDigite o ID do departamento ou 0 para sair: ')
                                                     if id_departamento == "0":
                                                         saida = "s"
                                                         os.system('cls')
                                                     else:
-                                                        nome = raw_input("Digite o nome do departamento: ")
+                                                        os.system("cls")
+                                                        print "+-----------------------------------------------+"
+                                                        print "|            ADICIONAR DEPARTAMENTO             |"
+                                                        print "+-----------------------------------------------+"
+                                                        nome = raw_input("\nDigite o nome do departamento: ")
                                                         coordenador = raw_input("Digite o nome do coordenador: ")
                                                         
                                                         sql = "insert into departamentos values('%s','%s','%s')" %(id_departamento, nome, coordenador)
@@ -350,6 +357,10 @@ while inicio == 0:
                                                                 ERRO_AULA = raw_input("\n\t[ERRO 001] Opcao invalida.\n\tPressione ENTER para continuar.\n")
                                                             else:
                                                                 if opcao == 1:
+                                                                    os.system("cls")
+                                                                    print "+-----------------------------------------------+"
+                                                                    print "|              EDITAR DEPARTAMENTO              |"
+                                                                    print "+-----------------------------------------------+"
                                                                     id_novo = raw_input("Digite o novo ID do departamento: ")
                                                                     sql = "update departamentos set id_departamento='%s' where id_departamento='%s'" %(id_novo, id_dep)
                                                                     try:
@@ -496,6 +507,10 @@ while inicio == 0:
                                                         else:
                                                             nome_curso = raw_input("Digite o nome do curso: ")
                                                             os.system("cls")
+                                                           
+                                                            print "+-----------------------------------------------+"
+                                                            print "|                ADICIONAR CURSO                |"
+                                                            print "+-----------------------------------------------+\n"
                                                             show.print_departamentos()
                                                             departamento_curso = raw_input("\nDigite o ID do departamento do curso: ")
     
@@ -759,6 +774,9 @@ while inicio == 0:
                                                         os.system("cls")
                                                     else:
                                                         os.system("cls")
+                                                        print "+-----------------------------------------------+"
+                                                        print "|               EDITAR DISCIPLINA               |"
+                                                        print "+-----------------------------------------------+\n"
                                                         show.print_disciplinas(CURSO)
                                                         
                                                         id_disciplina = raw_input('\nDigite o ID da disciplina que deseja editar: ')
@@ -784,7 +802,11 @@ while inicio == 0:
                                                                 ERRO_AULA = raw_input("\n\t[ERRO 001] Opcao invalida. Tente novamente.\n\tPressione ENTER para continuar.\n")
                                                             else:
                                                                 if opcao == 1:
-                                                                    id_novo = raw_input("Digite o novo ID da disciplina: ")
+                                                                    os.system("cls")
+                                                                    print "+-----------------------------------------------+"
+                                                                    print "|               EDITAR DISCIPLINA               |"
+                                                                    print "+-----------------------------------------------+"
+                                                                    id_novo = raw_input("\nDigite o novo ID da disciplina: ")
     
                                                                     sql = "update disciplinas set id_disciplina='%s' where id_disciplina='%s'" %(id_novo, id_disciplina)
                                                                     try:
@@ -800,7 +822,11 @@ while inicio == 0:
                                                                         db.rollback()
       
                                                                 if opcao == 2:
-                                                                    nome = raw_input("Digite o novo nome da disciplina: ")
+                                                                    os.system("cls")
+                                                                    print "+-----------------------------------------------+"
+                                                                    print "|               EDITAR DISCIPLINA               |"
+                                                                    print "+-----------------------------------------------+"
+                                                                    nome = raw_input("\nDigite o novo nome da disciplina: ")
                                                                     sql = "update disciplinas set nome_disciplina='%s' where id_disciplina='%s'" %(nome, id_disciplina)
                                                                     try:
                                                                         cursor.execute(sql)
@@ -816,8 +842,11 @@ while inicio == 0:
                                                                     
                                                                 if opcao == 3:
                                                                     os.system("cls")
+                                                                    print "+-----------------------------------------------+"
+                                                                    print "|               EDITAR DISCIPLINA               |"
+                                                                    print "+-----------------------------------------------+\n"
                                                                     show.print_cursos()   
-                                                                    curso = raw_input("Digite o id do novo curso: ")
+                                                                    curso = raw_input("\nDigite o id do novo curso: ")
                                                                     os.system("cls")
                                                                     verificar_curso = "select id_curso from cursos where id_curso='%s'" %(curso)
                                                                     existe = cursor.execute(verificar_curso)
@@ -859,6 +888,9 @@ while inicio == 0:
                                                         os.system("cls")
                                                     else:
                                                         os.system("cls")
+                                                        print "+-----------------------------------------------+"
+                                                        print "|               EXCLUIR DISCIPLINA              |"
+                                                        print "+-----------------------------------------------+\n"
                                                         show.print_disciplinas(CURSO)
                                                         
                                                         deletado = raw_input('\nDigite o ID da disciplina que deseja excluir ou 0 para sair: ')
@@ -1047,6 +1079,10 @@ while inicio == 0:
     
     
                                                                 if opcao == 2:
+                                                                    os.system("cls")
+                                                                    print "+-----------------------------------------------+"
+                                                                    print "|                 EDITAR PROFESSOR              |"
+                                                                    print "+-----------------------------------------------+"
                                                                     novo_nome = raw_input("\nDigite o nome do professor: ")
                                                                     sql = "update professores set nome_professor='%s' where id_professor='%s'" %(novo_nome, id_CPF)
                                                                     try:
@@ -1068,8 +1104,11 @@ while inicio == 0:
                                                                 if opcao == 3:
                                                                     os.system("cls")
                                                                     teste = Validacao()
-                                                                    senha1 = teste.SENHA_Check(getpass.getpass(prompt="Digite a nova senha do usuario: "))
-                                                                    senha2 = teste.SENHA_Check(getpass.getpass(prompt="CONFIRME: "))
+                                                                    print "+-----------------------------------------------+"
+                                                                    print "|                 EDITAR PROFESSOR              |"
+                                                                    print "+-----------------------------------------------+"
+                                                                    senha1 = teste.SENHA_Check(getpass.getpass(prompt="\nDigite a nova senha do usuario: "))
+                                                                    senha2 = teste.SENHA_Check(getpass.getpass(prompt="\nCONFIRME: "))
                                                                     if senha1 == senha2:
                                                                         sql = "update usuarios set senha='%s' where usuario_cpf='%s'" %(senha1, id_CPF)
                                                                         try:
@@ -1096,6 +1135,9 @@ while inicio == 0:
     
                                                                 if opcao == 4:  
                                                                     os.system("cls")
+                                                                    print "+-----------------------------------------------+"
+                                                                    print "|                 EDITAR PROFESSOR              |"
+                                                                    print "+-----------------------------------------------+\n"
                                                                     show.print_professores()
                                                                     id_CPF = raw_input('\nDigite o CPF do usuario que deseja editar: ')
                                                                     os.system("cls")
@@ -1109,7 +1151,11 @@ while inicio == 0:
                                                                         ERRO_AULA = raw_input("\n\t[ERRO 002] Usuario nao existente.\n\tPressione ENTER para continuar.\n")
                                                                         continue
                                                                     else:
-                                                                        classe = input("Digite o valor da nova classe (0 ou 1): ")
+                                                                        os.system("cls")
+                                                                        print "+-----------------------------------------------+"
+                                                                        print "|                 EDITAR PROFESSOR              |"
+                                                                        print "+-----------------------------------------------+"
+                                                                        classe = input("\nDigite o valor da nova classe (0 ou 1): ")
     
                                                                         if classe == 1 or classe == 0:
                                                                             sql = "update usuarios set classe='%d' where usuario_cpf='%s'" %(classe, id_CPF)
@@ -1124,8 +1170,12 @@ while inicio == 0:
                                                                                 print "+-----------------------------------------------+"
                                                                                 ERRO_AULA = raw_input("\n\t[ERRO 007] Erro na edicao. Verifique se os campos foram inseridos corretamente.\n\tPressione ENTER para continuar.\n")
                                                                                 db.rollback()
-                                                                        else: 
-                                                                            erorororororo = raw_input("\nClasse invalida. PRESS ENTER ")                               
+                                                                        else:
+                                                                            os.system("cls")
+                                                                            print "+-----------------------------------------------+"
+                                                                            print "|                 EDITAR PROFESSOR              |"
+                                                                            print "+-----------------------------------------------+" 
+                                                                            ERRO_AULA = raw_input("\n\t[ERRO 001] Opcao invalida. Tente novamente.\n")                               
                                                                     saida = raw_input('\nDigite (S) para sair ou ENTER pra continuar: ')
                                                                     saida = saida.lower()
                                                                     os.system("cls")
@@ -1212,7 +1262,7 @@ while inicio == 0:
                                                             
                                                             print "+-----------------------------------------------+"
                                                             print "|             ADICIONAR DISCIPLINA              |"
-                                                            print "+-----------------------------------------------+"
+                                                            print "+-----------------------------------------------+\n"
                                                             show.print_cursos()
                                                             CURSO = raw_input('\nDigite o ID do curso: ')
                                                             os.system('cls')
