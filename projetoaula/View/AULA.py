@@ -1366,6 +1366,7 @@ while inicio == 0:
                                                 DATARESERVA = day+"/"+month+"/"+year
                                                 year,month,day = int(year),int(month),int(day)
                                                 today = datetime.now()
+                                                
                                                 if year == today.year:                                                    
                                                     if today.month >= 1 and today.month <= 6:
                                                         if month == today.month:
@@ -1427,81 +1428,99 @@ while inicio == 0:
                                                     print "+-----------------------------------------------+"
                                                     print "|                 FAZER RESERVA                 |"
                                                     print "+-----------------------------------------------+"
+                                                    
+                                                    agora = today.hour
+                                                    
                                                     print "\nDigite a hora da reserva (funcionamento das 7 as 22 horas)\n"
                                                     hora1 = input("Inicio: ")
                                                     hora2 = input("Fim: ")
-                                                    
-#############################################Fazer verificacao de horario negativo ou fora do funcionamento
-                                                    
-                                                    count_erros = 0
-                                                    nova_reserva = 0
-                                                    
-                                                    for horario in range (hora1,hora2,1):
-                                                        hora = str(horario)
-                                                        id_reserva = data+"_"+hora+"_"+predio_reserva+"_"+local_reserva
+                                                    print "-------------------------------------------------"
+                                                    hour_future = False
+                                                    if hora1 < hora2 and hora1 >=7 and hora2 < 22:
+                                                        if day == today.day and month == today.month and hora1 > agora:
+                                                            hour_future = True
+                                                        elif day > today.day or today.month < month:
+                                                            hour_future = True
+                                                        else:
+                                                            hour_future = False
                                                         
-                                                        verificar_reserva = "select id_reserva from reservas where id_reserva='%s'" %(id_reserva)
-                                                        existe = cursor.execute(verificar_reserva)
-                                                        if existe < 1:
-                                                            print "[LIVRE]      %s horas" %(hora)
-                                                            continue
-                                                        else:
-                                                            print "[RESERVADO]  %s horas"%(hora)
-                                                            count_erros = count_erros + 1
+                                                    if hour_future == True:
+                                                        count_erros = 0
+                                                        nova_reserva = 0
+                                                        
+                                                        for horario in range (hora1,hora2,1):
+                                                            hora = str(horario)
+                                                            id_reserva = data+"_"+hora+"_"+predio_reserva+"_"+local_reserva
                                                             
-                                                    while count_erros != 0:
-                                                        Resposta = input("\n1 - Continuar\n2 - Alterar reserva\n3 - Sair\n->")
-                                                        os.system("cls")
-                                                        if Resposta == 1:
-                                                            count_erros = 0
-                                                        elif Resposta == 2:
-                                                            nova_reserva = 1
-                                                            count_erros = 0
-                                                        elif Resposta == 3:
-                                                            nova_reserva = 3
-                                                            count_erros = 0
-                                                            saida = "s"
-                                                        else:
+                                                            verificar_reserva = "select id_reserva from reservas where id_reserva='%s'" %(id_reserva)
+                                                            existe = cursor.execute(verificar_reserva)
+                                                            if existe < 1:
+                                                                print "[LIVRE]      %s horas" %(hora)
+                                                                continue
+                                                            else:
+                                                                print "[RESERVADO]  %s horas"%(hora)
+                                                                count_erros = count_erros + 1
+                                                        print "-------------------------------------------------"
+                                                        while count_erros != 0:
+                                                            Resposta = input("\n1 - Continuar\n2 - Alterar reserva\n3 - Sair\n->")
                                                             os.system("cls")
-                                                            print "+-----------------------------------------------+"
-                                                            print "|                 FAZER RESERVA                 |"
-                                                            print "+-----------------------------------------------+"
-                                                            ERRO_AULA = raw_input("\n\t[ERRO 001] Opcao invalida. Tente novamente.\n\tPressione ENTER para continuar.\n")
-                                                    else:
-                                                        if nova_reserva == 1:
-                                                            continue
-                                                        elif nova_reserva == 0:
-                                                            okkkk = 0
-                                                            for horario in range (hora1,hora2,1):
-                                                                hora = str(horario)
-                                                                id_reserva = data+"_"+hora+"_"+predio_reserva+"_"+local_reserva
-                                                                sql = "insert into reservas values('%s','%s','%s', '%s', '%s', '%s', '%d')"%(id_reserva, predio_reserva, local_reserva, data, disciplina_reserva, professor_reserva, horario)
-                                                                try:
+                                                            if Resposta == 1:
+                                                                count_erros = 0
+                                                            elif Resposta == 2:
+                                                                nova_reserva = 1
+                                                                count_erros = 0
+                                                            elif Resposta == 3:
+                                                                nova_reserva = 3
+                                                                count_erros = 0
+                                                                saida = "s"
+                                                            else:
+                                                                os.system("cls")
+                                                                print "+-----------------------------------------------+"
+                                                                print "|                 FAZER RESERVA                 |"
+                                                                print "+-----------------------------------------------+"
+                                                                ERRO_AULA = raw_input("\n\t[ERRO 001] Opcao invalida. Tente novamente.\n\tPressione ENTER para continuar.\n")
+                                                        else:
+                                                            if nova_reserva == 1:
+                                                                continue
+                                                            elif nova_reserva == 0:
+                                                                okkkk = 0
+                                                                for horario in range (hora1,hora2,1):
+                                                                    hora = str(horario)
+                                                                    id_reserva = data+"_"+hora+"_"+predio_reserva+"_"+local_reserva
+                                                                    sql = "insert into reservas values('%s','%s','%s', '%s', '%s', '%s', '%d')"%(id_reserva, predio_reserva, local_reserva, data, disciplina_reserva, professor_reserva, horario)
+                                                                    try:
+                                                                        cursor.execute(sql)
+                                                                        db.commit()
+                                                                        print "Cadastro efetuado com sucesso as %s horas" %(hora)
+                                                                        okkkk+=1
+                                                                    except:
+                                                                        ERRO_AULA = raw_input("\n\t[ERRO 005] Reserva ja existente para %s horas.\n\tPressione ENTER para continuar.\n") %(hora)
+                                                                        db.rollback()
+                                                                        
+                                                                if okkkk >= 1:
+                                                                    CURSOAULA = ""
+                                                                    DISCIPLINAAULA = ""
+                                                                    
+                                                                    cursor.execute("select * from disciplinas where id_disciplina='%s'" %(disciplina_reserva))
+    
+                                                                    for row in cursor.fetchall():
+                                                                            CURSOAULA = row[2]
+                                                                            DISCIPLINAAULA = row[1]
+    
+                                                                    logtexto = "%s - Prof. %s reservou aula de %s (%s)" %(DATARESERVA,nome_usuario,DISCIPLINAAULA,CURSOAULA)
+                                                                    
+                                                                    sql = "insert into log values('%s','%s','%s')"%(0, logtexto, CURSOAULA)
                                                                     cursor.execute(sql)
                                                                     db.commit()
-                                                                    print "Cadastro efetuado com sucesso as %s horas" %(hora)
-                                                                    okkkk+=1
-                                                                except:
-                                                                    ERRO_AULA = raw_input("\n\t[ERRO 005] Reserva ja existente para %s horas.\n\tPressione ENTER para continuar.\n") %(hora)
-                                                                    db.rollback()
-                                                                    
-                                                            if okkkk >= 1:
-                                                                CURSOAULA = ""
-                                                                DISCIPLINAAULA = ""
-                                                                
-                                                                cursor.execute("select * from disciplinas where id_disciplina='%s'" %(disciplina_reserva))
-
-                                                                for row in cursor.fetchall():
-                                                                        CURSOAULA = row[2]
-                                                                        DISCIPLINAAULA = row[1]
-
-                                                                logtexto = "%s - Prof. %s reservou aula de %s (%s)" %(DATARESERVA,nome_usuario,DISCIPLINAAULA,CURSOAULA)
-                                                                
-                                                                sql = "insert into log values('%s','%s','%s')"%(0, logtexto, CURSOAULA)
-                                                                cursor.execute(sql)
-                                                                db.commit()
-                                                        else:
-                                                            saida="s"
+                                                            else:
+                                                                saida="s"
+                                                    else:
+                                                        os.system("cls")
+                                                        print "+-----------------------------------------------+"
+                                                        print "|                 FAZER RESERVA                 |"
+                                                        print "+-----------------------------------------------+"
+                                                        ERRO_AULA = raw_input("\n\t[ERRO 008] Impossivel fazer reservas neste horario.\n\tPressione ENTER para continuar.\n")
+                                                        continue
                                                     saida = raw_input('\nDigite (S) para sair ou ENTER pra continuar: ')
                                                     saida = saida.lower()
                                                     os.system("cls")

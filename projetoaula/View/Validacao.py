@@ -23,11 +23,11 @@ class Validacao():
                         i=int(i)
                     break
                 except:
-                    print "CPF Inválido (somente numeros)"
+                    print "CPF Invalido (somente numeros)"
                     cpf=raw_input("")
                     continue
             else:
-                print "CPF Inválido (somente 11 numeros)"
+                print "CPF Invalido (somente 11 numeros)"
                 cpf=raw_input("")
                 continue
             
@@ -43,7 +43,7 @@ class Validacao():
             if (self.senha[c] in self.numeros or self.senha[c].upper() in self.alfabeto) and len(self.senha) <= 16 and len(self.senha) >= 4:
                 c+=1
             else:
-                print "Senha fora do padrão"
+                print "Senha fora do padrao"
                 teste = Validacao()
                 self.senha = teste.SENHA_Check(getpass.getpass(prompt="Digite uma nova senha: "))
                 
