@@ -250,7 +250,7 @@ while inicio == 0:
                                                                 ERRO_AULA = raw_input("\n\t[ERRO 004] Erro na exclusao.\n\tPressione ENTER para continuar.\n")
                                                                 db.rollback()
                                                             
-                                                        saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                        saida = raw_input('\nDigite (S) para sair ou ENTER pra continuar: ')
                                                         saida = saida.lower()
                                                         os.system("cls")
 #EXCLUIR PREDIO 100% PERFEITO by Gustavo____________________________________________________________________
@@ -309,7 +309,7 @@ while inicio == 0:
                                                             ERRO_AULA = raw_input("\n\t[ERRO 006] Erro no cadastro. Verifique se os itens foram inseridos corretamente.\n\tPressione ENTER para continuar.\n")
                                                             db.rollback()
                                                         
-                                                        saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                        saida = raw_input('\nDigite (S) para sair ou ENTER pra continuar: ')
                                                         saida = saida.lower()
                                                         os.system("cls")
 #ADD DEPARTAMENTO 100% PERFEITO by Gustavo____________________________________________________________________                                               
@@ -365,7 +365,11 @@ while inicio == 0:
                                                                         db.rollback()
                                                                     
                                                                 if opcao == 2:
-                                                                    nome = raw_input("Digite o novo nome do departamento: ")
+                                                                    os.system("cls")
+                                                                    print "+-----------------------------------------------+"
+                                                                    print "|              EDITAR DEPARTAMENTO              |"
+                                                                    print "+-----------------------------------------------+"
+                                                                    nome = raw_input("\nDigite o novo nome do departamento: ")
                                                                     sql = "update departamentos set nome_departamento='%s' where id_departamento='%s'" %(nome, id_dep)
                                                                     try:
                                                                         cursor.execute(sql)
@@ -377,10 +381,15 @@ while inicio == 0:
                                                                         print "|              EDITAR DEPARTAMENTO              |"
                                                                         print "+-----------------------------------------------+"
                                                                         ERRO_AULA = raw_input("\n\t[ERRO 007] Erro na edicao. Verifique se os itens foram inseridos corretamente.\n\tPressione ENTER para continuar.\n")
+                                                                        continue
                                                                         db.rollback()
                                                                     
                                                                 if opcao == 3:
-                                                                    coordenador = raw_input("Digite o nome do novo coordenador: ")
+                                                                    os.system("cls")
+                                                                    print "+-----------------------------------------------+"
+                                                                    print "|              EDITAR DEPARTAMENTO              |"
+                                                                    print "+-----------------------------------------------+"
+                                                                    coordenador = raw_input("\nDigite o nome do novo coordenador: ")
                                                                     sql = "update departamentos set coordenador='%s' where id_departamento='%s'" %(coordenador, id_dep)
                                                                     try:
                                                                         cursor.execute(sql)
@@ -394,7 +403,7 @@ while inicio == 0:
                                                                         ERRO_AULA = raw_input("\n\t[ERRO 007] Erro na edicao. Verifique se os itens foram inseridos corretamente.\n\tPressione ENTER para continuar.\n")
                                                                         db.rollback()
     
-                                                        saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                        saida = raw_input('\nDigite (S) para sair ou ENTER pra continuar: ')
                                                         saida = saida.lower()
                                                         os.system("cls")
 #EDITAR DEPARTAMENTO 100% PERFEITO by Gustavo____________________________________________________________________                                                      
@@ -432,7 +441,7 @@ while inicio == 0:
                                                                 ERRO_AULA = raw_input("\n\t[ERRO 004] Erro na exclusao.Ha professores ou cursos atrelados ao departamento.\n\tPressione ENTER para continuar.\n") 
                                                                 db.rollback()
                                                             
-                                                        saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                        saida = raw_input('\nDigite (S) para sair ou ENTER pra continuar: ')
                                                         saida = saida.lower()
                                                         os.system("cls")
 #EXCLUIR DEPARTAMENTO 100% PERFEITO by Gustavo____________________________________________________________________ 
@@ -503,7 +512,7 @@ while inicio == 0:
                                                                 ERRO_AULA = raw_input("\n\t[ERRO 006] Erro no cadastro.\n\tPressione ENTER para continuar.\n")
                                                                 db.rollback()
                                                                                                                 
-                                                        saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                        saida = raw_input('\nDigite (S) para sair ou ENTER pra continuar: ')
                                                         saida = saida.lower()
                                                         os.system("cls")
 #ADICIONAR CURSO 100% PERFEITO by Gustavo____________________________________________________________________
@@ -535,6 +544,10 @@ while inicio == 0:
                                                             print "+-----------------------------------------------+"
                                                             opcao = input("\nEDITAR:\n\n1 (ID)     2 (NOME)     3 (DEPARTAMENTO)\n-> ")
                                                             if opcao > 3 or opcao < 1:
+                                                                os.system("cls")
+                                                                print "+-----------------------------------------------+"
+                                                                print "|                  EDITAR CURSO                 |"
+                                                                print "+-----------------------------------------------+"
                                                                 ERRO_AULA = raw_input("\n\t[ERRO 001] Opcao invalida. Tente novamente.\n\tPressione ENTER para continuar.\n")
                                                             else:
                                                                 if opcao == 1:
@@ -554,6 +567,10 @@ while inicio == 0:
                                                                         db.rollback()
                                                                     
                                                                 if opcao == 2:
+                                                                    os.system("cls")
+                                                                    print "+-----------------------------------------------+"
+                                                                    print "|                  EDITAR CURSO                 |"
+                                                                    print "+-----------------------------------------------+"
                                                                     nome = raw_input("\nDigite o novo nome do curso: ")
                                                                     
                                                                     sql = "update cursos set nome_curso='%s' where id_curso='%s'" %(nome, id_curso)
@@ -571,6 +588,10 @@ while inicio == 0:
                                                                     
                                                                 if opcao == 3:
                                                                     os.system("cls")
+                                                                    os.system("cls")
+                                                                    print "+-----------------------------------------------+"
+                                                                    print "|                  EDITAR CURSO                 |"
+                                                                    print "+-----------------------------------------------+\n"
                                                                     show.print_departamentos()
                                                                     departamento = raw_input("\nDigite o ID do novo departamento: ")
                                                                     os.system("cls")
@@ -596,7 +617,7 @@ while inicio == 0:
                                                                             ERRO_AULA = raw_input("\n\t[ERRO 007] Erro na edicao. Verifique se os itens foram inseridos corretamente.\n\tPressione ENTER para continuar.\n")
                                                                             db.rollback()
     
-                                                        saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                        saida = raw_input('\nDigite (S) para sair ou ENTER pra continuar: ')
                                                         saida = saida.lower()
                                                         os.system("cls")
 #EDITAR CURSO 100% PERFEITO by Gustavo____________________________________________________________________
@@ -689,12 +710,22 @@ while inicio == 0:
                                                             ERRO_AULA = raw_input("\n\t[ERRO 005] Disciplina ja existente.\n\tPressione ENTER para continuar.\n")
                                                             continue
                                                         else:
-                                                            nome_disciplina = raw_input("Digite o nome da disciplina: ")
                                                             os.system("cls")
+                                                            print "+-----------------------------------------------+"
+                                                            print "|             ADICIONAR DISCIPLINA              |"
+                                                            print "+-----------------------------------------------+"
+                                                            nome_disciplina = raw_input("\nDigite o nome da disciplina: ")
+                                                            os.system("cls")
+                                                            print "+-----------------------------------------------+"
+                                                            print "|             ADICIONAR DISCIPLINA              |"
+                                                            print "+-----------------------------------------------+\n"
                                                             show.print_cursos()                                          
-                                                            curso_disciplina = raw_input("Digite o curso da disciplina: ")
+                                                            curso_disciplina = raw_input("\nDigite o curso da disciplina: ")
                                                             os.system("cls")
-                                                            periodo = input("Digite o periodo da disciplina: ")
+                                                            print "+-----------------------------------------------+"
+                                                            print "|             ADICIONAR DISCIPLINA              |"
+                                                            print "+-----------------------------------------------+\n"
+                                                            periodo = input("\nDigite o periodo da disciplina: ")
                                                             os.system("cls")
                                                             sql = "insert into disciplinas values('%s','%s','%s','%s')"%(id_disciplina, nome_disciplina, curso_disciplina,periodo)
                                                             try:
@@ -1010,7 +1041,7 @@ while inicio == 0:
                                                                         ERRO_AULA = raw_input("\n\t[ERRO 007] Erro na edicao. Verifique se os campos foram inseridos corretamente.\n\tPressione ENTER para continuar.\n")
                                                                         db.rollback()
                                                                         
-                                                                    saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                                    saida = raw_input('\nDigite (S) para sair ou ENTER pra continuar: ')
                                                                     saida = saida.lower()
                                                                     os.system("cls")
     
@@ -1030,7 +1061,7 @@ while inicio == 0:
                                                                         ERRO_AULA = raw_input("\n\t[ERRO 007] Erro na edicao. Verifique se os campos foram inseridos corretamente.\n\tPressione ENTER para continuar.\n")
                                                                         db.rollback()
                                                                         
-                                                                    saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                                    saida = raw_input('\nDigite (S) para sair ou ENTER pra continuar: ')
                                                                     saida = saida.lower()
                                                                     os.system("cls")
     
@@ -1095,7 +1126,7 @@ while inicio == 0:
                                                                                 db.rollback()
                                                                         else: 
                                                                             erorororororo = raw_input("\nClasse invalida. PRESS ENTER ")                               
-                                                                    saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                                    saida = raw_input('\nDigite (S) para sair ou ENTER pra continuar: ')
                                                                     saida = saida.lower()
                                                                     os.system("cls")
 #________________________________________________________________________________________________________________________
@@ -1209,7 +1240,7 @@ while inicio == 0:
                                                                     db.rollback()
                                                                 
                                                                 
-                                                                saida = raw_input('\nDigite s para sair ou ENTER pra continuar: ')
+                                                                saida = raw_input('\nDigite (S) para sair ou ENTER pra continuar: ')
                                                                 saida = saida.lower()
                                                                 os.system("cls")
                                                         
@@ -1360,7 +1391,7 @@ while inicio == 0:
                                                 print "+-----------------------------------------------+"
                                                 print "|                 FAZER RESERVA                 |"
                                                 print "+-----------------------------------------------+"
-                                                data = raw_input("Digite a data da reserva ano-mes-dia (0000-00-00) ")
+                                                data = raw_input("\nDigite a data da reserva ano-mes-dia (0000-00-00) ")
                                                 date = data
                                                 year,month,day = date.split('-')
                                                 DATARESERVA = day+"/"+month+"/"+year
@@ -1432,8 +1463,9 @@ while inicio == 0:
                                                     agora = today.hour
                                                     
                                                     print "\nDigite a hora da reserva (funcionamento das 7 as 22 horas)\n"
-                                                    hora1 = input("Inicio: ")
-                                                    hora2 = input("Fim: ")
+                                                    hora1 = raw_input("Inicio: ")
+                                                    hora2 = raw_input("Fim: ")
+                                                    hora1,hora2 = int(hora1),int(hora2)
                                                     print "-------------------------------------------------"
                                                     hour_future = False
                                                     if hora1 < hora2 and hora1 >=7 and hora2 < 22:
@@ -1504,8 +1536,9 @@ while inicio == 0:
                                                                     cursor.execute("select * from disciplinas where id_disciplina='%s'" %(disciplina_reserva))
     
                                                                     for row in cursor.fetchall():
-                                                                            CURSOAULA = row[2]
-                                                                            DISCIPLINAAULA = row[1]
+                                                                        CURSOAULA = row[2]
+                                                                        DISCIPLINAAULA = row[1]
+                                                                        
     
                                                                     logtexto = "%s - Prof. %s reservou aula de %s (%s)" %(DATARESERVA,nome_usuario,DISCIPLINAAULA,CURSOAULA)
                                                                     
