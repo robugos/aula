@@ -4,6 +4,15 @@ cursor = db.cursor()
 import os
 
 class prints():
+    def print_log(self,CURSO):
+        cursor.execute("select * from log where id_curso='%s'" %(CURSO))
+        TEXT = []
+        for row in cursor.fetchall():
+            TEXT.append(row[1]) 
+        for i in range(len(TEXT)):
+            print TEXT[i]+"\n"
+        print "-------------------------------------------------"    
+    
     def print_disciplinas(self,CURSO):
         cursor.execute("select * from disciplinas where curso_disciplina='%s'" %(CURSO))
         lista_disciplinas_ID=[]
