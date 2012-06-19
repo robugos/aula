@@ -119,7 +119,7 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 
 || *Objetivo* || Consiste em gerenciar o cadastro de aulas, locais e horários. ||
 || *Descrição* || Poderá selecionar , editar e excluir informações como aulas, locais e horários.  ||
-|| *Ator* || Administrador e Professor ||
+|| *Ator* || Professor ||
 || *Prioridade* || Alta. ||
 || *Pré-condição* || Todas os horários, aulas e salas já estão cadastradas. || 
 || *Pós-condições* || A seleção é realizada. ||
@@ -149,7 +149,7 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 ==Cenários principais de sucesso== 
 
 || *Usuário* ||
-|| 1 - O usuário fará sua busca pela seleção na seguinte ordem: disciplinas, cursos, professores, departamentos, locais, horário de início e horário de término. Após a  seleção o usuário clicará no botão "Buscar" e o sistema se encarregará da busca, e enfim imprimirá a informação desejada na tela. || 
+|| 1 - O usuário fará sua busca pela seleção na seguinte ordem: Departamento, Curso, Período e Disciplina . Após a  seleção o usuário clicará no botão "Buscar" e o sistema se encarregará da busca, e enfim imprimirá a informação desejada na tela. || 
 
 
 || *Fluxos alternativos* ||
