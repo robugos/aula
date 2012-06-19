@@ -8,12 +8,12 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 
 ==UC0001 - Gerenciamento de Departamento==
 
-|| *Objetivo* || Cadastrar os departamentos existentes na universidade. ||
-|| *Descrição* || O administrador registra, edita e exclui informações (id do dep, nome do dep, coordenador(es) ||
+|| *Objetivo* || Cadastrar, editar e excluir os departamentos existentes na universidade. ||
+|| *Descrição* || O administrador registra, edita e exclui informações do departamento como ID do dep, nome do dep, coordenador(es). ||
 || *Ator* || Administrador. ||
 || *Prioridade* || Média. ||
 || *Pré-condição* || O usuário estar logado como administrador. ||
-|| *Pós-condições* || Os departamentos são cadastrados e já podem vincular-se aos cursos. ||
+|| *Pós-condições* || Os departamentos são cadastrados e já podem vincular-se aos cursos, são editados ou excluídos corretamente. ||
 
 ==Cenários principais de sucesso==
 
@@ -23,48 +23,65 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 || 3 - Ao excluir, o administrador informa o ID do departamento que deseja excluir, e o sistema exclui todas as informações relacionadas ao departamento. ||
 
 || *Fluxos alternativos* ||
-|| 1.1 Tentativa de registro de departamento e ele já existir. O existente não é sobrescrito. O sistema retorna uma mensagem de erro "Departamento já existente!" ||
-|| 2.1 Se ao tentar consultar as informações de um determinado departamento que não possui cadastro, o programa informa uma mensagem de erro "Cadastro não encontrado." ||
-|| 3.1 Se ao tentar excluir as informações de um departamento informado num número de registro incorreto, o programa retorna uma mensagem de erro "Registro não encontrado." ||
+|| 1.1 Se ao registrar, alguma informação digitada não estiver dentro dos padrões para registro, o sistema retorna a mensagem "[ERRO 006] Erro no cadastro. Verifique se os itens foram inseridos corretamente.".||
+|| 1.2 Tentativa de registro de departamento e ele já existir. O existente não é sobrescrito. O sistema retorna uma mensagem de erro "[ERRO 005]Departamento ja existente.". ||
+|| 2.1 Se ao tentar editar as informações de um determinado departamento e for digitado alguma entrada fora dos padrões para edição, o sistema retorna uma mensagem "[ERRO 007]Erro na edição."||
+|| 2.2 Se ao tentar editar as informações de um determinado departamento que não possui cadastro, o programa informa uma mensagem de erro "[ERRO 002]Departamento nao existente." ||
+|| 3.1 Se ao tentar excluir as informações de um departamento informando alguma entrada fora dos padrões de exclusão,o programa retorna uma mensagem "[ERRO 004]Erro na exclusao." ||
+|| 3.2 Se ao tentar excluir as informações de um departamento informando seu ID incorretamente, o sistema retorna uma mensagem "[ERRO 002]Departamento nao existente."
 
 ---------------------------
 
 ==UC0002 - Gerenciamento de Cursos==
 
-|| *Objetivo* || Cadastrar todas os cursos da Universidade. ||
+|| *Objetivo* || Cadastrar, editar ou excluir todas os cursos da Universidade. ||
 || *Descrição* || Cadastrar todas os cursos da Universidade, afim de evitar que um curso possua dois ou mais nomes correspondentes a ele. ||
 || *Ator* || Administrador ||
 || *Prioridade* || Média. ||
 || *Pré-condição* || O tipo de usuário "Administrador" é selecionado para ter acesso ao sistema. ||
-|| *Pós-condições* || Todos os cursos poderão ser cadastrados. ||
+|| *Pós-condições* || Todos os cursos poderão ser cadastrados, editados ou excluídos corretamente. ||
 
 ==Cenários principais de sucesso== 
 
 || *Usuário* ||
 || 1 - Os cursos são cadastrados com sucesso, possuindo apenas um nome correspondente a cada um deles e a Foreign Key da id do departamento deve estar relacionada. O administrador deve estar atento, evitando que um mesmo curso seja cadastrado mais de uma vez. ||
+|| 2 - Ao editar, o administrador acessa as informações já cadastradas do curso e faz as alterações necessárias, ao final, o programa rearmazena os dados. ||
+|| 3 - Ao excluir, o administrador informa o ID do curso que deseja excluir, e o sistema exclui todas as informações relacionadas ao curso. ||
 
 || *Fluxos alternativos* ||
-|| 1.1 - Ao tentar cadastro de curso já existente, retorna uma mensagem "Curso já cadastrado". ||
+|| 1.1 - Ao tentar cadastro de curso já existente, retorna uma mensagem "[ERRO 005]Curso ja existente.". ||
+|| 1.2 Se ao registrar, alguma informação digitada não estiver dentro dos padrões para registro, o sistema retorna a mensagem "[ERRO 006] Erro no cadastro. Verifique se os itens foram inseridos corretamente ou existe disciplinas e aulas relacionadas com esse curso.".||
+|| 2.1 Se ao tentar editar as informações de um determinado curso e for digitado alguma entrada fora dos padrões para edição, o sistema retorna uma mensagem "[ERRO 007]Erro na edição."||
+|| 2.2 Se ao tentar editar as informações de um determinado curso que não possui cadastro, o programa informa uma mensagem de erro "[ERRO 002]Curso nao existente." ||
+|| 3.1 Se ao tentar excluir as informações de um curso informando alguma entrada fora dos padrões de exclusão,o programa retorna uma mensagem "[ERRO 004]Erro na exclusao.Verifique se existe disciplinas e aulas relacionadas com esse curso." ||
+|| 3.2 Se ao tentar excluir as informações de um curso informando seu ID incorretamente, o sistema retorna uma mensagem "[ERRO 002]Curso nao existente."
 
 
 --------------------------
 
 ==UC0003 - Gerenciamento de Disciplina==
 
-|| *Objetivo* || Cadastrar todas as disciplinas da Universidade. ||
+|| *Objetivo* || Cadastrar, editar e excluir todas as disciplinas da Universidade. ||
 || *Descrição* || Cadastrar todas as disciplinas da Universidade, afim de evitar que uma disciplina possua dois ou mais nomes correspondentes a ela. ||
 || *Ator* || Administrador ||
 || *Prioridade* || Média. ||
 || *Pré-condição* || O tipo de usuário "Administrador" é selecionado para ter acesso ao sistema. ||
-|| *Pós-condições* || Todas as disciplinas poderão ser cadastradas. ||
+|| *Pós-condições* || Todas as disciplinas poderão ser cadastradas, editados ou excluídas corretamente. ||
 
 ==Cenários principais de sucesso== 
 
 || *Usuário* ||
 || 1 - As disciplinas são cadastradas com sucesso, possuindo apenas um nome correspondente a cada uma delas. O administrador deve estar atento, evitando que uma mesma disciplina seja cadastrada mais de uma vez. ||
+|| 2 - Ao editar, o administrador acessa as informações já cadastradas da disciplina e faz as alterações necessárias, ao final, o programa rearmazena os dados. ||
+|| 3 - Ao excluir, o administrador informa o ID da disciplina que deseja excluir, e o sistema exclui todas as informações relacionadas a essa disciplina. ||
 
 || *Fluxos alternativos* ||
-|| 1.1 - Ao tentar cadastro de disciplina já existente, retorna uma mensagem "Disciplina já cadastrada". ||
+|| 1.1 - Ao tentar cadastro de disciplina já existente, retorna uma mensagem "[ERRO 005]Disciplina ja existente. Pressione ENTER para continuar.". ||
+|| 1.2 Se ao registrar, alguma informação digitada não estiver dentro dos padrões para registro, o sistema retorna a mensagem "[ERRO 006] Erro no cadastro. Verifique se os itens foram inseridos corretamente.".||
+|| 2.1 Se ao tentar editar as informações de uma determinada disciplina e for digitado alguma entrada fora dos padrões para edição, o sistema retorna uma mensagem "[ERRO 007] Erro na edição."||
+|| 2.2 Se ao tentar editar as informações de uma determinada disciplina que não possui cadastro, o programa informa uma mensagem de erro "[ERRO 002]Disciplina nao existente." ||
+|| 3.1 Se ao tentar excluir as informações de uma disciplina informando alguma entrada fora dos padrões de exclusão,o programa retorna uma mensagem "[ERRO 004]Erro na exclusao." ||
+|| 3.2 Se ao tentar excluir as informações de uma disciplina informando um ID não existente, o sistema retorna uma mensagem "[ERRO 002]Disciplina nao existente."
 
 
 --------------------------
@@ -82,22 +99,23 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 ==Cenários principais de sucesso== 
 
 || *Usuário* ||
-|| 1 - Ao registrar, o Administrador informa ao sistema as informações necessárias sobre o professor, como: Nome, CPF, Senha, Id das disciplinas que leciona, Id das disciplinas que está apto a lecionar e Id do departamento;||
+|| 1 - Ao registrar, o Administrador informa ao sistema as informações necessárias sobre o professor, como: Nome, CPF, Senha, e o departamento;O CPF deve ser digitado contendo 11 caracteres (somente números)||
 || 2 - Ao editar, o Administrador acessa as informações já cadastradas do professor, e faz as alterações necessárias, ao final, o programa re-armazena as informações do professor; ||
 || 3 - Ao excluir, o Administrador informa o número de registro relacionado a um professor que deseja excluir, e o sistema exclui todas as informações relacionadas ao número de registro;||
 
 || *Fluxos alternativos* ||
-|| 1.1 Se o CPF  for digitado de forma incorreta, o sistema deve informar uma mensagem de erro "CPF Inválido". O CPF deve ser digitado contendo 11 caracteres (somente números) ||  
-|| 1.2 Todos os campos devem estar completos. ||
-|| 2.1 Se ao tentar consultar as informações de um determinado professor que não possui cadastro, o programa informa uma mensagem de erro "Cadastro não encontrado." ||
-|| 3.1 Se ao tentar excluir as informações de um professor informando um número de CPF incorreto, o programa retorna uma mensagem de erro "Professor não encontrado."||
+|| 1.1 Se o CPF  for digitado de forma incorreta, o sistema deve informar uma mensagem de erro "[ERRO 002]Usuario nao existente. ".  ||  
+|| 2.1 Se ao tentar consultar as informações de um determinado professor que não possui cadastro, o programa informa uma mensagem de erro "[ERRO 002]Usuario nao existente. " ||
+|| 2.2 Se ao tentar editar as informações de um determinado professor e for digitado alguma entrada fora dos padrões para edição, o sistema retorna uma mensagem "[ERRO 007] Erro na edição."||
+|| 3.1 Se ao tentar excluir as informações de um professor informando um número de CPF incorreto, o programa retorna uma mensagem de erro "[ERRO 002]Usuario nao existente. ".||
+|| 3.2 Se ao tentar excluir as informações de uma disciplina informando alguma entrada fora dos padrões de exclusão,o programa retorna uma mensagem "[ERRO 004]Erro na exclusao." ||
 
 
 --------------------------------
 
 ==UC0005 - Gerenciamento de Prédio==
 
-|| *Objetivo* || Cadastrar todas as salas do prédio. ||
+|| *Objetivo* || Cadastrar, editar e excluir prédio. ||
 || *Descrição* || O prédio é responsável pelo armazenamento de salas, laboratórios e auditórios, logo, é preciso a especificação dos mesmos referentes ao prédio. ||
 || *Ator* || Administrador ||
 || *Prioridade* || Média. ||
@@ -110,7 +128,7 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 || 1 - O prédio é cadastrado com sucesso. ||
 
 || *Fluxos alternativos* ||
-|| 1.1 - Erro de "Prédio já cadastrado. ||
+|| 1.1 - Ao tentar cadastrar um prédio já existente, o sistema retorna a mensagem de erro "[ERRO 005]. ||
 
 
 --------------------------
