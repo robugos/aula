@@ -23,12 +23,12 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 || 3 - Ao excluir, o administrador informa o ID do departamento que deseja excluir, e o sistema exclui todas as informações relacionadas ao departamento. ||
 
 || *Fluxos alternativos* ||
-|| 1.1 Se ao registrar, alguma informação digitada não estiver dentro dos padrões para registro, o sistema retorna a mensagem "[ERRO 006] Erro no cadastro. Verifique se os itens foram inseridos corretamente.".||
-|| 1.2 Tentativa de registro de departamento e ele já existir. O existente não é sobrescrito. O sistema retorna uma mensagem de erro "[ERRO 005]Departamento ja existente.". ||
-|| 2.1 Se ao tentar editar as informações de um determinado departamento e for digitado alguma entrada fora dos padrões para edição, o sistema retorna uma mensagem "[ERRO 007] Erro na edição."||
-|| 2.2 Se ao tentar editar as informações de um determinado departamento que não possui cadastro, o programa informa uma mensagem de erro "[ERRO 002]Departamento nao existente." ||
-|| 3.1 Se ao tentar excluir as informações de um departamento informando alguma entrada fora dos padrões de exclusão,o programa retorna uma mensagem "[ERRO 004]Erro na exclusao." ||
-|| 3.2 Se ao tentar excluir as informações de um departamento informando seu ID incorretamente, o sistema retorna uma mensagem "[ERRO 002]Departamento nao existente."||
+|| 1.1 Se ao registrar, alguma informação digitada não estiver dentro dos padrões para registro, o sistema retorna a mensagem "[ ERRO 006 ] Erro no cadastro. Verifique se os itens foram inseridos corretamente.".||
+|| 1.2 Tentativa de registro de departamento e ele já existir. O existente não é sobrescrito. O sistema retorna uma mensagem de erro "[ ERRO 005 ]Departamento ja existente.". ||
+|| 2.1 Se ao tentar editar as informações de um determinado departamento e for digitado alguma entrada fora dos padrões para edição, o sistema retorna uma mensagem "[ ERRO 007 ] Erro na edição."||
+|| 2.2 Se ao tentar editar as informações de um determinado departamento que não possui cadastro, o programa informa uma mensagem de erro "[ ERRO 002 ]Departamento nao existente." ||
+|| 3.1 Se ao tentar excluir as informações de um departamento informando alguma entrada fora dos padrões de exclusão,o programa retorna uma mensagem "[ ERRO 004 ]Erro na exclusao." ||
+|| 3.2 Se ao tentar excluir as informações de um departamento informando seu ID incorretamente, o sistema retorna uma mensagem "[ ERRO 002 ]Departamento nao existente."||
 
 ---------------------------
 
@@ -49,12 +49,12 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 || 3 - Ao excluir, o administrador informa o ID do curso que deseja excluir, e o sistema exclui todas as informações relacionadas ao curso. ||
 
 || *Fluxos alternativos* ||
-|| 1.1 - Ao tentar cadastro de curso já existente, retorna uma mensagem "[ERRO 005]Curso ja existente.". ||
-|| 1.2 Se ao registrar, alguma informação digitada não estiver dentro dos padrões para registro, o sistema retorna a mensagem "[ERRO 006] Erro no cadastro. Verifique se os itens foram inseridos corretamente ou existe disciplinas e aulas relacionadas com esse curso.".||
-|| 2.1 Se ao tentar editar as informações de um determinado curso e for digitado alguma entrada fora dos padrões para edição, o sistema retorna uma mensagem "[ERRO 007]Erro na edição."||
-|| 2.2 Se ao tentar editar as informações de um determinado curso que não possui cadastro, o programa informa uma mensagem de erro "[ERRO 002]Curso nao existente." ||
-|| 3.1 Se ao tentar excluir as informações de um curso informando alguma entrada fora dos padrões de exclusão,o programa retorna uma mensagem "[ERRO 004]Erro na exclusao.Verifique se existe disciplinas e aulas relacionadas com esse curso." ||
-|| 3.2 Se ao tentar excluir as informações de um curso informando seu ID incorretamente, o sistema retorna uma mensagem "[ERRO 002]Curso nao existente."||
+|| 1.1 - Ao tentar cadastro de curso já existente, retorna uma mensagem "[ ERRO 005 ]Curso ja existente.". ||
+|| 1.2 Se ao registrar, alguma informação digitada não estiver dentro dos padrões para registro, o sistema retorna a mensagem "[ ERRO 006] Erro no cadastro. Verifique se os itens foram inseridos corretamente ou existe disciplinas e aulas relacionadas com esse curso.".||
+|| 2.1 Se ao tentar editar as informações de um determinado curso e for digitado alguma entrada fora dos padrões para edição, o sistema retorna uma mensagem "[ ERRO 007 ]Erro na edição."||
+|| 2.2 Se ao tentar editar as informações de um determinado curso que não possui cadastro, o programa informa uma mensagem de erro "[ ERRO 002 ]Curso nao existente." ||
+|| 3.1 Se ao tentar excluir as informações de um curso informando alguma entrada fora dos padrões de exclusão,o programa retorna uma mensagem "[ ERRO 004 ]Erro na exclusao.Verifique se existe disciplinas e aulas relacionadas com esse curso." ||
+|| 3.2 Se ao tentar excluir as informações de um curso informando seu ID incorretamente, o sistema retorna uma mensagem "[ ERRO 002 ]Curso nao existente."||
 
 
 --------------------------
@@ -76,12 +76,12 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 || 3 - Ao excluir, o administrador informa o ID da disciplina que deseja excluir, e o sistema exclui todas as informações relacionadas a essa disciplina. ||
 
 || *Fluxos alternativos* ||
-|| 1.1 - Ao tentar cadastro de disciplina já existente, retorna uma mensagem "[ERRO 005]Disciplina ja existente. Pressione ENTER para continuar.". ||
-|| 1.2 Se ao registrar, alguma informação digitada não estiver dentro dos padrões para registro, o sistema retorna a mensagem "[ERRO 006] Erro no cadastro. Verifique se os itens foram inseridos corretamente.".||
-|| 2.1 Se ao tentar editar as informações de uma determinada disciplina e for digitado alguma entrada fora dos padrões para edição, o sistema retorna uma mensagem "[ERRO 007] Erro na edição."||
-|| 2.2 Se ao tentar editar as informações de uma determinada disciplina que não possui cadastro, o programa informa uma mensagem de erro "[ERRO 002]Disciplina nao existente." ||
-|| 3.1 Se ao tentar excluir as informações de uma disciplina informando alguma entrada fora dos padrões de exclusão,o programa retorna uma mensagem "[ERRO 004]Erro na exclusao." ||
-|| 3.2 Se ao tentar excluir as informações de uma disciplina informando um ID não existente, o sistema retorna uma mensagem "[ERRO 002]Disciplina nao existente."||
+|| 1.1 - Ao tentar cadastro de disciplina já existente, retorna uma mensagem "[ ERRO 005 ]Disciplina ja existente. ". ||
+|| 1.2 Se ao registrar, alguma informação digitada não estiver dentro dos padrões para registro, o sistema retorna a mensagem "[ ERRO 006 ] Erro no cadastro. Verifique se os itens foram inseridos corretamente.".||
+|| 2.1 Se ao tentar editar as informações de uma determinada disciplina e for digitado alguma entrada fora dos padrões para edição, o sistema retorna uma mensagem "[ ERRO 007 ] Erro na edição."||
+|| 2.2 Se ao tentar editar as informações de uma determinada disciplina que não possui cadastro, o programa informa uma mensagem de erro "[ ERRO 002 ]Disciplina nao existente." ||
+|| 3.1 Se ao tentar excluir as informações de uma disciplina informando alguma entrada fora dos padrões de exclusão,o programa retorna uma mensagem "[ ERRO 004 ]Erro na exclusao." ||
+|| 3.2 Se ao tentar excluir as informações de uma disciplina informando um ID não existente, o sistema retorna uma mensagem "[ ERRO 002 ]Disciplina nao existente."||
 
 
 --------------------------
@@ -104,11 +104,11 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 || 3 - Ao excluir, o Administrador informa o número de registro relacionado a um professor que deseja excluir, e o sistema exclui todas as informações relacionadas ao número de registro;||
 
 || *Fluxos alternativos* ||
-|| 1.1 Se o CPF  for digitado de forma incorreta, o sistema deve informar uma mensagem de erro "[ERRO 002]Usuario nao existente. ".  ||  
-|| 2.1 Se ao tentar consultar as informações de um determinado professor que não possui cadastro, o programa informa uma mensagem de erro "[ERRO 002]Usuario nao existente. " ||
-|| 2.2 Se ao tentar editar as informações de um determinado professor e for digitado alguma entrada fora dos padrões para edição, o sistema retorna uma mensagem "[ERRO 007] Erro na edição."||
-|| 3.1 Se ao tentar excluir as informações de um professor informando um número de CPF incorreto, o programa retorna uma mensagem de erro "[ERRO 002]Usuario nao existente. ".||
-|| 3.2 Se ao tentar excluir as informações de uma disciplina informando alguma entrada fora dos padrões de exclusão,o programa retorna uma mensagem "[ERRO 004]Erro na exclusao." ||
+|| 1.1 Se o CPF  for digitado de forma incorreta, o sistema deve informar uma mensagem de erro "[ ERRO 002 ]Usuario nao existente. ".  ||  
+|| 2.1 Se ao tentar consultar as informações de um determinado professor que não possui cadastro, o programa informa uma mensagem de erro "[ ERRO 002 ]Usuario nao existente. " ||
+|| 2.2 Se ao tentar editar as informações de um determinado professor e for digitado alguma entrada fora dos padrões para edição, o sistema retorna uma mensagem "[ ERRO 007 ] Erro na edição."||
+|| 3.1 Se ao tentar excluir as informações de um professor informando um número de CPF incorreto, o programa retorna uma mensagem de erro "[ ERRO 002 ]Usuario nao existente. ".||
+|| 3.2 Se ao tentar excluir as informações de uma disciplina informando alguma entrada fora dos padrões de exclusão,o programa retorna uma mensagem "[ ERRO 004 ]Erro na exclusao." ||
 
 
 --------------------------------
@@ -125,17 +125,17 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 ==Cenários principais de sucesso== 
 
 || *Usuário* ||
-|| 1 -  ||
+|| 1 -  ||Ao cadastrar, o administrador insere informações como ID do prédio e nome do prédio.
 || 2 - Ao editar, o administrador acessa as informações já cadastradas do prédio e faz as alterações necessárias, ao final, o programa rearmazena os dados. ||
 || 3 - Ao excluir, o administrador informa o ID do prédio que deseja excluir, e o sistema exclui todas as informações relacionadas a esse prédio. ||
 
 || *Fluxos alternativos* ||
-|| 1.1 - Ao tentar cadastro de prédio já existente, retorna uma mensagem "[ERRO 005]Predio ja existente.". ||
-|| 1.2 Se ao registrar, alguma informação digitada não estiver dentro dos padrões para registro, o sistema retorna a mensagem "[ERRO 006] Erro no cadastro. Verifique se os itens foram inseridos corretamente.".||
-|| 2.1 Se ao tentar editar as informações de um determinado prédio e for digitado alguma entrada fora dos padrões para edição, o sistema retorna uma mensagem "[ERRO 007] Erro na edição."||
-|| 2.2 Se ao tentar editar as informações de um determinado prédio que não possui cadastro, o programa informa uma mensagem de erro "[ERRO 002]Predio nao existente." ||
-|| 3.1 Se ao tentar excluir as informações de um prédio informando alguma entrada fora dos padrões de exclusão,o programa retorna uma mensagem "[ERRO 004]Erro na exclusao." ||
-|| 3.2 Se ao tentar excluir as informações de um prédio informando um ID não existente, o sistema retorna uma mensagem "[ERRO 002]Prédio nao existente."
+|| 1.1 - Ao tentar cadastro de prédio já existente, retorna uma mensagem "[ ERRO 005]Predio ja existente.". ||
+|| 1.2 Se ao registrar, alguma informação digitada não estiver dentro dos padrões para registro, o sistema retorna a mensagem "[ ERRO 006 ] Erro no cadastro. Verifique se os itens foram inseridos corretamente.".||
+|| 2.1 Se ao tentar editar as informações de um determinado prédio e for digitado alguma entrada fora dos padrões para edição, o sistema retorna uma mensagem "[ ERRO 007 ] Erro na edição."||
+|| 2.2 Se ao tentar editar as informações de um determinado prédio que não possui cadastro, o programa informa uma mensagem de erro "[ ERRO 002 ]Predio nao existente." ||
+|| 3.1 Se ao tentar excluir as informações de um prédio informando alguma entrada fora dos padrões de exclusão,o programa retorna uma mensagem "[ ERRO 004 ]Erro na exclusao." ||
+|| 3.2 Se ao tentar excluir as informações de um prédio informando um ID não existente, o sistema retorna uma mensagem "[ ERRO 002 ]Prédio nao existente."||
 
 --------------------------
 
@@ -155,9 +155,9 @@ Um caso de uso representa uma parte discreta da interação entre um usuário (h
 || 2 - Ao excluir, o professor informa o item a ser excluído.||
 
 || *Fluxos alternativos* ||
-|| 1.1 Se ao tentar reserva e a data estiver ocupada, o sistema retorna uma mensagem "[ ERRO 005] Reserva ja existente para determinada data."||
-|| 1.2 Se ao tentar reserva e o horário estiver ocupado, o sistema retorna uma mensagem "[ ERRO 005] Reserva ja existente para determinado horario."||
-|| 2.1 Se ao tentar deletar reserva que não possui horário cadastrado, o sistema informa a mensagem "[ ERRO 004]Erro na exclusao. Nao existe reserva nesse horario."||
+|| 1.1 Se ao tentar reserva e a data estiver ocupada, o sistema retorna uma mensagem "[ ERRO 005 ] Reserva ja existente para determinada data."||
+|| 1.2 Se ao tentar reserva e o horário estiver ocupado, o sistema retorna uma mensagem "[ ERRO 005 ] Reserva ja existente para determinado horario."||
+|| 2.1 Se ao tentar deletar reserva que não possui horário cadastrado, o sistema informa a mensagem "[ ERRO 004 ]Erro na exclusao. Nao existe reserva nesse horario."||
 ----------------------------
 
 
